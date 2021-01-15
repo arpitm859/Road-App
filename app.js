@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('./config/db')();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -37,5 +38,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+console.log('Express server running on port:'+process.env.PORT || 3000);
 
 module.exports = app;
