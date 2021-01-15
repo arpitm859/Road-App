@@ -1,0 +1,52 @@
+.main-card{
+    width: 100vw;
+    height:100vh;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.btn{
+    margin-bottom: 20px;
+}
+
+input[type=text], input[type=password] {
+    width: 15rem;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.stakeholder{
+    width: 15rem;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.heading{
+    text-align: center;
+    padding-bottom: 2rem;
+    color: black;
+    opacity: 1 !important;
+}
+
+.login-card{
+    
+    padding: 3rem 5rem;
+    border-radius: 30px;
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+    background-color: #EEEDEB;
+}
+
+
+
