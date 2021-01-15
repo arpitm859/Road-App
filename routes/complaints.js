@@ -31,6 +31,7 @@ complaintRouter.route('/')
             
             complainant_address: req.body.complainant_house_no+req.body.complainant_street+req.body.complainant_street+req.body.complainant_area+req.body.complainant_city+"Maharashtra"+req.body.complainant_pin,
             complainant_house_no: req.body.complainant_house_no,
+            complainant_street: req.body.complainant_street,
             complainant_area: req.body.complainant_area,
             complainant_pin: req.body.complainant_pin,
             complainant_landmark: req.body.complainant_landmark,
