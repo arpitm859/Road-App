@@ -1,4 +1,4 @@
 {   
     "secretKey": "12345-67890-09876-54321",
-    "mongoURI": ""
+    "mongoURI": "mongodb+srv://namami:bFceDl2vPttiADGU@cluster0.4ubeb.mongodb.net/road-app?retryWrites=true&w=majority"
 }
