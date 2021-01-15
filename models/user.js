@@ -12,7 +12,6 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        min: 1000000000,
     },
     phone: {
         type: Number,
