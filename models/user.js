@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     firstName: {
         type: String,
         required: true
@@ -12,10 +13,7 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-    },
-    phone: {
-        type: Number,
-        required: true
+        unique: true
     },
     public: {
         type: Boolean,
@@ -31,5 +29,9 @@ const userSchema = new Schema({
     }
 });
 
-var User = mongoose.model('user', userSchema);
+UserSchema.plugin(passportLocalMongoose, {
+    selectFields: 'email firstName lastName phone public agency gov'
+});
+
+var User = mongoose.model('User', UserSchema);
 module.exports = User;
