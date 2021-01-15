@@ -13,7 +13,8 @@ const UserSchema = new Schema({
     },
     email: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     public: {
         type: Boolean,
@@ -30,7 +31,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.plugin(passportLocalMongoose, {
-    selectFields: 'email firstName lastName phone public agency gov'
+    selectFields: 'email firstName lastName public agency gov'
 });
 
 var User = mongoose.model('User', UserSchema);
