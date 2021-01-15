@@ -7,10 +7,10 @@
     align-items: center;
 }
 .complaint-card{
-    
+
     padding: 1rem 5rem;
     border-radius: 2px;
-    background-color: #DBDBDF;
+    background-color:rgb(0, 0, 0, 0.9);
 }
 
 #description{
