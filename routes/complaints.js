@@ -13,7 +13,15 @@ complaintRouter.use(bodyParser.json());
 
 complaintRouter.route('/')
     .get(authenticate.verifyUser ,(req, res, next) => {
-
+        var id = req.user._id;
+        User.findById(id).then(user => {
+            if(user.public){
+                Complaint.find({userID:user._id}).then(result => {
+                    console.log(result)
+                })
+            }
+        })
+        
     })
     .post(authenticate.verifyUser, (req, res, next)=>{
         var id = req.user._id
@@ -22,14 +30,14 @@ complaintRouter.route('/')
             title: req.body.title,
             description: req.body.description,
 
-            complaint_address: req.body.complaint_street+req.body.complaint_street+req.body.complaint_area+req.body.complaint_city+"Maharashtra"+req.body.complaint_pin,
+            complaint_address: req.body.complaint_street+" "+req.body.complaint_area+", "+req.body.complaint_city+", Maharashtra, "+req.body.complaint_pin+", India",
             complaint_street: req.body.complaint_street,
             complaint_area: req.body.complaint_area,
             complaint_pin: req.body.complaint_pin,
             complaint_landmark: req.body.complaint_landmark,
             complaint_city: req.body.complaint_city,
             
-            complainant_address: req.body.complainant_house_no+req.body.complainant_street+req.body.complainant_street+req.body.complainant_area+req.body.complainant_city+"Maharashtra"+req.body.complainant_pin,
+            complainant_address: req.body.complainant_house_no+" "+req.body.complainant_street+", "+req.body.complainant_area+", "+req.body.complainant_city+", Maharashtra, "+req.body.complainant_pin+", India",
             complainant_house_no: req.body.complainant_house_no,
             complainant_street: req.body.complainant_street,
             complainant_area: req.body.complainant_area,

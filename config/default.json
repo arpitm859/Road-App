@@ -1,4 +1,5 @@
 {   
     "secretKey": "12345-67890-09876-54321",
-    "mongoURI": "mongodb+srv://namami:bFceDl2vPttiADGU@cluster0.4ubeb.mongodb.net/road-app?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://namami:bFceDl2vPttiADGU@cluster0.4ubeb.mongodb.net/road-app?retryWrites=true&w=majority",
+    "geoCodeAPI": "0f13dd88cddde0dd1e3f1c63f608006d3de2c04"
 }
