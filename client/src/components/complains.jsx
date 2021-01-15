@@ -17,8 +17,8 @@ const Complains = () => {
             </Navbar>
             
                     <div className="complaint-card">
-                        <h2>Application to lodge a Complaint</h2>
-                        <Table responsive="sm" style={{margin:"2rem"}}>
+                        <h2 style={{color:"white"}}>Application to lodge a Complaint</h2>
+                        <Table responsive="sm" style={{margin:"2rem",color:"white"}}>
                             <thead>
                             <tr>
                                 <th style={{fontSize: "25px"}} colspan="5">Define Nature of the Complaint</th>
@@ -112,7 +112,7 @@ const Complains = () => {
                                 </tr>
                             </tbody>
                         </Table>
-
+                        <button type="button"className="btn btn-primary">Submit</button>
                         
                     </div>
         </div>
