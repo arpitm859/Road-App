@@ -20,7 +20,6 @@ issueRouter.route('/')
                 Complaint.find({}).then(complaints=>{
                     let gov_arr = [];
                     for (x in complaints){
-                        // console.log(complaints[x].status == 0 || complaints[x].status == 1 || complaints[x].status == 2 || complaints[x].status == 6 || complaints[x].status == 9 || complaints[x].status == 10 );
                         if(complaints[x].status == 0 || complaints[x].status == 1 || complaints[x].status == 2 || complaints[x].status == 6 || complaints[x].status == 9 || complaints[x].status == 10 ){
                             gov_arr.push(complaints[x])
                         }
@@ -30,7 +29,17 @@ issueRouter.route('/')
                     res.json(gov_arr)
                 })
             }else if(user.agency){
-
+                Complaint.find({}).then(complaints=>{
+                    let agn_arr = [];
+                    for (x in complaints){
+                        if(complaints[x].status == 0 || complaints[x].status == 3 || complaints[x].status == 4 || complaints[x].status == 5 || complaints[x].status == 7 || complaints[x].status == 8 ){
+                            agn_arr.push(complaints[x])
+                        }
+                    }
+                    res.statusCode=200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(agn_arr)
+                })
             }else{
                 res.statusCode=401;
                 res.send('Unauthorized')
