@@ -12,18 +12,18 @@
     border-radius: 2px;
 }
 
-.vote {
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
     display: inline-block;
-    overflow: hidden;
-    width: 40px;
-    height: 25px;
+    padding: 3px;
+    margin-right: 0.5rem;
     cursor: pointer;
-    background: url('http://i.stack.imgur.com/iqN2k.png');
-    background-position: 0 -25px;
-} 
+}
 
-.vote.on {
-    background-position: 0 2px;
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
 }
 
 

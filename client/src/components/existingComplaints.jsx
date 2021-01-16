@@ -4,26 +4,46 @@ import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
 
 const ExistingComplaints = () => {
+
     const [data, setData] = useState([])
-    useEffect(() => {
-        const config = {
-            headers: {
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            }
+
+    const config = {
+        headers: {
+            "Authorization": 'Bearer ' + localStorage.getItem('token')
         }
+    }
+
+    useEffect(() => {
         axios.get('/complaints/all', config).then(json => setData(json.data));
     }, [])
+
+
     const renderTable = () => {
+
+    const onSubmit = async () => {
+            
+            try{
+                console.log(data);
+                const res = await axios.post('/complaints/upvote',{
+                    'complaint_id':data.complaint_id
+                },config);
+
+            }
+            catch(err){
+                console.error(err.response.data);
+            }
+        }
+
         return data.map(complaint => {
-        return (
-            <tr>
-            <td>{complaint.createdAt.substring(0, 10)}</td>
-            <td>{complaint.title}</td>
-            <td>{complaint.complaint_address}</td> 
-            <td>{complaint.complaint_city}</td> 
-            <td>{complaint.backer.length}  <span class="sprite vote"> </span> </td>
-            </tr>
-        )
+            return (
+                <tr>
+                <td>{complaint.createdAt.substring(0, 10)}</td>
+                <td>{complaint.title}</td>
+                <td>{complaint.complaint_address}</td> 
+                <td>{complaint.complaint_city}</td> 
+                <td>{complaint.backer.length} <i className="arrow up" onClick={() => {onSubmit()}}></i></td>
+                </tr>
+            )
         })
     }
     return(
@@ -45,7 +65,7 @@ const ExistingComplaints = () => {
                             <th>Title</th>
                             <th>Description of the Complaint</th>
                             <th>Address of the Complaint</th>
-                            <th>Number of upvotes</th>
+                            <th>Number of Backers</th>
                         </tr>
                     </thead>
                     <tbody>{renderTable()}</tbody>
