@@ -4,6 +4,7 @@ import Login from './components/login.jsx';
 import Register from './components/register.jsx';
 import General from './components/general.jsx';
 import Complains from './components/complains.jsx'; 
+import ExistingComplaints from './components/existingComplaints.jsx';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/general" component={General} />
         <Route path="/complains" component={Complains} />
+        <Route path="/existing-complains" component={ExistingComplaints} />
       </Switch>
     </div>
   );

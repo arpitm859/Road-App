@@ -44,6 +44,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-console.log('Express server running on port:'+process.env.PORT || 3000);
+console.log('Express server running on port:' + process.env.PORT || 5000);
 
 module.exports = app;
