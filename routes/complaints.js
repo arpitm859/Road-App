@@ -75,7 +75,7 @@ complaintRouter.route('/all')
         })
     })
 
-//  Send POST request to '/complaints/all' with authorization token in header and 'complaint_id' in body    
+//  Send POST request to '/complaints/upvote' with authorization token in header and 'complaint_id' in body    
 complaintRouter.route('/upvote')
     .post(authenticate.verifyUser, (req, res, next) => {
         complaint_id = req.body.complaint_id;
