@@ -2,10 +2,12 @@ import { React, useState, useEffect } from 'react';
 import './existingComplaints.css';
 import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ExistingComplaints = () => {
+
+    let id = "";
     const [data, setData] = useState([])
-    
     useEffect(() => {
         const config = {
             headers: {
@@ -32,17 +34,18 @@ const ExistingComplaints = () => {
             }
         }
         return data.map(complaint => {
+            id = complaint._id
             return (
                 <tr>
                 <td>{complaint.createdAt.substring(0, 10)}</td>
-                <td>{complaint.title}</td>
+                <td><Link to={`/status/${id}`} style={{color:"white"}} >{complaint.title}</Link></td>
+                <td>{complaint.description}</td>
                 <td>{complaint.complaint_address}</td> 
-                <td>{complaint.complaint_city}</td> 
                 <td>{complaint.backer.length} <i className="arrow up" onClick={() => {onSubmit(complaint._id)}}></i></td>
                 </tr>
             )
         })
-    }
+    };
     return(
         <div style={{height:"100vh",backgroundColor:"rgb(0, 0, 0, 0.9)"}}>
             <Navbar style={{backgroundColor:"black"}}>

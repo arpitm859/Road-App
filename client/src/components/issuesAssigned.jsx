@@ -50,8 +50,8 @@ const IssuesAssigned = () => {
                 <tr>
                 <td>{complaint.createdAt.substring(0, 10)}</td>
                 <td>{complaint.title}</td>
+                <td>{complaint.description}</td>
                 <td>{complaint.complaint_address}</td> 
-                <td>{complaint.complaint_city}</td> 
                 <td>{complaint.status} <i className="arrow up" onClick={() => {onSubmit()}}></i></td>
                 </tr>
             )
