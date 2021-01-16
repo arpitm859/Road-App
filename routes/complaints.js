@@ -11,6 +11,7 @@ var complaintRouter = express.Router();
 
 complaintRouter.use(bodyParser.json());
 
+// Complaint Router for authenticate public 
 complaintRouter.route('/')
     .get(authenticate.verifyUser ,(req, res, next) => {
         var id = req.user._id;
@@ -64,7 +65,7 @@ complaintRouter.route('/')
     })
 
 complaintRouter.route('/all')
-    .get((req, res, next) => {
+    .get(authenticate.verifyUser, (req, res, next) => {
         Complaint.find({}).then(complaints=> {
             res.statusCode=200;
             res.setHeader('Content-Type', 'application/json');
