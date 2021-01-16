@@ -12,13 +12,14 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   var token = authenticate.getToken({_id: req.user._id});
+  console.log(req);
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.json({success: true, token: token, status: 'You are successfully logged in!'});
 });
 
 router.post('/register', (req, res, next) => {
-  User.register(new User({username: req.body.phone, 
+  User.register(new User({username: req.body.username, 
           email: req.body.email,
           public: req.body.public,
           firstName: req.body.firstName,
