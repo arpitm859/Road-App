@@ -1,2 +1,10 @@
-complaint verification - government
-
+complaint acknowledged - government
+investigation handed to agency - government
+agency investigation completed - agency
+problem identiied - agency
+funds and requirements asked from government - agency
+funds transferred to agency - goverment
+agency working on location - agency/tentative date
+issue resolved from agency- agency
+approval from government - goverment => accepted/rejected
+issure resolved -government
