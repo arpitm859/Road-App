@@ -6,6 +6,7 @@ import Register from './components/register.jsx';
 import Complains from './components/complains.jsx'; 
 import ExistingComplaints from './components/existingComplaints.jsx';
 import MyComplaints from './components/myComplaints.jsx';
+import IssuesAssigned from './components/issuesAssigned.jsx';
 
 function App() {
   return (
@@ -14,8 +15,10 @@ function App() {
       <Switch>
         <Route path="/register" component={Register}/>
         <Route path="/complains" component={Complains} />
+        <Route path="/landing-page" component={LandingPage} />
         <Route path="/existing-complaints" component={ExistingComplaints} />
         <Route path="/my-complaints" component={MyComplaints} />
+        <Route path="/my-issues" component={IssuesAssigned} />
       </Switch>
     </div>
   );

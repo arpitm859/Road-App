@@ -3,27 +3,58 @@ import './existingComplaints.css';
 import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
 
-const MyComplaints = () => {
+const IssuesAssigned = () => {
+
     const [data, setData] = useState([])
+
+    
+
     useEffect(() => {
+
         const config = {
             headers: {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             }
         }
-        axios.get('/complaints', config).then(json => setData(json.data));
-    }, [])
+
+        axios.get('/issues', config).then(json => {
+            setData(json.data)
+            console.log(json)});
+        }, [])
+
+
     const renderTable = () => {
+
+    const onSubmit = async () => {
+
+        const config = {
+            headers: {
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+            
+            try{
+                
+                const res = await axios.post('/complaints/upvote',{
+                    'complaint_id':data.complaint_id
+                },config);
+
+            }
+            catch(err){
+                console.error(err.response.data);
+            }
+        }
+
         return data.map(complaint => {
-        return (
-            <tr>
-            <td>{complaint.createdAt.substring(0, 10)}</td>
-            <td>{complaint.title}</td>
-            <td>{complaint.complaint_address}</td> 
-            <td>{complaint.complaint_city}</td> 
-            <td>{complaint.backer.length}</td>
-            </tr>
-        )
+            return (
+                <tr>
+                <td>{complaint.createdAt.substring(0, 10)}</td>
+                <td>{complaint.title}</td>
+                <td>{complaint.complaint_address}</td> 
+                <td>{complaint.complaint_city}</td> 
+                <td>{complaint.status} <i className="arrow up" onClick={() => {onSubmit()}}></i></td>
+                </tr>
+            )
         })
     }
     return(
@@ -46,7 +77,7 @@ const MyComplaints = () => {
                             
                             <Nav.Link href="/my-complaints" style={{color:"white",paddingLeft:"2rem"}} class="navbar-brand mx-auto" >My Complaints</Nav.Link>
 
-                            <Nav.Link href="/my-complaints" style={{color:"white",paddingLeft:"2rem"}} class="navbar-brand mx-auto" >Issues Assigned</Nav.Link>
+                            <Nav.Link href="/my-issues" style={{color:"white",paddingLeft:"2rem"}} class="navbar-brand mx-auto" >Issues Assigned</Nav.Link>
                         </Nav>
                         
                         
@@ -67,7 +98,7 @@ const MyComplaints = () => {
                             <th>Title</th>
                             <th>Description of the Complaint</th>
                             <th>Address of the Complaint</th>
-                            <th>Number of upvotes</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>{renderTable()}</tbody>
@@ -77,4 +108,4 @@ const MyComplaints = () => {
     );
 };
 
-export default MyComplaints;
+export default IssuesAssigned;
