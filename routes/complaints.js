@@ -17,14 +17,24 @@ complaintRouter.route('/')
         User.findById(id).then(user => {
             if(user.public){
                 Complaint.find({userID:user._id}).then(result => {
-                    console.log(result)
+                    if(result.length>0){
+                        result.found = true;
+                        res.statusCode=200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(result)
+                    }
+                    else{
+                        result.found = false;
+                        res.statusCode=200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json([])
+                    }           
                 })
             }
         })
         
     })
     .post(authenticate.verifyUser, (req, res, next)=>{
-        var id = req.user._id
         new Complaint({
             userID: req.user._id,
             title: req.body.title,
@@ -50,6 +60,17 @@ complaintRouter.route('/')
             res.setHeader('Content-Type', 'application/json');
             res.json({success: true, status: 'Complaint Successfully registered!'
         });
+        })
+    })
+
+complaintRouter.route('/all')
+    .get((req, res, next) => {
+        Complaint.find({}).then(complaints=> {
+            res.statusCode=200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json(complaints);
+        }).catch(err=>{
+            next(err)
         })
     })
 
