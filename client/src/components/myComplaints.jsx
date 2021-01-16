@@ -8,7 +8,7 @@ const MyComplaints = () => {
     useEffect(() => {
         const config = {
             headers: {
-                Authorization: 'Bearer' + localStorage.getItem('token')
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
             }
         }
         axios.get('/complaints', config).then(json => setData(json.data));
