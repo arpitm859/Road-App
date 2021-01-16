@@ -21,7 +21,7 @@ const Login = () => {
             console.log(res.data);
             if(res.data.success){
                 localStorage.setItem('token', res.data.token);
-                history.push('/general');
+                history.push('/landing-page');
             }
         }catch(err){
             console.error(err.response.data);
