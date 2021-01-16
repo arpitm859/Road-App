@@ -26,7 +26,6 @@ const Login = () => {
             console.error(err.response.data);
         }
     } 
-
     return(
         <div style={{width: "100vw", height: '100vh', backgroundColor: 'black'}}>
             <h1 className="heading" style={{color:"white",paddingTop:"4rem",paddingBottom:"0px"}}>Bombay Municipal Corporation (Road Department)</h1>
@@ -49,7 +48,6 @@ const Login = () => {
             </div>
         </div>
     );
-
 }
 
 export default Login;

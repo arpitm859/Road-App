@@ -65,7 +65,7 @@ complaintRouter.route('/')
     })
 
 complaintRouter.route('/all')
-    .get(authenticate.verifyUser, (req, res, next) => {
+    .get(/*authenticate.verifyUser,*/ (req, res, next) => {
         Complaint.find({}).then(complaints=> {
             res.statusCode=200;
             res.setHeader('Content-Type', 'application/json');

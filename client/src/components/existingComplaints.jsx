@@ -16,7 +16,7 @@ const ExistingComplaints = () => {
         return data.map(complaint => {
         return (
             <tr>
-            <td>{complaint.createdAt}</td>
+            <td>{complaint.createdAt.substring(0, 10)}</td>
             <td>{complaint.title}</td>
             <td>{complaint.complaint_address}</td> 
             <td>{complaint.complaint_city}</td> 
@@ -36,7 +36,7 @@ const ExistingComplaints = () => {
             </Navbar>
 
             <div id="complaint-card">
-                <Table responsive="sm" style={{margin:"2rem",color:"white"}} id="existing-complaints">
+                <Table responsive="sm" style={{marginTop:"2rem",color:"white"}} id="existing-complaints">
                     <thead>
                         <tr>
                             <th>Date of the Complaint</th>
