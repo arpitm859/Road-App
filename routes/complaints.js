@@ -80,14 +80,20 @@ complaintRouter.route('/upvote')
     .post(authenticate.verifyUser, (req, res, next) => {
         complaint_id = req.body.complaint_id;
         Complaint.findById(complaint_id).then(complaint=>{
-            if(!(req.user._id in complaint.backer)){
-                complaint.backer.push(req.user._id);
-            }
-            complaint.save().then(complaint=>{
-                res.json(complaint);
-            })
-        }).catch(e=>{
-            next(e);
+            back_arr = complaint.backer;
+            console.log(back_arr);
+            back_arr.push(req.user._id)
+            back_arr = [new Set(back_arr)];
+            complaint.update({_id:complaint_id},
+                {$set:
+                    {
+                        backer:back_arr
+                    }
+                })
+            complaint.save()
+            res.json(complaint);
+        }).catch(err=>{
+            next(err)
         })
     })
 
