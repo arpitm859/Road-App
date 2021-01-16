@@ -3,9 +3,11 @@ import { Navbar, Nav, Table } from 'react-bootstrap';
 import axios from 'axios';
 import './general.css'
 
-const Status = () => {
+const Status = (props) => {
     const [data, setData] = useState([])
     const [status, setStatus] = useState(0)
+
+    console.log()
     useEffect(() => {
         const config = {
             headers: {
@@ -13,6 +15,11 @@ const Status = () => {
             }
         }
         axios.get('/complaints/all', config).then(json => setData(json.data));
+        axios.get(`/status/${props.match.params.id}`, config).then(json => {
+            setData(json.data);
+            setStatus(json.data);
+        });
+        
     }, [])
 
     return(

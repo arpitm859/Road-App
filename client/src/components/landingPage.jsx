@@ -3,7 +3,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel'
 import './general.css'
 import image1 from './image1.jpg';
-import image2 from './image1.jpg';
 
 const LandingPage = () => {
     return(
@@ -37,7 +36,7 @@ const LandingPage = () => {
             
             <div className="images-card">
                 <Carousel>
-                    <Carousel.Item id='qwerty' interval={2000}>
+                    <Carousel.Item interval={2000}>
                         <img src = {image1} alt="Image1" className="d-block w-100 images"/>
                     </Carousel.Item>
                     <Carousel.Item interval={2000}>

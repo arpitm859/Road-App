@@ -59,6 +59,7 @@ issueRouter.route('/resolve')
             })
         }).catch(err=>{
             console.log(err);
+            next(err);
         })
     })
 
