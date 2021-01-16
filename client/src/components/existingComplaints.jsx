@@ -16,7 +16,7 @@ const ExistingComplaints = () => {
             <td>{complaint.title}</td>
             <td>{complaint.complaint_address}</td> 
             <td>{complaint.complaint_city}</td> 
-            <td>{complaint.backer.length}</td>
+            <td>{complaint.backer.length}  <span class="sprite vote"> </span> </td>
             </tr>
         )
         })
@@ -29,6 +29,7 @@ const ExistingComplaints = () => {
                     <Nav.Link href="/complains" style={{color:"white",paddingLeft:"12rem"}}>Register a Complaint</Nav.Link>
                     <Nav.Link href="/existing-complaints" style={{color:"white"}}>Existing Complaints</Nav.Link>
                     <Nav.Link href="/my-complaints" style={{color:"white"}}>My Complaints</Nav.Link>
+                    <Nav.Link href="/login" style={{color:"white",paddingLeft:"22rem"}}>Logout</Nav.Link>
                 </Nav>
             </Navbar>
             <div id="complaint-card">
