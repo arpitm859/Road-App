@@ -29,7 +29,7 @@ const LandingPage = () => {
                     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                            <Nav.Link href="/login" style={{color:"white"}} class="nav-link" >Logout</Nav.Link>
+                            <Nav.Link href="/login" onClick={() => {localStorage.removeItem("token")}} style={{color:"white"}} class="nav-link" >Logout</Nav.Link>
                             </li>
                         </ul>
                     </div>
@@ -37,14 +37,14 @@ const LandingPage = () => {
             
             <div className="images-card">
                 <Carousel>
-                    <Carousel.Item interval={1000}>
-                        <img src = {image1} alt="Image1" className="d-block images"/>
+                    <Carousel.Item id='qwerty' interval={2000}>
+                        <img src = {image1} alt="Image1" className="d-block w-100 images"/>
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
+                    <Carousel.Item interval={2000}>
                         <img src = {image2} alt="Image2" className="d-block w-100 images"/>
                     </Carousel.Item>
-                    <Carousel.Item interval={1000}>
-                        <img alt="Image3" className="d-block w-100 images"/>
+                    <Carousel.Item interval={2000}>
+                        <img alt="Image3" src = {image2} className="d-block w-100 images"/>
                     </Carousel.Item>
                 </Carousel>
             </div>

@@ -8,20 +8,15 @@
 }
 
 .images-card{
-    
     margin: 0 auto;
-    background-color: #FFFFFF;
-    width: 80%;
-    height:80%;
+    width: 60vw;
     justify-content: center;
     align-content: center;
-    display: flex;
     align-items: center;
-    margin-top: 2.5rem !important;
+    margin-top: 2rem !important;
 }
 
 .complaint-card{
-
     padding: 1rem 5rem;
     border-radius: 2px;
     background-color:rgb(0, 0, 0, 0.9);
@@ -57,14 +52,6 @@ table{
     text-align: left;
 }
 
-.images {
-    width:1800rem;
-    height:1100px;
-    margin: auto; 
-    object-fit: contain !important;
-    overflow:hidden;
-} 
-
 th{
     text-align: center;
     vertical-align: middle !important;
@@ -72,7 +59,6 @@ th{
 
 #existing-complaints{
     text-align: center;
-    
 }
 
 .table-card{
@@ -84,4 +70,8 @@ th{
     display: flex;
     align-items: center;
     margin-top: 2.5rem !important;
+}
+
+#qwerty{
+    overflow: hidden;
 }
