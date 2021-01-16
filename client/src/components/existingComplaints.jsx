@@ -6,7 +6,12 @@ import axios from 'axios';
 const ExistingComplaints = () => {
     const [data, setData] = useState([])
     useEffect(() => {
-        axios.get('/complaints/all').then(json => setData(json.data));
+        const config = {
+            headers: {
+                Authorization: 'Bearer' + localStorage.getItem('token')
+            }
+        }
+        axios.get('/complaints/all', config).then(json => setData(json.data));
     }, [])
     const renderTable = () => {
         return data.map(complaint => {
