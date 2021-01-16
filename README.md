@@ -10,8 +10,8 @@ This project was created as a submission for Hackoverflow event in Cepheus 2021.
 
 # How to run the project?
 
-1. Clone the Github repository </br> 
-2. On your local machine, start two terminals </br>
+1. Clone the Github repository. </br> 
+2. On your local machine, start two terminals: </br>
     > In the first terminal, run the following commands:
     ```
       npm install
