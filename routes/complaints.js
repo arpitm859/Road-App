@@ -40,7 +40,8 @@ complaintRouter.route('/')
         }).save().then((complaint)=>{
             res.statusCode=200;
             res.setHeader('Content-Type', 'application/json');
-            res.json(complaint);
+            res.json({success: true, status: 'Complaint Successfully registered!'
+        });
         })
     })
 

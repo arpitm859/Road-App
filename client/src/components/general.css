@@ -17,5 +17,26 @@
     border-radius: 5px;
     border-color: black;
     border-width: thin;
+    margin-left: 3rem;
 }
 
+.complain-input{
+    margin-bottom: 0px !important; 
+    margin-left: 3rem;
+}
+
+#complaint-type{
+    margin-bottom: 0px !important; 
+    margin-left: 3rem;
+}
+
+.table td, .table th{
+    vertical-align: middle;
+}
+table{
+    text-align: left;
+}
+
+th{
+    text-align: center;
+}
