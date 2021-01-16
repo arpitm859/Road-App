@@ -1,10 +1,11 @@
 import { React, useState } from 'react';
 import './general.css';
 import { Navbar, Nav, Table} from 'react-bootstrap';
+import { useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 const Complains = () => {
-
+    const history = useHistory();
 const [complaints, setComplaints] = useState({
 
     complaintType:"",
@@ -73,11 +74,10 @@ const onSubmit = async () =>{
         }
         const res = await axios.post('/complaints', newComplaint, config);
             if(res.data.success){
-                alert(res.data.status)
+                console.log(res)
+                history.push('/my-complaints');
             }else{
-                res.data.errors.forEach(element => {
-                    alert(element.msg)
-                });
+                alert(res.error.msg)
             }
         }catch(err){
             console.error(err);
@@ -88,13 +88,33 @@ const onSubmit = async () =>{
     return(
         <div>
             <Navbar style={{backgroundColor:"black"}}>
-                <Navbar.Brand style={{color:"white"}}>Bombay Municipal Corporation</Navbar.Brand>
-                    <Nav className="mr-auto">
-                    <Nav.Link href="/complains" style={{color:"white",paddingLeft:"12rem"}}>Register a Complaint</Nav.Link>
-                    <Nav.Link href="/existing-complaints" style={{color:"white"}}>Existing Complaints</Nav.Link>
-                    <Nav.Link href="/my-complaints" style={{color:"white"}}>My Complaints</Nav.Link>
-                    <Nav.Link href="/login" style={{color:"white",paddingLeft:"22rem"}}>Logout</Nav.Link>
-                </Nav>
+                    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <Navbar.Brand class="nav-link" style={{color:"white"}}>Bombay Municipal Corporation</Navbar.Brand>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mx-auto">
+                        
+                        <Nav>
+                            <Nav.Link href="/complains" style={{color:"white",paddingLeft:"1rem"}} class="navbar-brand mx-auto" >Register a Complaint</Nav.Link>
+                            
+                            <Nav.Link href="/existing-complaints" style={{color:"white",paddingLeft:"2rem"}} class="navbar-brand mx-auto" >Existing Complaints</Nav.Link>
+                            
+                            <Nav.Link href="/my-complaints" style={{color:"white",paddingLeft:"2rem"}} class="navbar-brand mx-auto" >My Complaints</Nav.Link>
+                        </Nav>
+                        
+                        
+                    </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                    <Nav.Link href="/login" style={{color:"white"}} class="nav-link" >Logout</Nav.Link>
+                    </li>
+                </ul>
+    </div>
             </Navbar>
             
                     <div className="complaint-card">
@@ -194,7 +214,8 @@ const onSubmit = async () =>{
                                 </tr>
                             </tbody>
                         </Table>
-                        <button type="button"className="btn btn-primary" oonClick={(e) => onSubmit(e)}>Submit</button>
+
+                        <button type="button"className="btn btn-primary" onClick={(e) => onSubmit(e)}>Submit</button>
                         
                     </div>
         </div>
