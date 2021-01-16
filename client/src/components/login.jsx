@@ -20,7 +20,6 @@ const Login = () => {
             const res = await axios.post('/users/login', newUser);
             console.log(res.data);
             if(res.data.success){
-                history.push('/complains');
                 localStorage.setItem('token', res.data.token);
                 history.push('/general');
             }
