@@ -66,7 +66,12 @@ const onSubmit = async () =>{
         "complainant_city": complainantCity
     }
     try{
-        const res = await axios.post('/complaints', newComplaint);
+        const config = {
+            headers: {
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+        const res = await axios.post('/complaints', newComplaint, config);
             if(res.data.success){
                 alert(res.data.status)
             }else{

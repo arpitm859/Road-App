@@ -20,10 +20,8 @@ const Login = () => {
             const res = await axios.post('/users/login', newUser);
             console.log(res.data);
             if(res.data.success){
-
                 localStorage.setItem('token', res.data.token);
                 history.push('/general');
-
             }
         }catch(err){
             console.error(err.response.data);
