@@ -81,23 +81,6 @@ complaintRouter.route('/upvote')
         console.log(req.body);
         complaint_id = req.body.complaint_id;
         Complaint.findById(complaint_id).then(complaint=>{
-<<<<<<< HEAD
-            back_arr = complaint.backer;
-            console.log(back_arr);
-            back_arr.push(req.user._id)
-            back_arr = [new Set(back_arr)];
-            complaint.update({_id:complaint_id},
-                {$set:
-                    {
-                        backer:back_arr
-                    }
-                })
-            complaint.save()
-            res.json(complaint);
-        }).catch(err=>{
-            next(err)
-        })
-=======
             if( complaint.backer.indexOf(req.user._id) == -1){
                 complaint.backer.push(req.user._id)
                 complaint.save()
@@ -105,6 +88,5 @@ complaintRouter.route('/upvote')
             }
         }, (err) => next(err))
         .catch((err) => next(err));
->>>>>>> c5bf5dc90374efebb8069b0f895db770a1495528
     })
 module.exports = complaintRouter;
