@@ -60,7 +60,7 @@ const Register = () => {
 
     return(
         <div style={{width: "100vw", height: '100vh', backgroundColor: 'black'}}>
-            <h1 className="heading" style={{color:"white"}}>Bombay Municipal Corporation (Road Department)</h1>
+            <h1 className="heading" style={{color:"white",paddingTop:"4rem",paddingBottom:"0px"}}>Bombay Municipal Corporation (Road Department)</h1>
             <div className="main-card">
                 <div className="column">
                     <div className="login-card">
