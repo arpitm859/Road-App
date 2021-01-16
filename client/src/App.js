@@ -7,12 +7,14 @@ import Complains from './components/complains.jsx';
 import ExistingComplaints from './components/existingComplaints.jsx';
 import MyComplaints from './components/myComplaints.jsx';
 import IssuesAssigned from './components/issuesAssigned.jsx';
+import LandingPage from './components/landingPage'
 
 function App() {
   return (
     <div className="App">
       <Route exact path="/login" component={Login}/>       
       <Switch>
+        <Route path='/landing-page' component={LandingPage}/>
         <Route path="/register" component={Register}/>
         <Route path="/complains" component={Complains} />
         <Route path="/landing-page" component={LandingPage} />
