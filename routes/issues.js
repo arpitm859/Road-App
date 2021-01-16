@@ -48,5 +48,4 @@ issueRouter.route('/')
             next(err)
         })
     })
-
 module.exports = issueRouter;

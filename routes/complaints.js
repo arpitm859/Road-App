@@ -89,4 +89,13 @@ complaintRouter.route('/upvote')
         }, (err) => next(err))
         .catch((err) => next(err));
     })
+
+// complaintRouter.route('/:id')
+//     .get((req, res, next)=>{
+//         var complaint_id = req.params.id;
+//         Complaint.findById(complaint_id).then(complaint=>{
+//             console.log(complaint);
+//             res.send()
+//         })
+//     })
 module.exports = complaintRouter;
