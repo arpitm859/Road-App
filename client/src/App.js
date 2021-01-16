@@ -14,7 +14,7 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/general" component={General} />
         <Route path="/complains" component={Complains} />
-        <Route path="/existing-complains" component={ExistingComplaints} />
+        <Route path="/existing-complaints" component={ExistingComplaints} />
       </Switch>
     </div>
   );

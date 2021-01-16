@@ -86,7 +86,7 @@ const onSubmit = async () =>{
                 <Navbar.Brand>Bombay Municipal Corporation</Navbar.Brand>
                     <Nav className="mr-auto">
                     <Nav.Link href="/complains">Register a Complaint</Nav.Link>
-                    <Nav.Link href="/existing-complains">Existing Complaints</Nav.Link>
+                    <Nav.Link href="/existing-complaints">Existing Complaints</Nav.Link>
                 </Nav>
             </Navbar>
             

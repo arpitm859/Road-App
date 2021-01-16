@@ -39,6 +39,7 @@ input[type=text], input[type=password] {
 
 .login-card{
     
+    margin-top: 0rem;
     padding: 3rem 5rem;
     border-radius: 30px;
     border-color: white;
