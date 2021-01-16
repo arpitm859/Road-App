@@ -1,10 +1,10 @@
 import React,{ useState } from 'react';
 import './login.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 
 const Register = () => {
-
+    const history = useHistory();
     const [registerData, setRegister] = useState({
         firstname:"",
         lastname:"",
@@ -25,8 +25,37 @@ const Register = () => {
     
     const onChange = e => setRegister({...registerData,[e.target.name]:e.target.value})
 
-    const onSubmit = (e) => {
-        
+    
+
+    const onSubmit = async() => {
+        const newUser = {
+            "username": phoneNumber,
+            "firstName": firstname,
+            "lastName": lastname,
+            "email": email,
+            "public":true,
+            "agency":false,
+            "gov":false,
+            "password":password
+        }
+        if(newUser.stakeholder === 'agency'){
+            newUser.agency=true;
+            newUser.public=false;
+            newUser.gov=false;
+        }
+        else if(stakeholder === 'gov'){
+            newUser.agency=false;
+            newUser.public=false;
+            newUser.gov=true;
+        }
+        try{
+            const res = await axios.post('/users/register', newUser);
+            if(res.data.success){
+                history.push('/login');
+            }
+        }catch(err){
+            console.error(err.response.data);
+        }
     }
 
     return(

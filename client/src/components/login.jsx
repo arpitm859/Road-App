@@ -24,8 +24,6 @@ const Login = () => {
             }
         }catch(err){
             console.error(err.response.data);
-            console.log(newUser);
-            
         }
     } 
 
