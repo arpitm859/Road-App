@@ -16,7 +16,7 @@ const MyComplaints = () => {
                 "Authorization": 'Bearer ' + localStorage.getItem('token')
             }
         }
-        axios.get('/complaints', config).then(json => setData(json.data));
+        axios.get('/complaints', config).then(json => {setData(json.data); console.log(json)});
     }, [])
     const renderTable = () => {
         return data.map(complaint => {
