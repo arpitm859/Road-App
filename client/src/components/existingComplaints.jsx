@@ -6,7 +6,12 @@ import axios from 'axios';
 const ExistingComplaints = () => {
     const [data, setData] = useState([])
     useEffect(() => {
-        axios.get('/complaints/all').then(json => setData(json.data));
+        const config = {
+            headers: {
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+        axios.get('/complaints/all', config).then(json => setData(json.data));
     }, [])
     const renderTable = () => {
         return data.map(complaint => {
@@ -16,18 +21,20 @@ const ExistingComplaints = () => {
             <td>{complaint.title}</td>
             <td>{complaint.complaint_address}</td> 
             <td>{complaint.complaint_city}</td> 
-            <td>{complaint.backer.length}</td>
+            <td>{complaint.backer.length}  <span class="sprite vote"> </span> </td>
             </tr>
         )
         })
     }
     return(
         <div style={{height:"100vh",backgroundColor:"rgb(0, 0, 0, 0.9)"}}>
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand>Bombay Municipal Corporation</Navbar.Brand>
+            <Navbar style={{backgroundColor:"black"}}>
+                <Navbar.Brand style={{color:"white"}}>Bombay Municipal Corporation</Navbar.Brand>
                     <Nav className="mr-auto">
-                    <Nav.Link href="/complains">Register a Complaint</Nav.Link>
-                    <Nav.Link href="/existing-complaints">Existing Complaints</Nav.Link>
+                    <Nav.Link href="/complains" style={{color:"white",paddingLeft:"12rem"}}>Register a Complaint</Nav.Link>
+                    <Nav.Link href="/existing-complaints" style={{color:"white"}}>Existing Complaints</Nav.Link>
+                    <Nav.Link href="/my-complaints" style={{color:"white"}}>My Complaints</Nav.Link>
+                    <Nav.Link href="/login" style={{color:"white",paddingLeft:"22rem"}}>Logout</Nav.Link>
                 </Nav>
             </Navbar>
             <div id="complaint-card">

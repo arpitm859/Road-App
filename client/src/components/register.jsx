@@ -13,7 +13,6 @@ const Register = () => {
         stakeholder:"",
         password:""
     })
-
     const {
         firstname,
         lastname,
@@ -22,11 +21,8 @@ const Register = () => {
         stakeholder,
         password
     } = registerData;
-    
+
     const onChange = e => setRegister({...registerData,[e.target.name]:e.target.value})
-
-    
-
     const onSubmit = async() => {
         const newUser = {
             "username": phoneNumber,

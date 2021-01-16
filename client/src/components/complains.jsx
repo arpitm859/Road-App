@@ -66,7 +66,12 @@ const onSubmit = async () =>{
         "complainant_city": complainantCity
     }
     try{
-        const res = await axios.post('/complaints', newComplaint);
+        const config = {
+            headers: {
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+        const res = await axios.post('/complaints', newComplaint, config);
             if(res.data.success){
                 alert(res.data.status)
             }else{
@@ -82,11 +87,13 @@ const onSubmit = async () =>{
 
     return(
         <div>
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand>Bombay Municipal Corporation</Navbar.Brand>
+            <Navbar style={{backgroundColor:"black"}}>
+                <Navbar.Brand style={{color:"white"}}>Bombay Municipal Corporation</Navbar.Brand>
                     <Nav className="mr-auto">
-                    <Nav.Link href="/complains">Register a Complaint</Nav.Link>
-                    <Nav.Link href="/existing-complaints">Existing Complaints</Nav.Link>
+                    <Nav.Link href="/complains" style={{color:"white",paddingLeft:"12rem"}}>Register a Complaint</Nav.Link>
+                    <Nav.Link href="/existing-complaints" style={{color:"white"}}>Existing Complaints</Nav.Link>
+                    <Nav.Link href="/my-complaints" style={{color:"white"}}>My Complaints</Nav.Link>
+                    <Nav.Link href="/login" style={{color:"white",paddingLeft:"22rem"}}>Logout</Nav.Link>
                 </Nav>
             </Navbar>
             
