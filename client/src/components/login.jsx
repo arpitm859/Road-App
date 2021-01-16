@@ -20,7 +20,7 @@ const Login = () => {
             const res = await axios.post('/users/login', newUser);
             console.log(res.data);
             if(res.data.success){
-                history.push('/general');
+                history.push('/complains');
             }
         }catch(err){
             console.error(err.response.data);

@@ -5,6 +5,7 @@ import Register from './components/register.jsx';
 import General from './components/general.jsx';
 import Complains from './components/complains.jsx'; 
 import ExistingComplaints from './components/existingComplaints.jsx';
+import MyComplaints from './components/myComplaints.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/general" component={General} />
         <Route path="/complains" component={Complains} />
         <Route path="/existing-complaints" component={ExistingComplaints} />
+        <Route path="/my-complaints" component={MyComplaints} />
       </Switch>
     </div>
   );

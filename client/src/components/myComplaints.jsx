@@ -3,10 +3,10 @@ import './existingComplaints.css';
 import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
 
-const ExistingComplaints = () => {
+const MyComplaints = () => {
     const [data, setData] = useState([])
     useEffect(() => {
-        axios.get('/complaints/all').then(json => setData(json.data));
+        axios.get('/complaints').then(json => setData(json.data));
     }, [])
     const renderTable = () => {
         return data.map(complaint => {
@@ -49,4 +49,4 @@ const ExistingComplaints = () => {
     );
 };
 
-export default ExistingComplaints;
+export default MyComplaints;
