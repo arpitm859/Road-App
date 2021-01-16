@@ -58,8 +58,9 @@ table{
 }
 
 .images {
-    max-width: 100%;
-    max-height: auto ;
+    width:1800rem;
+    height:1100px;
+    margin: auto; 
     object-fit: contain !important;
     overflow:hidden;
 } 

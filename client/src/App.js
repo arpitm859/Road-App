@@ -12,8 +12,6 @@ import Status from './components/status.jsx'
 
 function App() {
 
-  
-
   return (
     <div className="App">
       <Route exact path="/login" component={Login}/>       
