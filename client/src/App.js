@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <Route exact path="/login" component={Login}/>       
+      <Route exact path="/" component={Login}/>       
       <Switch>
         <Route path='/landing-page' component={LandingPage}/>
         <Route path="/register" component={Register}/>

@@ -47,7 +47,7 @@ const Register = () => {
         try{
             const res = await axios.post('/users/register', newUser);
             if(res.data.success){
-                history.push('/login');
+                history.push('/');
             }
         }catch(err){
             console.error(err.response.data);
