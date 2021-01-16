@@ -36,7 +36,7 @@ const LandingPage = () => {
             </Navbar>
             
             <div className="images-card">
-                <Carousel>
+                {/* <Carousel>
                     <Carousel.Item interval={1000}>
                         <img src = {image1} alt="Image1" className="d-block images"/>
                     </Carousel.Item>
@@ -46,7 +46,7 @@ const LandingPage = () => {
                     <Carousel.Item interval={1000}>
                         <img alt="Image3" className="d-block w-100 images"/>
                     </Carousel.Item>
-                </Carousel>
+                </Carousel> */}
             </div>
         </div>
     );

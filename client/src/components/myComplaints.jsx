@@ -2,9 +2,14 @@ import { React, useState, useEffect } from 'react';
 import './existingComplaints.css';
 import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MyComplaints = () => {
+
     const [data, setData] = useState([])
+
+    let id="";
+
     useEffect(() => {
         const config = {
             headers: {
@@ -15,10 +20,11 @@ const MyComplaints = () => {
     }, [])
     const renderTable = () => {
         return data.map(complaint => {
+            id=complaint.id;
         return (
             <tr>
             <td>{complaint.createdAt.substring(0, 10)}</td>
-            <td>{complaint.title}</td>
+            <td><Link to={`/status/${id}`} style={{color:"white"}} >{complaint.title}</Link></td>
             <td>{complaint.complaint_address}</td> 
             <td>{complaint.complaint_city}</td> 
             <td>{complaint.backer.length}</td>

@@ -2,12 +2,13 @@ import { React, useState, useEffect } from 'react';
 import './existingComplaints.css';
 import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const IssuesAssigned = () => {
 
     const [data, setData] = useState([])
 
-    
+    let id = "";
 
     useEffect(() => {
 
@@ -25,19 +26,18 @@ const IssuesAssigned = () => {
 
     const renderTable = () => {
 
-    const onSubmit = async () => {
-
-        const config = {
-            headers: {
-                "Authorization": 'Bearer ' + localStorage.getItem('token')
-            }
-        }
-            
+        const onSubmit = async (_id) => {
             try{
-                
-                const res = await axios.post('/complaints/upvote',{
-                    'complaint_id':data.complaint_id
+                const config = {
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.getItem('token')
+                    }
+                }
+                const res = await axios.post('/resolve',{
+                    'issue_id': _id
                 },config);
+                console.log(res.status);
+                window.location.reload();
 
             }
             catch(err){
@@ -46,13 +46,14 @@ const IssuesAssigned = () => {
         }
 
         return data.map(complaint => {
+            id = complaint._id
             return (
                 <tr>
                 <td>{complaint.createdAt.substring(0, 10)}</td>
-                <td>{complaint.title}</td>
+                <td><Link to={`/status/${id}`} style={{color:"white"}} >{complaint.title}</Link></td>
                 <td>{complaint.description}</td>
                 <td>{complaint.complaint_address}</td> 
-                <td>{complaint.status} <i className="arrow up" onClick={() => {onSubmit()}}></i></td>
+                <td>{complaint.status} <i className="arrow up" onClick={() => {onSubmit(complaint._id)}}></i></td>
                 </tr>
             )
         })
