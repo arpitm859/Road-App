@@ -20,12 +20,9 @@ const Login = () => {
             const res = await axios.post('/users/login', newUser);
             console.log(res.data);
             if(res.data.success){
-<<<<<<< HEAD
                 history.push('/complains');
-=======
                 localStorage.setItem('token', res.data.token);
                 history.push('/general');
->>>>>>> f33b663c977d8049a75e31e6a8edc535db0c2b88
             }
         }catch(err){
             console.error(err.response.data);
