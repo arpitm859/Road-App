@@ -49,4 +49,19 @@ issueRouter.route('/')
         })
     })
 
+issueRouter.route('/resolve')
+    .post(authenticate.verifyUser, (req, res, next)=>{
+        issue_id = req.body.issue_id;
+        Complaint.findById(issue_id).then(issue=>{
+            issue.status = issue.id + 1;
+            issue.save().then(issue=>{
+                res.json(issue)
+            })
+        }).catch(err=>{
+            console.log(err);
+        })
+    }).catch(err=>{
+        next(err)
+    })
+
 module.exports = issueRouter;

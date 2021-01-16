@@ -1,1 +1,0 @@
-arr = ["shit", "shit", "shit", "shit"]
