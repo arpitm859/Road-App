@@ -80,6 +80,7 @@ complaintRouter.route('/upvote')
     .post(authenticate.verifyUser, (req, res, next) => {
         complaint_id = req.body.complaint_id;
         Complaint.findById(complaint_id).then(complaint=>{
+            console.log(Complaint);
             complaint.backer.push(req.user._id)
             complaint.save()
             res.json(complaint);
