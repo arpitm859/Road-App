@@ -6,6 +6,20 @@
     display: flex;
     align-items: center;
 }
+
+.images-card{
+    
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    width: 80%;
+    height:80%;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem !important;
+}
+
 .complaint-card{
 
     padding: 1rem 5rem;
@@ -42,6 +56,13 @@
 table{
     text-align: left;
 }
+
+.images {
+    max-width: 100%;
+    max-height: auto ;
+    object-fit: contain !important;
+    overflow:hidden;
+} 
 
 th{
     text-align: center;
