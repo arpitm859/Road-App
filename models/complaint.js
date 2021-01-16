@@ -25,6 +25,7 @@ const complaintSchema = new Schema({
     complaint_landmark: String,
     complaint_city: String,
 
+    complaint_address: String,
     complainant_house_no: String,
     complainant_area: String,
     complainant_pin: Number,
