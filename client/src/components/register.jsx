@@ -36,12 +36,10 @@ const Register = () => {
         }
         if(newUser.stakeholder === 'agency'){
             newUser.agency=true;
-            newUser.public=false;
             newUser.gov=false;
         }
         else if(stakeholder === 'gov'){
             newUser.agency=false;
-            newUser.public=false;
             newUser.gov=true;
         }
         try{
