@@ -19,7 +19,8 @@ This project was created as a submission for Hackoverflow event in Cepheus 2021.
     ``` 
   
     > In the second terminal, first go to the client folder and then run the commands: 
-    ```cd client
+    ```
+       cd client
        npm install
        npm start
     ```
