@@ -78,13 +78,15 @@ complaintRouter.route('/all')
 //  Send POST request to '/complaints/upvote' with authorization token in header and 'complaint_id' in body    
 complaintRouter.route('/upvote')
     .post(authenticate.verifyUser, (req, res, next) => {
+        console.log(req.body);
         complaint_id = req.body.complaint_id;
         Complaint.findById(complaint_id).then(complaint=>{
-            console.log(complaint);
-            complaint.backer.push(req.user._id)
-            complaint.save()
-            res.json(complaint);
-        })
+            if( complaint.backer.indexOf(req.user._id) == -1){
+                complaint.backer.push(req.user._id)
+                complaint.save()
+                res.json(complaint);
+            }
+        }, (err) => next(err))
+        .catch((err) => next(err));
     })
-
 module.exports = complaintRouter;

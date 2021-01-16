@@ -4,36 +4,33 @@ import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
 
 const ExistingComplaints = () => {
-
     const [data, setData] = useState([])
-
-    const config = {
-        headers: {
-            "Authorization": 'Bearer ' + localStorage.getItem('token')
-        }
-    }
-
+    
     useEffect(() => {
+        const config = {
+            headers: {
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }
         axios.get('/complaints/all', config).then(json => setData(json.data));
     }, [])
-
-
     const renderTable = () => {
-
-    const onSubmit = async () => {
-            
+    const onSubmit = async (_id) => {
             try{
-                
+                const config = {
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.getItem('token')
+                    }
+                }
                 const res = await axios.post('/complaints/upvote',{
-                    'complaint_id':data.complaint_id
+                    'complaint_id': _id
                 },config);
-
+                window.location.reload();
             }
             catch(err){
                 console.error(err.response.data);
             }
         }
-
         return data.map(complaint => {
             return (
                 <tr>
@@ -41,7 +38,7 @@ const ExistingComplaints = () => {
                 <td>{complaint.title}</td>
                 <td>{complaint.complaint_address}</td> 
                 <td>{complaint.complaint_city}</td> 
-                <td>{complaint.backer.length} <i className="arrow up" onClick={() => {onSubmit()}}></i></td>
+                <td>{complaint.backer.length} <i className="arrow up" onClick={() => {onSubmit(complaint._id)}}></i></td>
                 </tr>
             )
         })
@@ -56,7 +53,6 @@ const ExistingComplaints = () => {
                             </li>
                         </ul>
                     </div>
-
                     <div class="mx-auto">
                         
                         <Nav>
@@ -66,8 +62,6 @@ const ExistingComplaints = () => {
                             
                             <Nav.Link href="/my-complaints" style={{color:"white",paddingLeft:"2rem"}} class="navbar-brand mx-auto" >My Complaints</Nav.Link>
                         </Nav>
-                        
-                        
                     </div>
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav ml-auto">
@@ -75,7 +69,7 @@ const ExistingComplaints = () => {
                     <Nav.Link href="/login" style={{color:"white"}} class="nav-link" >Logout</Nav.Link>
                     </li>
                 </ul>
-    </div>
+            </div>
             </Navbar>
             <div id="complaint-card">
                 <Table responsive="sm" style={{marginTop:"2rem",color:"white"}} id="existing-complaints">
