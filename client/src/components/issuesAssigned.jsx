@@ -19,8 +19,7 @@ const IssuesAssigned = () => {
         }
 
         axios.get('/issues', config).then(json => {
-            setData(json.data)
-            console.log(json)});
+            setData(json.data)});
         }, [])
 
 
@@ -33,10 +32,10 @@ const IssuesAssigned = () => {
                         "Authorization": 'Bearer ' + localStorage.getItem('token')
                     }
                 }
-                const res = await axios.post('/resolve',{
+                const res = await axios.post('/issues/resolve',{
                     'issue_id': _id
                 },config);
-                console.log(res.status);
+                console.log(res);
                 window.location.reload();
 
             }
