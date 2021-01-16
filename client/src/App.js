@@ -1,8 +1,9 @@
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/login.jsx';
 import Register from './components/register.jsx';
-import General from './components/general.jsx';
+import LandingPage from './components/landingPage.jsx'; 
 import Complains from './components/complains.jsx'; 
 import ExistingComplaints from './components/existingComplaints.jsx';
 import MyComplaints from './components/myComplaints.jsx';
@@ -13,7 +14,6 @@ function App() {
       <Route exact path="/login" component={Login}/>       
       <Switch>
         <Route path="/register" component={Register}/>
-        <Route path="/general" component={General} />
         <Route path="/complains" component={Complains} />
         <Route path="/existing-complaints" component={ExistingComplaints} />
         <Route path="/my-complaints" component={MyComplaints} />
