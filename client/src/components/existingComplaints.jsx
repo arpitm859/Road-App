@@ -4,14 +4,10 @@ import { Navbar, Nav, Table} from 'react-bootstrap';
 import axios from 'axios';
 
 const ExistingComplaints = () => {
-
     const [data, setData] = useState([])
-
     useEffect(() => {
         axios.get('/complaints/all').then(json => setData(json.data));
-
     }, [])
-
     const renderTable = () => {
         return data.map(complaint => {
         return (
@@ -26,7 +22,7 @@ const ExistingComplaints = () => {
         })
     }
     return(
-        <div style={{height:"100vh",backgroundColor:"rgb(0, 0, 0,0.9)"}}>
+        <div style={{height:"100vh",backgroundColor:"rgb(0, 0, 0, 0.9)"}}>
             <Navbar bg="dark" variant="dark">
                 <Navbar.Brand>Bombay Municipal Corporation</Navbar.Brand>
                     <Nav className="mr-auto">
@@ -34,7 +30,6 @@ const ExistingComplaints = () => {
                     <Nav.Link href="/existing-complaints">Existing Complaints</Nav.Link>
                 </Nav>
             </Navbar>
-
             <div id="complaint-card">
                 <Table responsive="sm" style={{marginTop:"2rem",color:"white"}} id="existing-complaints">
                     <thead>
