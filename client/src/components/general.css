@@ -75,3 +75,9 @@ th{
 #qwerty{
     overflow: hidden;
 }
+
+.complaintForm{
+    background-color: #E6F3FF;
+    margin: 4rem;
+    padding: 1rem
+}
