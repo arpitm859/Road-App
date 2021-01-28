@@ -7,6 +7,16 @@ import Navbars from './navbar';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
+
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		'& .MuiTextField-root': {
+			margin: theme.spacing(1),
+			width: 200,
+		},
+	},
+}));
 const Complains = () => {
     const history = useHistory();
 const [complaints, setComplaints] = useState({
@@ -88,19 +98,17 @@ const onSubmit = async () =>{
 }
 
 
+    const classes = useStyles();
+    return (
+					<div>
+						<Navbars />
 
-    return(
-        <div>
-            <Navbars />
-            
-            <form className="complaintForm">
-                <h2 style={{color:"#454749"}}> Application to lodge a Complaint </h2>
-                <TextField label="Outlined" variant="outlined" />
-            </form>
-
-        </div>
-        
-    );
+						<form className={classes.root} noValidate>
+							<h2 style={{ color: '#454749' }}> Application to lodge a Complaint </h2>
+							<TextField label='Outlined' variant='outlined' />
+						</form>
+					</div>
+				);
     
 }
 
