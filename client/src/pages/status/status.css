@@ -1,0 +1,14 @@
+.table-card{
+    margin: 0 auto;
+    border-width: thin;
+    border-color: white;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem !important;
+}
+
+#existing-complaints{
+    text-align: center;
+}
