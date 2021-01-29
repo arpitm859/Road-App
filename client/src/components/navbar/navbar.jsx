@@ -1,5 +1,6 @@
 import { React } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 const Navbars = () => {
 	return (
@@ -8,9 +9,11 @@ const Navbars = () => {
 				<div className='navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2'>
 					<ul class='navbar-nav mr-auto'>
 						<li class='nav-item active'>
-							<Navbar.Brand class='nav-link' style={{ color: 'white' }}>
-								Bombay Municipal Corporation
-							</Navbar.Brand>
+							<Link to='/landing-page'>
+								<Navbar.Brand class='nav-link' style={{ color: 'white' }}>
+									Bombay Municipal Corporation
+								</Navbar.Brand>
+							</Link>
 						</li>
 					</ul>
 				</div>
