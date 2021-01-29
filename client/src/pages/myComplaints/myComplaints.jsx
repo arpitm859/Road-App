@@ -1,7 +1,5 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
 import 'antd/dist/antd.css';
 import './myComplaints.css';
 import '../../components/complainCard/complainCard';
@@ -33,26 +31,11 @@ const MyComplaints = () => {
 						address={complaint.complaint_address}
 						city={complaint.complaint_city}
 					/>
-					{/*<tr>
-					<td>{complaint.createdAt.substring(0, 10)}</td>
-					<td>
-						<Link to={`/status/${id}`} style={{ color: 'white' }}>
-							{complaint.title}
-						</Link>
-					</td>
-					<td>{complaint.complaint_address}</td>
-					<td>{complaint.complaint_city}</td>
-					<td>{complaint.backer.length}</td>
-				</tr>*/}
 				</>
 			);
 		});
 	};
-	return (
-		<div className='complainDiv'>
-			{renderCards()}
-		</div>
-	);
+	return <div className='complainDiv'>{renderCards()}</div>;
 };
 
 export default MyComplaints;

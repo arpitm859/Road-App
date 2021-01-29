@@ -1,14 +1,8 @@
-.table-card{
-    margin: 0 auto;
-    border-width: thin;
-    border-color: white;
-    justify-content: center;
-    align-content: center;
-    display: flex;
-    align-items: center;
-    margin-top: 2.5rem !important;
+.status-div{
+    width: 25vw 
 }
 
-#existing-complaints{
-    text-align: center;
+.status{
+    height: 90vh;
+    margin-top: 2rem;
 }

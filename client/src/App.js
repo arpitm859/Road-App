@@ -10,6 +10,7 @@ import IssuesAssigned from './pages/issuesAssigned/issuesAssigned.jsx';
 import LandingPage from './pages/landingPage/landingPage.jsx';
 import Status from './pages/status/status.jsx';
 import Navbars from './components/navbar/navbar';
+import GuardedRoute from './components/guardedRoute/guardedRoute'
 
 function App() {
 	return (
@@ -18,13 +19,17 @@ function App() {
 			<Route exact path='/register' component={Register} />
 			<Navbars />
 			<Switch>
-				<Route path='/landing-page' component={LandingPage} />
-				<Route path='/complains' component={Complains} />
-				<Route path='/landing-page' component={LandingPage} />
-				<Route path='/existing-complaints' component={ExistingComplaints} />
-				<Route path='/my-complaints' component={MyComplaints} />
-				<Route path='/my-issues' component={IssuesAssigned} />
-				<Route path='/status/:id' component={Status} />
+				<Route path='/landing-page' component={LandingPage} auth={true} />
+				<GuardedRoute path='/complains' component={Complains} auth={true} />
+				<GuardedRoute path='/landing-page' component={LandingPage} auth={true} />
+				<GuardedRoute
+					path='/existing-complaints'
+					component={ExistingComplaints}
+					auth={true}
+				/>
+				<GuardedRoute path='/my-complaints' component={MyComplaints} auth={true} />
+				<GuardedRoute path='/my-issues' component={IssuesAssigned} auth={true} />
+				<GuardedRoute path='/status/:id' component={Status} auth={true} />
 			</Switch>
 		</div>
 	);

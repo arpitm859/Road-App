@@ -1,9 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import './existingComplaints.css';
-import { Navbar, Nav, Table } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
 import ComplainCard from '../../components/complainCard/complainCard';
 
 const ExistingComplaints = () => {
@@ -45,28 +42,12 @@ const ExistingComplaints = () => {
 						date={complaint.createdAt.substring(0, 10)}
 						title={complaint.title}
 						id={id}
+						description={complaint.description}
 						address={complaint.complaint_address}
 						city={complaint.complaint_city}
+						onSubmit={onSubmit}
+						upvotes={complaint.backer.length}
 					/>
-					{/*<tr>
-					<td>{complaint.createdAt.substring(0, 10)}</td>
-					<td>
-						<Link to={`/status/${id}`} style={{ color: 'white' }}>
-							{complaint.title}
-						</Link>
-					</td>
-					<td>{complaint.description}</td>
-					<td>{complaint.complaint_address}</td>
-					<td>
-						{complaint.backer.length}{' '}
-						<i
-							className='arrow up'
-							onClick={() => {
-								onSubmit(complaint._id);
-							}}
-						></i>
-					</td>
-						</tr>*/}
 				</>
 			);
 		});

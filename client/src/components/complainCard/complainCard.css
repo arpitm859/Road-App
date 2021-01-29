@@ -1,0 +1,9 @@
+.complain-card{
+    text-align: left;
+}
+#card{
+    width: 90vw;
+    background-color: white;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
