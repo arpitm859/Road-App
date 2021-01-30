@@ -1,0 +1,10 @@
+.complaintHeading{
+      color: #454749;
+      
+}
+
+.rowC{
+      display:flex; 
+      flex-direction:row;
+      margin-left: 20rem;
+}

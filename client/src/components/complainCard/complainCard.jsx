@@ -8,7 +8,7 @@ import './complainCard.css'
 
 const ComplainCard = ({ date, title, id, address, city, onSubmit, upvotes }) => {
 	const [progress, setProgress] = useState(0);
-	useEffect((id) => {
+	useEffect(() => {
 		const config = {
 			headers: {
 				Authorization: 'Bearer ' + localStorage.getItem('token'),
