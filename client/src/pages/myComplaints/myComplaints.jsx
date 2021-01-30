@@ -35,7 +35,11 @@ const MyComplaints = () => {
 			);
 		});
 	};
-	return <div className='complainDiv'>{renderCards()}</div>;
+	return (
+		<div className='complainDiv'>
+			{renderCards()}
+		</div>
+	);
 };
 
 export default MyComplaints;

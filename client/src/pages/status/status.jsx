@@ -2,10 +2,11 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import './status.css';
 import ProgressCard from '../../components/progressCard/progressCard';
+import DescriptionCard from '../../components/descriptionCard/descriptionCard'
 
 
 const Status = (props) => {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState({});
 	const [status, setStatus] = useState(0);
 
 	useEffect(() => {
@@ -16,7 +17,7 @@ const Status = (props) => {
 		};
 		axios
 			.get(`/complaints/${props.match.params.id}`, config)
-			.then((json) => setData(json.data));
+			.then((json) => {setData(json.data);console.log(json.data)});
 		axios.get(`/status/${props.match.params.id}`, config).then((json) => {
 			setStatus(json.data);
 		});
@@ -26,6 +27,9 @@ const Status = (props) => {
 		<div className='status'>
 			<div className='progress-div'>
 				<ProgressCard status={status} />
+			</div>
+			<div className='progress-div'>
+				<DescriptionCard data={data}/>
 			</div>
 		</div>
 	);

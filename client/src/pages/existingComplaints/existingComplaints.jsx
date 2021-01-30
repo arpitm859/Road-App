@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import './existingComplaints.css';
 import axios from 'axios';
 import ComplainCard from '../../components/complainCard/complainCard';
+import { Pagination } from 'antd';
 
 const ExistingComplaints = () => {
 	let id = '';
@@ -52,7 +53,11 @@ const ExistingComplaints = () => {
 			);
 		});
 	};
-	return <div className='complainDiv'>{renderCards()}</div>;
+	return (
+		<div className='complainDiv'>
+			{renderCards()}
+		</div>
+	);
 };
 
 export default ExistingComplaints;

@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ComplainCard from '../../components/complainCard/complainCard';
 
 const IssuesAssigned = () => {
 	const [data, setData] = useState([]);
@@ -18,7 +19,7 @@ const IssuesAssigned = () => {
 		});
 	}, []);
 
-	const renderTable = () => {
+	const renderCards = () => {
 		const onSubmit = async (_id) => {
 			try {
 				const config = {
@@ -43,7 +44,20 @@ const IssuesAssigned = () => {
 		return data.map((complaint) => {
 			id = complaint._id;
 			return (
-				<tr>
+				<div>
+					<>
+						<ComplainCard
+							date={complaint.createdAt.substring(0, 10)}
+							title={complaint.title}
+							id={id}
+							description={complaint.description}
+							address={complaint.complaint_address}
+							city={complaint.complaint_city}
+							onSubmit={onSubmit}
+							upvotes={complaint.backer.length}
+						/>
+					</>
+					{/*<tr>
 					<td>{complaint.createdAt.substring(0, 10)}</td>
 					<td>
 						<Link to={`/status/${id}`} style={{ color: 'white' }}>
@@ -61,30 +75,14 @@ const IssuesAssigned = () => {
 							}}
 						></i>
 					</td>
-				</tr>
+						</tr>*/}
+				</div>
 			);
 		});
 	};
 	return (
 		<div style={{ height: '100vh'}}>
-			<div id='complaint-card'>
-				<Table
-					responsive='sm'
-					style={{ marginTop: '2rem', color: 'white' }}
-					id='existing-complaints'
-				>
-					<thead>
-						<tr>
-							<th>Date of the Complaint</th>
-							<th>Title</th>
-							<th>Description of the Complaint</th>
-							<th>Address of the Complaint</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>{renderTable()}</tbody>
-				</Table>
-			</div>
+			{renderCards()}
 		</div>
 	);
 };
