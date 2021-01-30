@@ -1,8 +1,7 @@
-.status-div{
-    width: 25vw 
+.progress-div {
+	width: 30%;
 }
 
-.status{
-    height: 90vh;
-    margin-top: 2rem;
+.status {
+	margin-top: 2rem;
 }
