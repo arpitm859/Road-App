@@ -10,7 +10,7 @@
     margin-bottom: 20px;
 }
 
-input[type=text], input[type=password] {
+/*input[type=text], input[type=password] {
     width: 15rem;
     padding: 12px 20px;
     margin-bottom: 30px;
@@ -18,7 +18,7 @@ input[type=text], input[type=password] {
     border: 1px solid black;
     box-sizing: border-box;
     border-radius: 10px;
-}
+}*/
 
 .stakeholder{
     width: 15rem;

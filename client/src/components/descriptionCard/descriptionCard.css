@@ -1,0 +1,14 @@
+#dcard{
+    width:50vw;
+    border-radius: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.info{
+    display: flex;
+}
+
+.props{
+    font-size: 16px;
+    padding-left: 10px;
+}
