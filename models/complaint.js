@@ -17,7 +17,7 @@ const complaintSchema = new Schema({
         type: Number,
         default: 0
     },
-    
+    complainant: String,
     complainant_address: String,
     complaint_street: String,
     complaint_area: String,

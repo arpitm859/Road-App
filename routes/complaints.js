@@ -34,6 +34,7 @@ complaintRouter
 		});
 	})
 	.post(authenticate.verifyUser, (req, res, next) => {
+		
 		new Complaint({
 			userID: req.user._id,
 			title: req.body.title,
@@ -71,6 +72,8 @@ complaintRouter
 			complainant_pin: req.body.complainant_pin,
 			complainant_landmark: req.body.complainant_landmark,
 			complainant_city: req.body.complainant_city,
+			complainant: req.user.firstName+req.user.lastName
+			
 		})
 			.save()
 			.then((complaint) => {
@@ -111,7 +114,8 @@ complaintRouter
 			.catch((err) => next(err));
 	});
 
-complaintRouter.route('/:id').get((req, res, next) => {
+complaintRouter.route('/:id').get(authenticate.verifyUser, (req, res, next) => {
+	console.log(req.user.firstName);
 	var complaint_id = req.params.id;
 	Complaint.findById(complaint_id)
 		.then(

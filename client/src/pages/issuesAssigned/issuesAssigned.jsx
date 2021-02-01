@@ -1,7 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import ComplainCard from '../../components/complainCard/complainCard';
 
 const IssuesAssigned = () => {
