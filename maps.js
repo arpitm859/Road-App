@@ -28,3 +28,5 @@ function delay(time){
         setTimeout(resolve, time)
     });
 }
+
+module.exports = getCoord;

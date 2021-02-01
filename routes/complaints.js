@@ -4,7 +4,7 @@ const Complaint = require('../models/complaint');
 const User = require('../models/user');
 const authenticate = require('../authenticate');
 const passport = require('passport');
-const maps = require('../maps')
+const getCoord = require('../maps')
 
 var complaintRouter = express.Router();
 
@@ -78,6 +78,13 @@ complaintRouter
 		})
 			.save()
 			.then((complaint) => {
+				getCoord(complaint.complaint_address).then((coords) => {
+					complaint.lat = Number(coords[0]);
+					complaint.long = Number(coords[1]);
+					complaint.save().then((complaint)=>{
+						console.log('Complaint Registered with Coordinates');
+					})
+				});
 				res.statusCode = 200;
 				res.setHeader('Content-Type', 'application/json');
 				res.json({ success: true, status: 'Complaint Successfully registered!' });
