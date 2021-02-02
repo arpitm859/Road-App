@@ -26,6 +26,8 @@ const ComplainCard = ({
 			setProgress(json.data * 10);
 		});
 	}, []);
+	console.log(upvotes);
+	console.log(localStorage.getItem('userID'));
 	return (
 		<div className='complain-card'>
 			<Card id='card' title={title} bordered={true}>
@@ -38,11 +40,12 @@ const ComplainCard = ({
 				</Link>
 				<Progress percent={progress} status={progress < 100 ? 'active' : ''} />
 				<Button
-					type='primary'
+					type={upvotes.includes(localStorage.getItem('userID')) ? 'primary' : ''}
 					shape='round'
 					icon={<CaretUpOutlined />}
 					onClick={() => onSubmit(id)}
 				/>
+				<p>{upvotes.length}</p>
 			</Card>
 		</div>
 	);

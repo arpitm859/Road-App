@@ -4,7 +4,7 @@ import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
-import './complains.css'
+import './complains.css';
 import { Divider, Button } from 'antd';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,15 +13,13 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(1),
 			width: 200,
 		},
-		backgroundColor:'white',
+		backgroundColor: 'white',
 		margin: '2.5rem',
-		padding: '3rem'
+		padding: '3rem',
 	},
-
 }));
 
 const Complains = () => {
-
 	const history = useHistory();
 
 	const [type, setType] = useState();
@@ -46,14 +44,13 @@ const Complains = () => {
 	const [ccity, setCCity] = useState();
 
 	const handleTitle = (event) => {
-	setTitle(event.target.value);
+		setTitle(event.target.value);
 	};
 
 	const handleDescription = (event) => {
 		setDescription(event.target.value);
 	};
 
-	
 	const handleCHouse = (event) => {
 		setCHouse(event.target.value);
 	};
@@ -182,251 +179,253 @@ const Complains = () => {
 	const classes = useStyles();
 
 	return (
-		<div>
-			<form className={classes.root} noValidate>
-				<h2 style={{ color: '#454749', textAlign: 'center', padding: '1.5rem' }}>
-					{' '}
-					Application to lodge a Complaint{' '}
-				</h2>
-				<div>
-					<Divider style={{ fontSize: '22px', margin: '3rem 0' }}>
-						Define Nature of the Complaint
+		<div className='complaint-form'>
+			<div className='complain'>
+				<form className={classes.root} noValidate>
+					<h2 style={{ color: '#454749', textAlign: 'center', padding: '1.5rem' }}>
+						{' '}
+						Application to lodge a Complaint{' '}
+					</h2>
+					<div>
+						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
+							Define Nature of the Complaint
+						</Divider>
+						<div className='rowC'>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}> Select the Nature of Complaint</p>
+								<TextField
+									id='outlined-select-type'
+									select
+									label='Nature'
+									value={type}
+									onChange={handleChange}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								>
+									<MenuItem value='Potholes'>Potholes</MenuItem>
+									<MenuItem value='Traffic'>Traffic</MenuItem>
+									<MenuItem value='Road Condition'>Condition of the Road</MenuItem>
+									<MenuItem value='Others'>Others</MenuItem>
+								</TextField>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Select the State of Emergency</p>
+								<TextField
+									id='outlined-select-type'
+									select
+									label='State'
+									value={type}
+									onChange={handleChange}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								>
+									<MenuItem value='Low'>Low</MenuItem>
+									<MenuItem value='Medium'>Medium</MenuItem>
+									<MenuItem value='High'>High</MenuItem>
+									<MenuItem value='Death'>Death</MenuItem>
+								</TextField>
+							</div>
+						</div>
+					</div>
+					<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
+						Description of the Complaint
 					</Divider>
-					<div className='rowC'>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}> Select the Nature of Complaint</p>
-							<TextField
-								id='outlined-select-type'
-								select
-								label='Nature'
-								value={type}
-								onChange={handleChange}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							>
-								<MenuItem value='Potholes'>Potholes</MenuItem>
-								<MenuItem value='Traffic'>Traffic</MenuItem>
-								<MenuItem value='Road Condition'>Condition of the Road</MenuItem>
-								<MenuItem value='Others'>Others</MenuItem>
-							</TextField>
+					<div style={{ paddingTop: '1rem' }}>
+						<div className='rowC'>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}> Title of Complaint</p>
+								<TextField
+									id='outlined'
+									label='Title'
+									multiline
+									value={title}
+									onChange={handleTitle}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Description of the Complaint</p>
+								<TextField
+									id='outlined'
+									label='Description'
+									multiline
+									value={description}
+									onChange={handleDescription}
+									rows={4}
+									variant='outlined'
+									style={{ width: '20rem' }}
+								/>
+							</div>
 						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Select the State of Emergency</p>
-							<TextField
-								id='outlined-select-type'
-								select
-								label='State'
-								value={type}
-								onChange={handleChange}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							>
-								<MenuItem value='Low'>Low</MenuItem>
-								<MenuItem value='Medium'>Medium</MenuItem>
-								<MenuItem value='High'>High</MenuItem>
-								<MenuItem value='Death'>Death</MenuItem>
-							</TextField>
+						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
+							Location of the Complaint
+						</Divider>
+						<div className='rowC'>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}> House</p>
+								<TextField
+									id='outlined'
+									label='House'
+									multiline
+									value={house}
+									onChange={handleHouse}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Street</p>
+								<TextField
+									id='outlined'
+									label='Street'
+									multiline
+									value={street}
+									onChange={handleStreet}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
 						</div>
+						<div className='rowC' style={{ paddingTop: '1.5rem' }}>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}> Area</p>
+								<TextField
+									id='outlined'
+									label='Area'
+									multiline
+									value={area}
+									onChange={handleArea}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Pincode</p>
+								<TextField
+									id='outlined'
+									label='Pincode'
+									multiline
+									value={pincode}
+									onChange={handlePincode}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+						</div>
+						<div className='rowC' style={{ paddingTop: '1.5rem' }}>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Landmark</p>
+								<TextField
+									id='outlined'
+									label='Landmark'
+									multiline
+									value={landmark}
+									onChange={handleLandmark}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>City</p>
+								<TextField
+									id='outlined'
+									label='City'
+									multiline
+									value={city}
+									onChange={handleCity}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+						</div>
+						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
+							Address of the Complainant
+						</Divider>
+						<div className='rowC'>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>House</p>
+								<TextField
+									id='outlined'
+									label='House'
+									multiline
+									value={chouse}
+									onChange={handleCHouse}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Street</p>
+								<TextField
+									id='outlined'
+									label='Street'
+									multiline
+									value={cstreet}
+									onChange={handleCStreet}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+						</div>
+						<div className='rowC' style={{ paddingTop: '1.5rem' }}>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}> Area</p>
+								<TextField
+									id='outlined'
+									label='Area'
+									multiline
+									value={carea}
+									onChange={handleCArea}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Pincode</p>
+								<TextField
+									id='outlined'
+									label='Pincode'
+									multiline
+									value={cpincode}
+									onChange={handleCPincode}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+						</div>
+						<div className='rowC' style={{ paddingTop: '1.5rem' }}>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>Landmark</p>
+								<TextField
+									id='outlined'
+									label='Landmark'
+									multiline
+									value={clandmark}
+									onChange={handleCLandmark}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+							<div style={{ paddingLeft: '3rem' }}>
+								<p style={{ fontSize: '18px' }}>City</p>
+								<TextField
+									id='outlined'
+									label='City'
+									multiline
+									value={ccity}
+									onChange={handleCCity}
+									variant='outlined'
+									style={{ width: '17rem' }}
+								/>
+							</div>
+						</div>
+						<Button type='primary' shape='round' style={{ margin: '3rem ' }}>
+							Submit
+						</Button>
 					</div>
-				</div>
-				<Divider style={{ fontSize: '22px', margin: '3rem 0' }}>
-					Description of the Complaint
-				</Divider>
-				<div style={{ paddingTop: '1rem' }}>
-					<div className='rowC'>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}> Title of Complaint</p>
-							<TextField
-								id='outlined'
-								label='Title'
-								multiline
-								value={title}
-								onChange={handleTitle}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Description of the Complaint</p>
-							<TextField
-								id='outlined'
-								label='Description'
-								multiline
-								value={description}
-								onChange={handleDescription}
-								rows={4}
-								variant='outlined'
-								style={{ width: '20rem' }}
-							/>
-						</div>
-					</div>
-					<Divider style={{ fontSize: '22px', margin: '3rem 0' }}>
-						Location of the Complaint
-					</Divider>
-					<div className='rowC'>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}> House</p>
-							<TextField
-								id='outlined'
-								label='House'
-								multiline
-								value={house}
-								onChange={handleHouse}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Street</p>
-							<TextField
-								id='outlined'
-								label='Street'
-								multiline
-								value={street}
-								onChange={handleStreet}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-					</div>
-					<div className='rowC' style={{ paddingTop: '1.5rem' }}>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}> Area</p>
-							<TextField
-								id='outlined'
-								label='Area'
-								multiline
-								value={area}
-								onChange={handleArea}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Pincode</p>
-							<TextField
-								id='outlined'
-								label='Pincode'
-								multiline
-								value={pincode}
-								onChange={handlePincode}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-					</div>
-					<div className='rowC' style={{ paddingTop: '1.5rem' }}>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Landmark</p>
-							<TextField
-								id='outlined'
-								label='Landmark'
-								multiline
-								value={landmark}
-								onChange={handleLandmark}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>City</p>
-							<TextField
-								id='outlined'
-								label='City'
-								multiline
-								value={city}
-								onChange={handleCity}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-					</div>
-					<Divider style={{ fontSize: '22px', margin: '3rem 0' }}>
-						Address of the Complainant
-					</Divider>
-					<div className='rowC'>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>House</p>
-							<TextField
-								id='outlined'
-								label='House'
-								multiline
-								value={chouse}
-								onChange={handleCHouse}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Street</p>
-							<TextField
-								id='outlined'
-								label='Street'
-								multiline
-								value={cstreet}
-								onChange={handleCStreet}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-					</div>
-					<div className='rowC' style={{ paddingTop: '1.5rem' }}>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}> Area</p>
-							<TextField
-								id='outlined'
-								label='Area'
-								multiline
-								value={carea}
-								onChange={handleCArea}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Pincode</p>
-							<TextField
-								id='outlined'
-								label='Pincode'
-								multiline
-								value={cpincode}
-								onChange={handleCPincode}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-					</div>
-					<div className='rowC' style={{ paddingTop: '1.5rem' }}>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>Landmark</p>
-							<TextField
-								id='outlined'
-								label='Landmark'
-								multiline
-								value={clandmark}
-								onChange={handleCLandmark}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-						<div style={{ paddingLeft: '3rem' }}>
-							<p style={{ fontSize: '18px' }}>City</p>
-							<TextField
-								id='outlined'
-								label='City'
-								multiline
-								value={ccity}
-								onChange={handleCCity}
-								variant='outlined'
-								style={{ width: '17rem' }}
-							/>
-						</div>
-					</div>
-					<Button type='primary' shape='round' style={{ margin: '3rem ' }}>
-						Submit
-					</Button>
-				</div>
-			</form>{' '}
+				</form>{' '}
+			</div>
 		</div>
 	);
 };

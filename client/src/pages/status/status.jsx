@@ -2,8 +2,7 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import './status.css';
 import ProgressCard from '../../components/progressCard/progressCard';
-import DescriptionCard from '../../components/descriptionCard/descriptionCard'
-
+import DescriptionCard from '../../components/descriptionCard/descriptionCard';
 
 const Status = (props) => {
 	const [data, setData] = useState({});
@@ -15,9 +14,10 @@ const Status = (props) => {
 				Authorization: 'Bearer ' + localStorage.getItem('token'),
 			},
 		};
-		axios
-			.get(`/complaints/${props.match.params.id}`, config)
-			.then((json) => {setData(json.data);console.log(json.data)});
+		axios.get(`/complaints/${props.match.params.id}`, config).then((json) => {
+			setData(json.data);
+			console.log(json.data);
+		});
 		axios.get(`/status/${props.match.params.id}`, config).then((json) => {
 			setStatus(json.data);
 		});
@@ -38,10 +38,10 @@ const Status = (props) => {
 						description={data.description}
 					/>
 					<iframe
-						src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDdKd_hcdItqfkNDHWd7IQQD-UjML8yXEI&q=riverfront,gomti+nagar,lucknow,uttar+pradesh,india'
+						src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDdKd_hcdItqfkNDHWd7IQQD-UjML8yXEI&q=${data.lat},${data.long}`}
 						width='900'
 						height='450'
-						frameborder='0'
+						frameborder='1'
 						allowfullscreen=''
 						aria-hidden='false'
 						tabindex='0'
