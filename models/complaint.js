@@ -32,6 +32,9 @@ const complaintSchema = new Schema({
     complainant_landmark: String,
     complainant_city: String,
 
+    lat: Number,
+    long: Number,
+
     resolved: {
         type: Boolean,
         default: false

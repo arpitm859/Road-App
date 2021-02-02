@@ -30,6 +30,7 @@ const MyComplaints = () => {
 						id={id}
 						address={complaint.complaint_address}
 						city={complaint.complaint_city}
+						upvotes={complaint.backer}
 					/>
 				</>
 			);

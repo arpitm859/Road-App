@@ -47,7 +47,7 @@ const ExistingComplaints = () => {
 						address={complaint.complaint_address}
 						city={complaint.complaint_city}
 						onSubmit={onSubmit}
-						upvotes={complaint.backer.length}
+						upvotes={complaint.backer}
 					/>
 				</>
 			);
