@@ -21,10 +21,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Complains = () => {
 	const history = useHistory();
-
-	const [type, setType] = useState();
+	const [nature, setNature] = useState('Choose');
+	const [type, setType] = useState('Choose');
 	const handleChange = (event) => {
 		setType(event.target.value);
+	};
+	const handleNature = (event) => {
+		setNature(event.target.value);
 	};
 
 	const [title, setTitle] = useState();
@@ -99,24 +102,6 @@ const Complains = () => {
 		setCity(event.target.value);
 	};
 
-	const [complaints, setComplaints] = useState({
-		complaintType: '',
-		emergencyState: '',
-		complaintTitle: '',
-		description: '',
-		house: '',
-		street: '',
-		area: '',
-		pincode: '',
-		city: '',
-		landmark: '',
-		complainantHouse: '',
-		complainantStreet: '',
-		complainantArea: '',
-		complainantPincode: '',
-		complainantCity: '',
-		complainantLandmark: '',
-	});
 
 	// const {
 	// 	complaintType,
@@ -140,41 +125,41 @@ const Complains = () => {
 	// const onChange = (e) =>
 	// 	setComplaints({ ...complaints, [e.target.name]: e.target.value });
 
-	// const onSubmit = async () => {
-	// 	const newComplaint = {
-	// 		title: complaintType,
-	// 		description: description,
-	// 		emergencyState: emergencyState,
-	// 		complaint_house: house,
-	// 		complaint_street: street,
-	// 		complaint_area: area,
-	// 		complaint_pin: pincode,
-	// 		complaint_landmark: landmark,
-	// 		complaint_city: city,
-	// 		complainant_house_no: complainantHouse,
-	// 		complainant_street: complainantStreet,
-	// 		complainant_area: complainantArea,
-	// 		complainant_pin: complainantPincode,
-	// 		complainant_landmark: complainantLandmark,
-	// 		complainant_city: complainantCity,
-	// 	};
-	// 	try {
-	// 		const config = {
-	// 			headers: {
-	// 				Authorization: 'Bearer ' + localStorage.getItem('token'),
-	// 			},
-	// 		};
-	// 		const res = await axios.post('/complaints', newComplaint, config);
-	// 		if (res.data.success) {
-	// 			console.log(res);
-	// 			history.push('/my-complaints');
-	// 		} else {
-	// 			alert(res.error.msg);
-	// 		}
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// };
+	const onSubmit = async () => {
+		const newComplaint = {
+			title: title,
+			description: description,
+			emergencyState: type,
+			complaint_house: house,
+			complaint_street: street,
+			complaint_area: area,
+			complaint_pin: pincode,
+			complaint_landmark: landmark,
+			complaint_city: city,
+			complainant_house_no: chouse,
+			complainant_street: cstreet,
+			complainant_area: carea,
+			complainant_pin: cpincode,
+			complainant_landmark: clandmark,
+			complainant_city: ccity,
+		};
+		try {
+			const config = {
+				headers: {
+					Authorization: 'Bearer ' + localStorage.getItem('token'),
+				},
+			};
+			const res = await axios.post('/complaints', newComplaint, config);
+			if (res.data.success) {
+				console.log(res);
+				history.push('/my-complaints');
+			} else {
+				alert(res.error.msg);
+			}
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	const classes = useStyles();
 	return (
@@ -196,11 +181,12 @@ const Complains = () => {
 									id='outlined-select-type'
 									select
 									label='Nature'
-									value={type}
-									onChange={handleChange}
+									value={nature}
+									onChange={handleNature}
 									variant='outlined'
 									style={{ width: '17rem' }}
 								>
+									<MenuItem value='Choose'>Choose</MenuItem>
 									<MenuItem value='Potholes'>Potholes</MenuItem>
 									<MenuItem value='Traffic'>Traffic</MenuItem>
 									<MenuItem value='Road Condition'>Condition of the Road</MenuItem>
@@ -218,6 +204,7 @@ const Complains = () => {
 									variant='outlined'
 									style={{ width: '17rem' }}
 								>
+									<MenuItem value='Choose'>Choose</MenuItem>
 									<MenuItem value='Low'>Low</MenuItem>
 									<MenuItem value='Medium'>Medium</MenuItem>
 									<MenuItem value='High'>High</MenuItem>
@@ -422,7 +409,12 @@ const Complains = () => {
 						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
 							Upload Files
 						</Divider>
-						<Button type='primary' shape='round' style={{ margin: '3rem' }}>
+						<Button
+							type='primary'
+							shape='round'
+							style={{ margin: '3rem' }}
+							onClick={onSubmit}
+						>
 							Submit
 						</Button>
 					</div>

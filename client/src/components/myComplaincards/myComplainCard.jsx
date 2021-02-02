@@ -4,17 +4,8 @@ import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import axios from 'axios';
 import { CaretUpOutlined } from '@ant-design/icons';
-import './complainCard.css';
 
-const ComplainCard = ({
-	date,
-	title,
-	id,
-	address,
-	city,
-	onSubmit,
-	upvotes,
-}) => {
+const MyComplainCard = ({ date, title, id, address, city }) => {
 	const [progress, setProgress] = useState(0);
 	useEffect(() => {
 		const config = {
@@ -37,16 +28,9 @@ const ComplainCard = ({
 					</div>
 				</Link>
 				<Progress percent={progress} status={progress < 100 ? 'active' : ''} />
-				<Button
-					type={upvotes.includes(localStorage.getItem('userID')) ? 'primary' : ''}
-					shape='round'
-					icon={<CaretUpOutlined />}
-					onClick={() => onSubmit(id)}
-				/>
-				<p>{upvotes.length}</p>
 			</Card>
 		</div>
 	);
 };
 
-export default ComplainCard;
+export default MyComplainCard;

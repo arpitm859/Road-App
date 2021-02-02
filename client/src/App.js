@@ -11,27 +11,40 @@ import LandingPage from './pages/landingPage/landingPage.jsx';
 import Status from './pages/status/status.jsx';
 import Navbars from './components/navbar/navbar';
 import GuardedRoute from './components/guardedRoute/guardedRoute';
-
+import jwt_decode from 'jwt-decode';
 function App() {
-	const auth = localStorage.getItem('userID') ? true : false;
-	console.log(auth);
+	const auth = () => {
+		const token = localStorage.getItem('token');
+		try {
+			const date = new Date(0);
+			const decoded = jwt_decode(token);
+			date.setUTCSeconds(decoded.exp);
+			return date.valueOf() > new Date().valueOf();
+		} catch (err) {
+			return false;
+		}
+	};
 	return (
 		<div className='App'>
 			<Route exact path='/' component={Login} />
 			<Route exact path='/register' component={Register} />
 			<Navbars />
 			<Switch>
-				<Route path='/landing-page' component={LandingPage} auth={auth} />
-				<GuardedRoute path='/complains' component={Complains} auth={auth} />
-				<GuardedRoute path='/landing-page' component={LandingPage} auth={auth} />
+				<Route path='/landing-page' component={LandingPage} auth={auth()} />
+				<GuardedRoute path='/complains' component={Complains} auth={auth()} />
+				<GuardedRoute path='/landing-page' component={LandingPage} auth={auth()} />
 				<GuardedRoute
 					path='/existing-complaints'
 					component={ExistingComplaints}
-					auth={true}
+					auth={auth()}
 				/>
-				<GuardedRoute path='/my-complaints' component={MyComplaints} auth={auth} />
-				<GuardedRoute path='/my-issues' component={IssuesAssigned} auth={auth} />
-				<GuardedRoute path='/status/:id' component={Status} auth={auth} />
+				<GuardedRoute
+					path='/my-complaints'
+					component={MyComplaints}
+					auth={auth()}
+				/>
+				<GuardedRoute path='/my-issues' component={IssuesAssigned} auth={auth()} />
+				<GuardedRoute path='/status/:id' component={Status} auth={auth()} />
 			</Switch>
 		</div>
 	);
