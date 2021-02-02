@@ -142,7 +142,6 @@ const Complains = () => {
 	};
 
 	const classes = useStyles();
-
 	return (
 		<div className='complaint-form'>
 			<div className='complain'>
@@ -162,12 +161,13 @@ const Complains = () => {
 									id='outlined-select-type'
 									select
 									label='Nature'
-									value={type}
-									onChange={handleChange}
+									value={nature}
+									onChange={handleNature}
 									variant='outlined'
 									style={{ width: '17rem' }}
 									required
 								>
+									<MenuItem value='Choose'>Choose</MenuItem>
 									<MenuItem value='Potholes'>Potholes</MenuItem>
 									<MenuItem value='Traffic'>Traffic</MenuItem>
 									<MenuItem value='Road Condition'>Condition of the Road</MenuItem>
@@ -186,6 +186,7 @@ const Complains = () => {
 									style={{ width: '17rem' }}
 									required
 								>
+									<MenuItem value='Choose'>Choose</MenuItem>
 									<MenuItem value='Low'>Low</MenuItem>
 									<MenuItem value='Medium'>Medium</MenuItem>
 									<MenuItem value='High'>High</MenuItem>
@@ -395,6 +396,9 @@ const Complains = () => {
 								/>
 							</div>
 						</div>
+						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
+							Upload Files
+						</Divider>
 					</div>
 					<Button type='primary' shape='round' style={{ margin: '3rem ' }} onClick = {(e) => onSubmit(e)}>
 						Submit

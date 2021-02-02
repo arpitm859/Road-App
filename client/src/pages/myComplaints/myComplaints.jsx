@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'antd/dist/antd.css';
 import './myComplaints.css';
 import '../../components/complainCard/complainCard';
-import ComplainCard from '../../components/complainCard/complainCard';
+import MyComplainCard from '../../components/myComplaincards/myComplainCard';
 
 const MyComplaints = () => {
 	const [data, setData] = useState([]);
@@ -21,16 +21,16 @@ const MyComplaints = () => {
 	}, []);
 	const renderCards = () => {
 		return data.map((complaint) => {
-			id = complaint.id;
+			
+			console.log(complaint)
 			return (
 				<>
-					<ComplainCard
+					<MyComplainCard
 						date={complaint.createdAt.substring(0, 10)}
 						title={complaint.title}
 						id={id}
 						address={complaint.complaint_address}
 						city={complaint.complaint_city}
-						upvotes={complaint.backer}
 					/>
 				</>
 			);
