@@ -25,10 +25,7 @@ const Complains = () => {
 	const history = useHistory();
 
 	const [type, setType] = useState();
-	const handleChange = (event) => {
-		setType(event.target.value);
-	};
-
+	const [emergency,setEmergency] = useState();
 	const [title, setTitle] = useState();
 	const [description, setDescription] = useState();
 	const [house, setHouse] = useState();
@@ -44,6 +41,14 @@ const Complains = () => {
 	const [cpincode, setCPincode] = useState();
 	const [clandmark, setCLandmark] = useState();
 	const [ccity, setCCity] = useState();
+
+	const handleChange = (event) => {
+		setType(event.target.value);
+	};
+
+	const handleChange = (event) => {
+		setEmergency(event.target.value);
+	};
 
 	const handleTitle = (event) => {
 	setTitle(event.target.value);
@@ -102,24 +107,24 @@ const Complains = () => {
 		setCity(event.target.value);
 	};
 
-	const [complaints, setComplaints] = useState({
-		complaintType: '',
-		emergencyState: '',
-		complaintTitle: '',
-		description: '',
-		house: '',
-		street: '',
-		area: '',
-		pincode: '',
-		city: '',
-		landmark: '',
-		complainantHouse: '',
-		complainantStreet: '',
-		complainantArea: '',
-		complainantPincode: '',
-		complainantCity: '',
-		complainantLandmark: '',
-	});
+	// const [complaints, setComplaints] = useState({
+	// 	complaintType: '',
+	// 	emergencyState: '',
+	// 	complaintTitle: '',
+	// 	description: '',
+	// 	house: '',
+	// 	street: '',
+	// 	area: '',
+	// 	pincode: '',
+	// 	city: '',
+	// 	landmark: '',
+	// 	complainantHouse: '',
+	// 	complainantStreet: '',
+	// 	complainantArea: '',
+	// 	complainantPincode: '',
+	// 	complainantCity: '',
+	// 	complainantLandmark: '',
+	// });
 
 	// const {
 	// 	complaintType,
@@ -143,41 +148,41 @@ const Complains = () => {
 	// const onChange = (e) =>
 	// 	setComplaints({ ...complaints, [e.target.name]: e.target.value });
 
-	// const onSubmit = async () => {
-	// 	const newComplaint = {
-	// 		title: complaintType,
-	// 		description: description,
-	// 		emergencyState: emergencyState,
-	// 		complaint_house: house,
-	// 		complaint_street: street,
-	// 		complaint_area: area,
-	// 		complaint_pin: pincode,
-	// 		complaint_landmark: landmark,
-	// 		complaint_city: city,
-	// 		complainant_house_no: complainantHouse,
-	// 		complainant_street: complainantStreet,
-	// 		complainant_area: complainantArea,
-	// 		complainant_pin: complainantPincode,
-	// 		complainant_landmark: complainantLandmark,
-	// 		complainant_city: complainantCity,
-	// 	};
-	// 	try {
-	// 		const config = {
-	// 			headers: {
-	// 				Authorization: 'Bearer ' + localStorage.getItem('token'),
-	// 			},
-	// 		};
-	// 		const res = await axios.post('/complaints', newComplaint, config);
-	// 		if (res.data.success) {
-	// 			console.log(res);
-	// 			history.push('/my-complaints');
-	// 		} else {
-	// 			alert(res.error.msg);
-	// 		}
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 	}
-	// };
+	const onSubmit = async () => {
+		const newComplaint = {
+			title: title,
+			description: description,
+			emergencyState: emergency,
+			complaint_house: house,
+			complaint_street: street,
+			complaint_area: area,
+			complaint_pin: pincode,
+			complaint_landmark: landmark,
+			complaint_city: city,
+			complainant_house_no: chouse,
+			complainant_street: cstreet,
+			complainant_area: carea,
+			complainant_pin: cpincode,
+			complainant_landmark: clandmark,
+			complainant_city: ccity,
+		};
+		try {
+			const config = {
+				headers: {
+					Authorization: 'Bearer ' + localStorage.getItem('token'),
+				},
+			};
+			const res = await axios.post('/complaints', newComplaint, config);
+			if (res.data.success) {
+				console.log(res);
+				history.push('/my-complaints');
+			} else {
+				alert(res.error.msg);
+			}
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	const classes = useStyles();
 
@@ -199,7 +204,7 @@ const Complains = () => {
 								id='outlined-select-type'
 								select
 								label='Nature'
-								value={type}
+								value={}
 								onChange={handleChange}
 								variant='outlined'
 								style={{ width: '17rem' }}
@@ -216,7 +221,7 @@ const Complains = () => {
 								id='outlined-select-type'
 								select
 								label='State'
-								value={type}
+								value={emergency}
 								onChange={handleChange}
 								variant='outlined'
 								style={{ width: '17rem' }}
@@ -422,7 +427,7 @@ const Complains = () => {
 							/>
 						</div>
 					</div>
-					<Button type='primary' shape='round' style={{ margin: '3rem ' }}>
+					<Button type='primary' shape='round' style={{ margin: '3rem ' }} onClick = {(e) => onSubmit(e)}>
 						Submit
 					</Button>
 				</div>
