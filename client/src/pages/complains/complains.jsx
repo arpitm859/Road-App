@@ -21,14 +21,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Complains = () => {
 	const history = useHistory();
-	const [nature, setNature] = useState('Choose');
-	const [type, setType] = useState('Choose');
-	const handleChange = (event) => {
-		setType(event.target.value);
-	};
-	const handleNature = (event) => {
-		setNature(event.target.value);
-	};
+
+	const [type, setType] = useState();
+	const [emergency,setEmergency] = useState();
 
 	const [title, setTitle] = useState();
 	const [description, setDescription] = useState();
@@ -45,6 +40,14 @@ const Complains = () => {
 	const [cpincode, setCPincode] = useState();
 	const [clandmark, setCLandmark] = useState();
 	const [ccity, setCCity] = useState();
+
+	const handleChange = (event) => {
+		setType(event.target.value);
+	};
+
+	const handleEmergency = (event) => {
+		setEmergency(event.target.value);
+	};
 
 	const handleTitle = (event) => {
 		setTitle(event.target.value);
@@ -102,34 +105,11 @@ const Complains = () => {
 		setCity(event.target.value);
 	};
 
-
-	// const {
-	// 	complaintType,
-	// 	emergencyState,
-	// 	complaintTitle,
-	// 	description,
-	// 	house,
-	// 	street,
-	// 	area,
-	// 	pincode,
-	// 	city,
-	// 	landmark,
-	// 	complainantHouse,
-	// 	complainantStreet,
-	// 	complainantArea,
-	// 	complainantPincode,
-	// 	complainantCity,
-	// 	complainantLandmark,
-	// } = complaints;
-
-	// const onChange = (e) =>
-	// 	setComplaints({ ...complaints, [e.target.name]: e.target.value });
-
 	const onSubmit = async () => {
 		const newComplaint = {
 			title: title,
 			description: description,
-			emergencyState: type,
+			emergencyState: emergency,
 			complaint_house: house,
 			complaint_street: street,
 			complaint_area: area,
@@ -185,6 +165,7 @@ const Complains = () => {
 									onChange={handleNature}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								>
 									<MenuItem value='Choose'>Choose</MenuItem>
 									<MenuItem value='Potholes'>Potholes</MenuItem>
@@ -199,10 +180,11 @@ const Complains = () => {
 									id='outlined-select-type'
 									select
 									label='State'
-									value={type}
-									onChange={handleChange}
+									value={emergency}
+									onChange={handleEmergency}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								>
 									<MenuItem value='Choose'>Choose</MenuItem>
 									<MenuItem value='Low'>Low</MenuItem>
@@ -228,6 +210,7 @@ const Complains = () => {
 									onChange={handleTitle}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 							<div style={{ paddingLeft: '3rem' }}>
@@ -241,6 +224,7 @@ const Complains = () => {
 									rows={4}
 									variant='outlined'
 									style={{ width: '20rem' }}
+									required
 								/>
 							</div>
 						</div>
@@ -258,6 +242,7 @@ const Complains = () => {
 									onChange={handleHouse}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 							<div style={{ paddingLeft: '3rem' }}>
@@ -270,6 +255,7 @@ const Complains = () => {
 									onChange={handleStreet}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 						</div>
@@ -284,6 +270,7 @@ const Complains = () => {
 									onChange={handleArea}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 							<div style={{ paddingLeft: '3rem' }}>
@@ -296,6 +283,7 @@ const Complains = () => {
 									onChange={handlePincode}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 						</div>
@@ -310,6 +298,7 @@ const Complains = () => {
 									onChange={handleLandmark}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 							<div style={{ paddingLeft: '3rem' }}>
@@ -322,6 +311,7 @@ const Complains = () => {
 									onChange={handleCity}
 									variant='outlined'
 									style={{ width: '17rem' }}
+									required
 								/>
 							</div>
 						</div>
@@ -409,16 +399,11 @@ const Complains = () => {
 						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
 							Upload Files
 						</Divider>
-						<Button
-							type='primary'
-							shape='round'
-							style={{ margin: '3rem' }}
-							onClick={onSubmit}
-						>
-							Submit
-						</Button>
 					</div>
-				</form>{' '}
+					<Button type='primary' shape='round' style={{ margin: '3rem ' }} onClick = {(e) => onSubmit(e)}>
+						Submit
+					</Button>
+				</form>
 			</div>
 		</div>
 	);

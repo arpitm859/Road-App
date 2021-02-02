@@ -42,7 +42,7 @@ const ComplainCard = ({
 					shape='round'
 					icon={<CaretUpOutlined />}
 					onClick={() => onSubmit(id)}
-				/>
+				>Upvote</Button>
 				<p>{upvotes.length}</p>
 			</Card>
 		</div>
