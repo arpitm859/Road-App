@@ -10,26 +10,28 @@ import IssuesAssigned from './pages/issuesAssigned/issuesAssigned.jsx';
 import LandingPage from './pages/landingPage/landingPage.jsx';
 import Status from './pages/status/status.jsx';
 import Navbars from './components/navbar/navbar';
-import GuardedRoute from './components/guardedRoute/guardedRoute'
+import GuardedRoute from './components/guardedRoute/guardedRoute';
 
 function App() {
+	const auth = localStorage.getItem('userID') ? true : false;
+	console.log(auth);
 	return (
 		<div className='App'>
 			<Route exact path='/' component={Login} />
 			<Route exact path='/register' component={Register} />
 			<Navbars />
 			<Switch>
-				<Route path='/landing-page' component={LandingPage} auth={true} />
-				<GuardedRoute path='/complains' component={Complains} auth={true} />
-				<GuardedRoute path='/landing-page' component={LandingPage} auth={true} />
+				<Route path='/landing-page' component={LandingPage} auth={auth} />
+				<GuardedRoute path='/complains' component={Complains} auth={auth} />
+				<GuardedRoute path='/landing-page' component={LandingPage} auth={auth} />
 				<GuardedRoute
 					path='/existing-complaints'
 					component={ExistingComplaints}
 					auth={true}
 				/>
-				<GuardedRoute path='/my-complaints' component={MyComplaints} auth={true} />
-				<GuardedRoute path='/my-issues' component={IssuesAssigned} auth={true} />
-				<GuardedRoute path='/status/:id' component={Status} auth={true} />
+				<GuardedRoute path='/my-complaints' component={MyComplaints} auth={auth} />
+				<GuardedRoute path='/my-issues' component={IssuesAssigned} auth={auth} />
+				<GuardedRoute path='/status/:id' component={Status} auth={auth} />
 			</Switch>
 		</div>
 	);

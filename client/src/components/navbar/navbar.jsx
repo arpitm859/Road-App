@@ -56,6 +56,7 @@ const Navbars = () => {
 								href='/'
 								onClick={() => {
 									localStorage.removeItem('token');
+									localStorage.removeItem('userID');
 								}}
 								style={{ color: 'white' }}
 								class='nav-link'

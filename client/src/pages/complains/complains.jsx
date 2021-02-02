@@ -177,7 +177,6 @@ const Complains = () => {
 	// };
 
 	const classes = useStyles();
-
 	return (
 		<div className='complaint-form'>
 			<div className='complain'>
@@ -420,7 +419,10 @@ const Complains = () => {
 								/>
 							</div>
 						</div>
-						<Button type='primary' shape='round' style={{ margin: '3rem ' }}>
+						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
+							Upload Files
+						</Divider>
+						<Button type='primary' shape='round' style={{ margin: '3rem' }}>
 							Submit
 						</Button>
 					</div>
