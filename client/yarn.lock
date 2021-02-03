@@ -7156,7 +7156,20 @@
     "import-local" "^3.0.2"
     "jest-cli" "^26.6.0"
 
-"jquery@^3.5.1":
+"jquery-react-autocomplete@^0.1.4":
+  "integrity" "sha512-g26buuDHQyDWDTDbown3WbE7wcRndSjyR+t2r5nbhlT/pczYgNN/jQptrq9Kl4wkyotsEsHfJiVtQ/XyrmK8GA=="
+  "resolved" "https://registry.npmjs.org/jquery-react-autocomplete/-/jquery-react-autocomplete-0.1.4.tgz"
+  "version" "0.1.4"
+  dependencies:
+    "jquery" "^3.4.1"
+    "jquery-ui-bundle" "^1.12.1-migrate"
+
+"jquery-ui-bundle@^1.12.1-migrate":
+  "integrity" "sha1-uTQ+LDEHQ1J2Ms/4vtsMXpYAsUw="
+  "resolved" "https://registry.npmjs.org/jquery-ui-bundle/-/jquery-ui-bundle-1.12.1-migrate.tgz"
+  "version" "1.12.1-migrate"
+
+"jquery@^3.4.1", "jquery@^3.5.1":
   "integrity" "sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg=="
   "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.5.1.tgz"
   "version" "3.5.1"
