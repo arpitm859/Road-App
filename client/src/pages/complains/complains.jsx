@@ -161,8 +161,8 @@ const Complains = () => {
 									id='outlined-select-type'
 									select
 									label='Nature'
-									value={nature}
-									onChange={handleNature}
+									value={type}
+									onChange={handleChange}
 									variant='outlined'
 									style={{ width: '17rem' }}
 									required
