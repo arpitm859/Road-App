@@ -7,7 +7,6 @@ import MyComplainCard from '../../components/myComplaincards/myComplainCard';
 
 const MyComplaints = () => {
 	const [data, setData] = useState([]);
-	let id = '';
 	useEffect(() => {
 		const config = {
 			headers: {
@@ -16,19 +15,17 @@ const MyComplaints = () => {
 		};
 		axios.get('/complaints', config).then((json) => {
 			setData(json.data);
-			console.log(json);
 		});
 	}, []);
 	const renderCards = () => {
 		return data.map((complaint) => {
-			
 			console.log(complaint)
 			return (
 				<>
 					<MyComplainCard
 						date={complaint.createdAt.substring(0, 10)}
 						title={complaint.title}
-						id={id}
+						id={complaint._id}
 						address={complaint.complaint_address}
 						city={complaint.complaint_city}
 					/>
