@@ -42,7 +42,7 @@ const ProgressCard = ({ status }) => {
 					<Step title={check(7, status)} description='Agency working on location.' />
 					<Step title={check(8, status)} description='Issue resolved from agency.' />
 					<Step title={check(9, status)} description='Approval from government.' />
-					<Step title={check(10, status)} description='Issure resolved.' />
+					<Step title={check(10, status)} description='Issue resolved.' />
 				</Steps>
 			</Card>
 		</div>

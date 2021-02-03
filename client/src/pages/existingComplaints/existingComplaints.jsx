@@ -3,6 +3,7 @@ import './existingComplaints.css';
 import axios from 'axios';
 import ComplainCard from '../../components/complainCard/complainCard';
 import { Pagination } from 'antd';
+import SearchBar from '../../components/searchBar/searchBar';
 
 const ExistingComplaints = () => {
 	let id = '';
@@ -37,6 +38,7 @@ const ExistingComplaints = () => {
 		};
 		return data.map((complaint) => {
 			id = complaint._id;
+
 			return (
 				<>
 					<ComplainCard
@@ -55,6 +57,7 @@ const ExistingComplaints = () => {
 	};
 	return (
 		<div className='complainDiv'>
+			<SearchBar />
 			{renderCards()}
 		</div>
 	);
