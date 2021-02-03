@@ -24,7 +24,11 @@ searchRouter.route('/:query')
         } catch (err) {
             console.log(err.message);
             res.status(500).send({ message: err.message })
+<<<<<<< HEAD
         }
+=======
+        } 
+>>>>>>> 8d0faffb6ae25ef35dab39d1e0abb53c3767a18e
     })
 
 

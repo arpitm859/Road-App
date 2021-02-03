@@ -3,14 +3,18 @@ import JqueryReactAutocomplete from 'jquery-react-autocomplete';
 import { axios } from 'axios';
 
 const SearchBar = () => {
-    const [complain, setComplain] = useState({});
+	const [input, setinput] = useState({});
+	const [complain, setComplain] = useState({});
 	const handleSourceCitySelect = async(value) => {
-		axios.get(`/search/${value.label}`).then((json) => console.log(json));
-        // let data = await axios.get(`http://localhost:5000/search/${value.label}`)
-		// setComplain(value);
-		// console.log(data.data);
+        let data = await fetch(`http://localhost:5000/search/${value.label}`)
+		setinput(value);
+		data.json().then((result) => {
+			console.log(result[0])
+			setComplain(result[0]);
+			console.log(complain)
+		})
 	};
-
+    
 	return (
 		<div className='ui-widget'>
 			<label for='recipe'></label>
@@ -18,7 +22,7 @@ const SearchBar = () => {
 				inputProps={{
 					id: 'sourceCity',
 					label: 'City: ',
-					value: complain.label || '',
+					value: input.label || '',
 				}}
 				onSourceSelect={handleSourceCitySelect}
 			/>
