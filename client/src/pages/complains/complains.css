@@ -1,9 +1,16 @@
 .complaintHeading{
       color: #454749;
 }
-
 .rowC{
       display:flex; 
       flex-direction:row;
       justify-content: space-around;
+}
+.complaint-form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.complain{
+      width:70vw;
 }

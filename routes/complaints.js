@@ -73,7 +73,7 @@ complaintRouter
 			complainant_pin: req.body.complainant_pin,
 			complainant_landmark: req.body.complainant_landmark,
 			complainant_city: req.body.complainant_city,
-			complainant: req.user.firstName+req.user.lastName
+			complainant: req.user.firstName+ ' ' +req.user.lastName
 			
 		})
 			.save()
@@ -113,6 +113,11 @@ complaintRouter
 				(complaint) => {
 					if (complaint.backer.indexOf(req.user._id) == -1) {
 						complaint.backer.push(req.user._id);
+						complaint.save();
+						res.json(complaint);
+					}else{
+						const index = complaint.backer.indexOf(req.user._id);
+						complaint.backer.splice(index, 1);
 						complaint.save();
 						res.json(complaint);
 					}

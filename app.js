@@ -4,14 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport');
+const Cors = require("cors")
 require('./config/db')();
 
 // Routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var complaintRouter = require('./routes/complaints');
-var issueRouter = require('./routes/issues');
+var complaintRouter = require('./routes/complaints')
+var issueRouter = require('./routes/issues')
 var statusRouter = require('./routes/status');
+var uploadRouter = require('./routes/uploadR');
 var searchRouter = require('./routes/search');
 
 var app = express();
@@ -22,6 +24,7 @@ app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(Cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,11 +32,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
 app.use('/', indexRouter);
+app.use('/search', searchRouter)
 app.use('/users', usersRouter);
 app.use('/complaints', complaintRouter);
 app.use('/issues', issueRouter);
 app.use('/status', statusRouter);
-app.use('/search', searchRouter);
+app.use('/upload', uploadRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

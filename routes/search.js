@@ -1,3 +1,4 @@
+const { response } = require('express');
 var express = require('express');
 const Complaint = require('../models/complaint');
 const User = require('../models/user');
@@ -5,16 +6,24 @@ const User = require('../models/user');
 var searchRouter = express.Router();
 
 searchRouter.route('/:query')
-    .get((req, res, next) => {
-        console.log('search');
-        var regex = new RegExp(req.params.query, 'i');
-        Complaint.find(
-            { $text: { $search: regex } },
-            { score: { $meta: "textScore" } }
-        ).sort( { score: { $meta: "textScore" } } ).then((complaint) => {
-            console.log(complaint);
-            res.send("Shit")
-        })
+    .get(async (req, res, next) => {
+        try {
+            let result = await Complaint.aggregate([
+                {
+                    '$search': {
+                        'autocomplete': {
+                            "query": `${req.params.query}`,
+                            "path": "title",
+                            "fuzzy": { "maxEdits": 2 }
+                        }
+                    }
+                }
+            ]);
+            res.send(result);
+        } catch (err) {
+            res.status(500).send({ message: err.message })
+        } 
+        res.send(results)
     })
 
 

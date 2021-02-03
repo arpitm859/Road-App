@@ -1,6 +1,5 @@
 .progress-div {
-	width: 30%;
-	margin-top: 3rem;
+	margin-top: 2rem;
 	display: flex;
 }
 .status {
@@ -16,5 +15,5 @@
 }
 .description-div{
 	width: 70%;
-	margin-top: 3rem;
+	margin-top: 2rem;
 }
