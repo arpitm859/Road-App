@@ -57,7 +57,7 @@ const ExistingComplaints = () => {
 	};
 	return (
 		<div className='complainDiv'>
-			<SearchBar/>
+			<SearchBar />
 			{renderCards()}
 		</div>
 	);

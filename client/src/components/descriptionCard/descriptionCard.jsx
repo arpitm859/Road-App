@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React} from 'react';
 import { Steps, Card } from 'antd';
 import './descriptionCard.css';
 const { Step } = Steps;

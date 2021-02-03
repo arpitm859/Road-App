@@ -13,6 +13,7 @@
     "canvasjs-react-charts": "^1.0.5",
     "chart.js": "^2.9.4",
     "jquery": "^3.5.1",
+    "jquery-react-autocomplete": "^0.1.4",
     "jwt-decode": "^3.1.2",
     "material-ui": "^0.20.2",
     "react": "^17.0.1",

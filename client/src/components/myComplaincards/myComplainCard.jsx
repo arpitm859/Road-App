@@ -1,9 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Progress, Card } from 'antd';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
 import axios from 'axios';
-import { CaretUpOutlined } from '@ant-design/icons';
 
 const MyComplainCard = ({ date, title, id, address, city }) => {
 	const [progress, setProgress] = useState(0);
