@@ -2,14 +2,18 @@ import { React, useState } from 'react';
 import JqueryReactAutocomplete from 'jquery-react-autocomplete';
 
 const SearchBar = () => {
-    const [complain, setComplain] = useState({});
+	const [input, setinput] = useState({});
+	const [complain, setComplain] = useState({});
 	const handleSourceCitySelect = async(value) => {
         let data = await fetch(`http://localhost:5000/search/${value.label}`)
-        data.json()
-		setComplain(value);
-		console.log(data);
+		setinput(value);
+		data.json().then((result) => {
+			console.log(result[0])
+			setComplain(result[0]);
+			console.log(complain)
+		})
 	};
-
+    
 	return (
 		<div className='ui-widget'>
 			<label for='recipe'></label>
@@ -17,7 +21,7 @@ const SearchBar = () => {
 				inputProps={{
 					id: 'sourceCity',
 					label: 'City: ',
-					value: complain.label || '',
+					value: input.label || '',
 				}}
 				onSourceSelect={handleSourceCitySelect}
 			/>
