@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import './complains.css';
 import { Divider, Button } from 'antd';
+import UploadComponent from '../../components/uploadComponent/uploadComponent'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -400,6 +401,7 @@ const Complains = () => {
 							Upload Files
 						</Divider>
 					</div>
+					<UploadComponent />
 					<Button type='primary' shape='round' style={{ margin: '3rem ' }} onClick = {(e) => onSubmit(e)}>
 						Submit
 					</Button>

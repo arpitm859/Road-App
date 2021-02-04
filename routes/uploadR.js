@@ -1,29 +1,30 @@
+const config = require('../config/default');
 const express = require('express');
 const bodyParser = require('body-parser');
 var multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 var authenticate = require('../authenticate');
+const Image = require('../models/imageUpload');
 
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, 'public/images');
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.originalname);
+cloudinary.config({
+	cloud_name: config.CLOUDINARY_HOST,
+	api_key: config.CLOUDINARY_API_KEY,
+	api_secret: config.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+	cloudinary: cloudinary,
+	params: {
+		folder: 'Complain Images',
+		format: async () => 'png',
+		public_id: (req, file) => file.filename,
 	},
 });
 
-const imageFileFilter = (req, file, cb) => {
-	if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-		return cb(new Error('You can upload only image files.'), false);
-	} else {
-		return cb(null, true);
-	}
-};
-
-const upload = multer({ storage: storage, fileFilter: imageFileFilter });
+const parser = multer({ storage: storage });
 const uploadRouter = express.Router();
 uploadRouter.use(bodyParser.json());
-
 
 uploadRouter
 	.route('/')
@@ -31,11 +32,28 @@ uploadRouter
 		res.statusCode = 403;
 		res.end('GET operation not supported on /imageUpload');
 	})
-	.post(authenticate.verifyUser, upload.single('imageFile'), (req, res) => {
-		res.statusCode = 200;
-		res.setHeader('Content-Type', 'application/json');
-		res.json(req.file);
-	})
+	.post(
+		authenticate.verifyUser,
+		parser.single('imageFile'),
+		async (req, res) => {
+			const imageUploaded = new Image({
+				image: req.file.path,
+			});
+			try {
+				await imageUploaded.save().then((result) => {
+					return res.status(200).json({
+						success: 'true',
+						message: 'File successfully uploaded',
+					});
+				});
+			} catch (error) {
+				return res.status(400).json({
+					status: 'error',
+					message: `image upload failed, check to see the ${error}`,
+				});
+			}
+		}
+	)
 	.put(authenticate.verifyUser, (req, res, next) => {
 		res.statusCode = 403;
 		res.end('PUT operation not supported on /imageUpload');
