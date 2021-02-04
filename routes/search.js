@@ -19,10 +19,12 @@ searchRouter.route('/:query')
                     }
                 }
             ]);
+            console.log(result);
             res.send(result);
         } catch (err) {
+            console.log(err.message);
             res.status(500).send({ message: err.message })
-        } 
+        }
     })
 
 
