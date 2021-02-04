@@ -19,30 +19,34 @@ const ProgressCard = ({ status }) => {
 				<Steps
 					direction='vertical'
 					current={status}
-					style={{ marginLeft: '2rem', paddingRight: '2rem' }}
+					style={{ marginLeft: '2rem', paddingRight: '2rem', color:'white'}}
 				>
-					<Step title={check(1, status)} description='Complaint Acknowledged.' />
+					<Step title={check(1, status)} description='Complaint Acknowledged.'  style={{color:'white'}}/>
 					<Step
 						title={check(2, status)}
 						description='Investigation handed to Agency.'
+						style={{color:'white'}}
 					/>
 					<Step
 						title={check(3, status)}
 						description='Agency Investigation Completed.'
+						style={{color:'white'}}
 					/>
-					<Step title={check(4, status)} description='Problem identified.' />
+					<Step title={check(4, status)} description='Problem identified.' style={{color:'white'}}/>
 					<Step
 						title={check(5, status)}
 						description='Funds and requirements asked from Government.'
+						style={{color:'white'}}
 					/>
 					<Step
 						title={check(6, status)}
 						description='Funds transferred to agency.'
+						style={{color:'white'}}
 					/>
-					<Step title={check(7, status)} description='Agency working on location.' />
-					<Step title={check(8, status)} description='Issue resolved from agency.' />
-					<Step title={check(9, status)} description='Approval from government.' />
-					<Step title={check(10, status)} description='Issue resolved.' />
+					<Step title={check(7, status)} description='Agency working on location.' style={{color:'white'}}/>
+					<Step title={check(8, status)} description='Issue resolved from agency.' style={{color:'white'}}/>
+					<Step title={check(9, status)} description='Approval from government.' style={{color:'white'}}/>
+					<Step title={check(10, status)} description='Issue resolved.' style={{color:'white'}}/>
 				</Steps>
 			</Card>
 		</div>
