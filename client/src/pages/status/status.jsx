@@ -39,7 +39,7 @@ const Status = (props) => {
 					/>
 					<iframe
 						src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDdKd_hcdItqfkNDHWd7IQQD-UjML8yXEI&q=${data.lat},${data.long}`}
-						width='900'
+						width='730'
 						height='450'
 						frameborder='1'
 						allowfullscreen=''
