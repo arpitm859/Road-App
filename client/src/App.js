@@ -12,6 +12,7 @@ import Status from './pages/status/status.jsx';
 import Navbars from './components/navbar/navbar';
 import GuardedRoute from './components/guardedRoute/guardedRoute';
 import jwt_decode from 'jwt-decode';
+
 function App() {
 	const auth = () => {
 		const token = localStorage.getItem('token');
@@ -49,5 +50,4 @@ function App() {
 		</div>
 	);
 }
-
 export default App;

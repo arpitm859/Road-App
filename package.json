@@ -31,6 +31,9 @@
     "passport-jwt": "^4.0.0",
     "passport-local-mongoose": "^6.1.0",
     "puppeteer": "^5.5.0",
-    "react-responsive-carousel": "^3.2.11"
+    "react-redux": "^7.2.2",
+    "react-responsive-carousel": "^3.2.11",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6"
   }
 }
