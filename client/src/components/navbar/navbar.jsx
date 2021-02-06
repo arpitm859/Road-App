@@ -5,7 +5,8 @@ import './navbar.css';
 import { connect } from 'react-redux';
 import {setCurrentUser} from '../../redux/user/user.actions';
 
-const Navbars = () => {
+const Navbars = ({currentUser}) => {
+	//console.log(currentUser)
 	return (
 		<div>
 			<Navbar style={{ backgroundColor: '#7CB9F5', fontWeight: 'bold' }}>
@@ -42,14 +43,16 @@ const Navbars = () => {
 						>
 							Existing Complaints
 						</Nav.Link>
-						<Nav.Link
-							id='boxStyle'
-							href='/my-issues'
-							style={{ color: 'white', fontSize: '16px' }}
-							class='navbar-brand mx-auto'
-						>
-							Issues Assigned
-						</Nav.Link>
+						{/* {currentUser.gov || currentUser.agency? (
+							<Nav.Link
+								id='boxStyle'
+								href='/my-issues'
+								style={{ color: 'white', fontSize: '16px' }}
+								class='navbar-brand mx-auto'
+							>
+								Issues Assigned
+							</Nav.Link>
+						) : null} */}
 					</Nav>
 				</div>
 				<div class='navbar-collapse collapse w-100 order-3 dual-collapse2'>
