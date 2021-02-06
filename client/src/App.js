@@ -12,8 +12,10 @@ import Status from './pages/status/status.jsx';
 import Navbars from './components/navbar/navbar';
 import GuardedRoute from './components/guardedRoute/guardedRoute';
 import jwt_decode from 'jwt-decode';
+import { connect } from 'react-redux';
+import setCurrentUser from './redux/user/user.actions';
 
-function App() {
+function App({setCurrentUser}) {
 	const auth = () => {
 		const token = localStorage.getItem('token');
 		try {
@@ -22,6 +24,7 @@ function App() {
 			date.setUTCSeconds(decoded.exp);
 			return date.valueOf() > new Date().valueOf();
 		} catch (err) {
+			setCurrentUser(null);
 			return false;
 		}
 	};
@@ -29,7 +32,7 @@ function App() {
 		<div className='App'>
 			<Route exact path='/' component={Login} />
 			<Route exact path='/register' component={Register} />
-			<Navbars />
+			<Navbars /> 
 			<Switch>
 				<Route path='/landing-page' component={LandingPage} auth={auth()} />
 				<GuardedRoute path='/complains' component={Complains} auth={auth()} />
@@ -50,4 +53,7 @@ function App() {
 		</div>
 	);
 }
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+export default connect(null, mapDispatchToProps)(App);

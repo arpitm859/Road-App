@@ -1,11 +1,18 @@
 import { React } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
 import { connect } from 'react-redux';
-import {setCurrentUser} from '../../redux/user/user.actions';
+import setCurrentUser from '../../redux/user/user.actions';
+import { useLocation } from 'react-router-dom';
 
-const Navbars = ({currentUser}) => {
+const Navbars = ({ currentUser, setCurrentUser }) => {
+	const location = useLocation();
+	if (
+		location.pathname === '/register' ||
+		location.pathname === '/'
+	)
+		return null;
 	//console.log(currentUser)
 	return (
 		<div>
@@ -43,7 +50,7 @@ const Navbars = ({currentUser}) => {
 						>
 							Existing Complaints
 						</Nav.Link>
-						{/* {currentUser.gov || currentUser.agency? (
+						{currentUser ? currentUser.gov || currentUser.agency ? (
 							<Nav.Link
 								id='boxStyle'
 								href='/my-issues'
@@ -52,7 +59,7 @@ const Navbars = ({currentUser}) => {
 							>
 								Issues Assigned
 							</Nav.Link>
-						) : null} */}
+						) : null : null}
 					</Nav>
 				</div>
 				<div class='navbar-collapse collapse w-100 order-3 dual-collapse2'>

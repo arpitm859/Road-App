@@ -3,9 +3,9 @@ import './login.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { setCurrentUser } from '../../redux/user/user.actions';
+import setCurrentUser from '../../redux/user/user.actions';
 
-const Login = () => {
+const Login = ({ setCurrentUser }) => {
 	const history = useHistory();
 	const [loginData, setLogin] = useState({
 		phoneNumber: '',
@@ -29,7 +29,7 @@ const Login = () => {
 				history.push('/landing-page');
 			}
 		} catch (err) {
-			console.error(err.response.data);
+			console.error(err);
 		}
 	};
 	return (
@@ -85,12 +85,8 @@ const Login = () => {
 	);
 };
 
-const mapStateToProps = ({ user }) => ({
-	currentUser: user.currentUser,
-});
-
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
