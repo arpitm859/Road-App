@@ -73,7 +73,8 @@ complaintRouter
 			complainant_pin: req.body.complainant_pin,
 			complainant_landmark: req.body.complainant_landmark,
 			complainant_city: req.body.complainant_city,
-			complainant: req.user.firstName+ ' ' +req.user.lastName
+			complainant: req.user.firstName+ ' ' +req.user.lastName,
+			image: req.body.image
 			
 		})
 			.save()

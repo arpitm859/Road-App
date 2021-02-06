@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const complaintSchema = new Schema(
 	{
 		userID: {
@@ -40,9 +39,8 @@ const complaintSchema = new Schema(
 			ref: 'user',
 			default: [],
 		},
-		img_url: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Image',
+		image: {
+			type: String,
 		},
 	},
 	{

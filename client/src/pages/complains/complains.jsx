@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import { message } from 'antd';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
@@ -41,7 +42,8 @@ const Complains = () => {
 	const [cpincode, setCPincode] = useState();
 	const [clandmark, setCLandmark] = useState();
 	const [ccity, setCCity] = useState();
-
+	const [image, setImage] = useState();
+	
 	const handleChange = (event) => {
 		setType(event.target.value);
 	};
@@ -106,6 +108,26 @@ const Complains = () => {
 		setCity(event.target.value);
 	};
 
+	const props = {
+		name: 'imageFile',
+		multiple: false,
+		action: '/upload',
+		headers: {
+			Authorization: 'Bearer ' + localStorage.getItem('token'),
+		},
+		onChange(info) {
+			const { status } = info.file;
+			if (status !== 'uploading') {
+				setImage(info.file.response.url);
+			}
+			if (status === 'done') {
+				message.success(`${info.file.name} file uploaded successfully.`);
+			} else if (status === 'error') {
+				message.error(`${info.file.name} file upload failed.`);
+			}
+		},
+	};
+
 	const onSubmit = async () => {
 		const newComplaint = {
 			title: title,
@@ -123,6 +145,7 @@ const Complains = () => {
 			complainant_pin: cpincode,
 			complainant_landmark: clandmark,
 			complainant_city: ccity,
+			image: image
 		};
 		try {
 			const config = {
@@ -401,7 +424,7 @@ const Complains = () => {
 							Upload Complaint Image 
 						</Divider>
 					</div>
-					<UploadComponent />
+					<UploadComponent props={props}/>
 					<Button type='primary' shape='round' style={{ margin: '3rem ' }} onClick = {(e) => onSubmit(e)}>
 						Submit
 					</Button>
