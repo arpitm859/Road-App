@@ -8,13 +8,25 @@ import SearchBar from '../../components/searchBar/searchBar';
 const ExistingComplaints = () => {
 	let id = '';
 	const [data, setData] = useState([]);
-	useEffect(() => {
+	const filtered = [];
+
+	useEffect( async () => {
 		const config = {
 			headers: {
 				Authorization: 'Bearer ' + localStorage.getItem('token'),
 			},
 		};
-		axios.get('/complaints/all', config).then((json) => setData(json.data));
+		await axios.get('/complaints/all', config).then((json) => {
+			console.log(json);
+			console.log(json.data);
+			json.data.map((complaint) => {
+				if(complaint.status!==11){
+					filtered.push(complaint)
+				}
+			})
+			console.log(filtered);
+			setData(filtered);
+		});
 	}, []);
 	const renderCards = () => {
 		const onSubmit = async (_id) => {

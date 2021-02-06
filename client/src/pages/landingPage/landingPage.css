@@ -1,6 +1,18 @@
-.flex-container {
+.layout {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      width: 100vw;
+      height:100vh;
+      overflow: hidden;
+}
+
+.chartContainer{
+      background-color: white;
+      /* width:50vw;
+      height:40vh; */
+      margin:3rem;
+      border-color: black;
+      border-width: medium;
 }
 
 

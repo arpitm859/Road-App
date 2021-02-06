@@ -398,7 +398,7 @@ const Complains = () => {
 							</div>
 						</div>
 						<Divider style={{ fontSize: '22px', margin: '2rem 0' }}>
-							Upload Files
+							Upload Complaint Image 
 						</Divider>
 					</div>
 					<UploadComponent />

@@ -7,6 +7,7 @@ import image4 from './Road4.jpg';
 import { Pie } from 'react-chartjs-2';
 import { useState, useEffect} from 'react';
 import axios from 'axios';
+import './landingPage.css';
 
 const LandingPage = () => {
 
@@ -27,7 +28,7 @@ const LandingPage = () => {
 				if(complaint.status===0){
 					registered+=1
 				}
-				else if(complaint.resolved===true){
+				else if(complaint.resolved===true || complaint.status===11){
 					solved+=1
 				}
 				else if(complaint.status>0 && complaint.status<11){
@@ -55,8 +56,6 @@ const LandingPage = () => {
 			]
 		}],
 	}
-	console.log(datapoints);
-	console.log(data.datasets[0].data);
 
 	const pieOptions = {
 		maintainAspectRatio: false,
@@ -68,9 +67,9 @@ const LandingPage = () => {
 	}
 
 	return (
-		<div className="flex-container">
-			<div className="flex-child">
-				<Carousel autoplay  style={{width:'50%', height:'100%',marginTop:'8rem',marginLeft:'2.5rem'}}>
+		<div className="layout">
+			<div>
+				<Carousel autoplay  style={{width:'50vw',height:'50vh',marginTop:'8rem',marginLeft:'2.5rem'}}>
 					<div>
 						<img style={carouselStyle} src={image1} alt="image 1" />
 					</div>
@@ -85,7 +84,11 @@ const LandingPage = () => {
 					</div>
 				</Carousel>
 			</div>
-				<div className="flex-child">
+			<div>
+				<div>
+
+				</div>
+				<div className = "chartContainer">
 					<Pie
 						data={data}
 						options = {pieOptions}
@@ -93,6 +96,7 @@ const LandingPage = () => {
 						height = {300}
 					/>
 				</div>
+			</div>
 		</div>
 	);
 };
