@@ -22,10 +22,9 @@ const Login = ({ setCurrentUser }) => {
 		try {
 			const res = await axios.post('/users/login', newUser);
 			if (res.data.success) {
-				localStorage.setItem('token', res.data.token);
+				await localStorage.setItem('token', res.data.token);
 				console.log(res.data.user);
-				setCurrentUser(res.data.user);
-
+				await setCurrentUser(res.data.user);
 				history.push('/landing-page');
 			}
 		} catch (err) {

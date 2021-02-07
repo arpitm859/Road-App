@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './pages/register/login.jsx';
 import Register from './pages/register/register.jsx';
@@ -15,7 +15,7 @@ import jwt_decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import setCurrentUser from './redux/user/user.actions';
 
-function App({setCurrentUser}) {
+function App({ setCurrentUser }) {
 	const auth = () => {
 		const token = localStorage.getItem('token');
 		try {
@@ -30,9 +30,12 @@ function App({setCurrentUser}) {
 	};
 	return (
 		<div className='App'>
-			<Route exact path='/' component={Login} />
+			<Route exact path='/'>
+				{auth() ? <Redirect to='/landing-page' /> : <Redirect to='/login' />}
+			</Route>
+			<Route exact path='/login' component={Login} />
 			<Route exact path='/register' component={Register} />
-			<Navbars /> 
+			<Navbars />
 			<Switch>
 				<Route path='/landing-page' component={LandingPage} auth={auth()} />
 				<GuardedRoute path='/complains' component={Complains} auth={auth()} />

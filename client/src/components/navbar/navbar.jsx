@@ -13,7 +13,6 @@ const Navbars = ({ currentUser, setCurrentUser }) => {
 		location.pathname === '/'
 	)
 		return null;
-	//console.log(currentUser)
 	return (
 		<div>
 			<Navbar style={{ backgroundColor: '#7CB9F5', fontWeight: 'bold' }}>
