@@ -1,31 +1,38 @@
 import { React} from 'react';
-import { Steps, Card } from 'antd';
+import { Card } from 'antd';
 import './descriptionCard.css';
-const { Step } = Steps;
+import { Image } from 'antd';
 
-const DescriptionCard = ({by, date, title, decription, address}) => {
+const DescriptionCard = ({by, date, title, decription, address, url}) => {
 	return (
 		<div>
-			<Card title='Description' id='dcard'>
-				<div className='info'>
-					<h5>BY  : </h5>
-					<span className='props'>{by}</span>
-				</div>
-				<div className='info'>
-					<h5>TITLE  : </h5>
-					<span className='props'>{title}</span>
-				</div>
-				<div className='info'>
-					<h5>DESCRIPTION  : </h5>
-					<span className='props'>{decription}</span>
-				</div>
-				<div className='info'>
-					<h5>ADDRESS  : </h5>
-					<span className='props'>{address}</span>
-				</div>
-				<div className='info'>
-					<h5>DATED  : </h5>
-					<span className='props'>{date}</span>
+			<Card id='dcard'>
+				<div className='description'>
+					<div className='desc-image'>
+						<Image width={250} src={url} />
+					</div>
+					<div className='desc'>
+						<div className='info'>
+							<span className='props'>BY: </span>
+							<span className='prop'>{by}</span>
+						</div>
+						<div className='info'>
+							<span className='props'>TITLE: </span>
+							<span className='prop'>{title}</span>
+						</div>
+						<div className='info'>
+							<span className='props'>DESCRIPTION: </span>
+							<span className='prop'>{decription}</span>
+						</div>
+						<div className='info'>
+							<span className='props'>ADDRESS: </span>
+							<span className='prop'>{address}</span>
+						</div>
+						<div className='info'>
+							<span className='props'>DATED: </span>
+							<span className='prop'>{date}</span>
+						</div>
+					</div>
 				</div>
 			</Card>
 		</div>

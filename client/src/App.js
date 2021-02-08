@@ -13,9 +13,7 @@ import Navbars from './components/navbar/navbar';
 import GuardedRoute from './components/guardedRoute/guardedRoute';
 import { connect } from 'react-redux';
 
-
-function App({userAuth}) {
-	
+function App({ userAuth }) {
 	return (
 		<div className='App'>
 			<Route exact path='/'>
@@ -52,8 +50,8 @@ function App({userAuth}) {
 	);
 }
 
-const mapStateToProps = ({user}) => ({
-	userAuth: user.userAuth
-})
+const mapStateToProps = ({ user }) => ({
+	userAuth: user.userAuth,
+});
 
 export default connect(mapStateToProps)(App);

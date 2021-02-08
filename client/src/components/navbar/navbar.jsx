@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './navbar.css';
 import { connect } from 'react-redux';
 import { setCurrentUser } from '../../redux/user/user.actions';

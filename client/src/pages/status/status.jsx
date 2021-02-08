@@ -22,7 +22,7 @@ const Status = (props) => {
 			setStatus(json.data);
 		});
 	}, []);
-
+	console.log(data)
 	return (
 		<div className='status'>
 			<div className='progress-div'>
@@ -36,6 +36,7 @@ const Status = (props) => {
 						title={data.title}
 						address={data.complainant_address}
 						description={data.description}
+						url={data.image}
 					/>
 					<iframe
 						src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyDdKd_hcdItqfkNDHWd7IQQD-UjML8yXEI&q=${data.lat},${data.long}`}

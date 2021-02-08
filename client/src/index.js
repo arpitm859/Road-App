@@ -5,8 +5,8 @@ import App from './App';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import {store} from './redux/store';
-import {persistor} from './redux/store';
+import { store } from './redux/store';
+import { persistor } from './redux/store';
 
 import 'antd/dist/antd.css';
 

@@ -2,13 +2,30 @@
     width:50vw;
     border-radius: 2rem;
     margin-bottom: 2.5rem;
+    text-align: left;
 }
 
 .info{
     display: flex;
 }
-
+.desc{
+    padding-left: 2rem;
+}
 .props{
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.prop{
+    font-size: 18px;
     padding-left: 10px;
+    display: flex;
+    padding-top: 1px;
+}
+
+.description{
+    display: flex;
+}
+.desc-image{
+    display: flex;
+    align-items: center;
 }
