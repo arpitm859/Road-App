@@ -3,9 +3,9 @@ import './login.css';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import setCurrentUser from '../../redux/user/user.actions';
+import { setCurrentUser, setAuth } from "../../redux/user/user.actions";
 
-const Login = ({ setCurrentUser }) => {
+const Login = ({ setCurrentUser, setAuth }) => {
 	const history = useHistory();
 	const [loginData, setLogin] = useState({
 		phoneNumber: '',
@@ -22,9 +22,9 @@ const Login = ({ setCurrentUser }) => {
 		try {
 			const res = await axios.post('/users/login', newUser);
 			if (res.data.success) {
-				await localStorage.setItem('token', res.data.token);
-				console.log(res.data.user);
+				localStorage.setItem('token', res.data.token);
 				await setCurrentUser(res.data.user);
+				await setAuth();
 				history.push('/landing-page');
 			}
 		} catch (err) {
@@ -86,6 +86,7 @@ const Login = ({ setCurrentUser }) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+	setAuth: () => dispatch(setAuth())
 });
 
 export default connect(null, mapDispatchToProps)(Login);

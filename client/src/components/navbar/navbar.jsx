@@ -3,15 +3,13 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
 import './navbar.css';
 import { connect } from 'react-redux';
-import setCurrentUser from '../../redux/user/user.actions';
+import { setCurrentUser } from '../../redux/user/user.actions';
+import { setAuth } from '../../redux/user/user.actions';
 import { useLocation } from 'react-router-dom';
 
-const Navbars = ({ currentUser, setCurrentUser }) => {
+const Navbars = ({ currentUser, setCurrentUser, setAuth }) => {
 	const location = useLocation();
-	if (
-		location.pathname === '/register' ||
-		location.pathname === '/'
-	)
+	if (location.pathname === '/register' || location.pathname === '/login')
 		return null;
 	return (
 		<div>
@@ -49,16 +47,18 @@ const Navbars = ({ currentUser, setCurrentUser }) => {
 						>
 							Existing Complaints
 						</Nav.Link>
-						{currentUser ? currentUser.gov || currentUser.agency ? (
-							<Nav.Link
-								id='boxStyle'
-								href='/my-issues'
-								style={{ color: 'white', fontSize: '16px' }}
-								class='navbar-brand mx-auto'
-							>
-								Issues Assigned
-							</Nav.Link>
-						) : null : null}
+						{currentUser ? (
+							currentUser.gov || currentUser.agency ? (
+								<Nav.Link
+									id='boxStyle'
+									href='/my-issues'
+									style={{ color: 'white', fontSize: '16px' }}
+									class='navbar-brand mx-auto'
+								>
+									Issues Assigned
+								</Nav.Link>
+							) : null
+						) : null}
 					</Nav>
 				</div>
 				<div class='navbar-collapse collapse w-100 order-3 dual-collapse2'>
@@ -77,6 +77,7 @@ const Navbars = ({ currentUser, setCurrentUser }) => {
 							onClick={() => {
 								localStorage.removeItem('token');
 								setCurrentUser(null);
+								setAuth();
 							}}
 							style={{ color: 'white', fontSize: '18px' }}
 							class='nav-link'
@@ -96,6 +97,7 @@ const mapStateToProps = ({ user }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+	setAuth: () => dispatch(setAuth()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbars);
