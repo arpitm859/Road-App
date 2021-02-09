@@ -5,14 +5,31 @@
 	overflow: hidden;
 }
 
-.chartContainer {
-	background-color: white;
-	margin: 3rem;
-	margin-top: 5rem;
-	border-color: black;
-	border-width: medium;
+.carousel{
+	display: flex;
+	align-items: center;
 }
 
-.chartjs-render-monitor {
-	width: 40vw;
+.chartContainer {
+	background-color: #BEE2FF;
+	margin: 3rem;
+	margin-top: 4rem;
+	/* border-color: black;
+	border-width: medium;
+	border-style: solid; */
+	width:40vw;
+	height: 50vh;
+	text-align: center;
+}
+
+.rollingSections{
+	display: flex !important;
+	flex-direction: column;
+}
+
+.rollingComplaint{
+	width:40vw;
+	height: 60vh;
+	background-color:#BEE2FF;
+	margin: 3rem;
 }
