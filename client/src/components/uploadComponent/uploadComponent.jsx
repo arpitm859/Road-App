@@ -1,4 +1,4 @@
-import { Upload, message } from 'antd';
+import { Upload } from 'antd';
 const { Dragger } = Upload;
 
 const UploadComponent = ({props}) => {

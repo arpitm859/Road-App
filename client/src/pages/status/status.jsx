@@ -5,7 +5,7 @@ import ProgressCard from '../../components/progressCard/progressCard';
 import DescriptionCard from '../../components/descriptionCard/descriptionCard';
 
 const Status = (props) => {
-	const [data, setData] = useState({});
+	const [data, setData] = useState([]);
 	const [status, setStatus] = useState(0);
 
 	useEffect(() => {
@@ -16,13 +16,19 @@ const Status = (props) => {
 		};
 		axios.get(`/complaints/${props.match.params.id}`, config).then((json) => {
 			setData(json.data);
-			console.log(json.data);
 		});
 		axios.get(`/status/${props.match.params.id}`, config).then((json) => {
 			setStatus(json.data);
 		});
 	}, []);
-	console.log(data)
+	const getDate = () => {
+		try{
+			const date = data.createdAt.substring(0, 10)
+			return date
+		}catch(err){
+			return ''
+		}
+	}
 	return (
 		<div className='status'>
 			<div className='progress-div'>
@@ -32,7 +38,7 @@ const Status = (props) => {
 				<div className='ress-div'>
 					<DescriptionCard
 						by={data.complainant}
-						date={data.createdAt}
+						date={getDate()}
 						title={data.title}
 						address={data.complainant_address}
 						description={data.description}

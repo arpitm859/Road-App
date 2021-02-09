@@ -27,21 +27,21 @@ const Complains = () => {
 	const [type, setType] = useState();
 	const [emergency,setEmergency] = useState();
 
-	const [title, setTitle] = useState();
-	const [description, setDescription] = useState();
-	const [house, setHouse] = useState();
-	const [street, setStreet] = useState();
-	const [area, setArea] = useState();
-	const [pincode, setPincode] = useState();
-	const [landmark, setLandmark] = useState();
-	const [city, setCity] = useState();
+	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
+	const [house, setHouse] = useState('');
+	const [street, setStreet] = useState('');
+	const [area, setArea] = useState('');
+	const [pincode, setPincode] = useState('');
+	const [landmark, setLandmark] = useState('');
+	const [city, setCity] = useState('');
 
-	const [chouse, setCHouse] = useState();
-	const [cstreet, setCStreet] = useState();
-	const [carea, setCArea] = useState();
-	const [cpincode, setCPincode] = useState();
-	const [clandmark, setCLandmark] = useState();
-	const [ccity, setCCity] = useState();
+	const [chouse, setCHouse] = useState('');
+	const [cstreet, setCStreet] = useState('');
+	const [carea, setCArea] = useState('');
+	const [cpincode, setCPincode] = useState('');
+	const [clandmark, setCLandmark] = useState('');
+	const [ccity, setCCity] = useState('');
 	const [image, setImage] = useState();
 	
 	const handleChange = (event) => {

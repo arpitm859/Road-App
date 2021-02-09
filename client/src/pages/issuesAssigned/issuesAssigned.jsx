@@ -11,7 +11,6 @@ const IssuesAssigned = () => {
 				Authorization: 'Bearer ' + localStorage.getItem('token'),
 			},
 		};
-		
 		axios.get('/issues', config).then((json) => {
 			setData(json.data);
 		});
@@ -32,7 +31,6 @@ const IssuesAssigned = () => {
 					},
 					config
 				);
-				console.log(res);
 				window.location.reload();
 			} catch (err) {
 				console.error(err.response.data);

@@ -1,6 +1,4 @@
 import { React, useState } from 'react';
-import JqueryReactAutocomplete from 'jquery-react-autocomplete';
-import { axios } from 'axios';
 
 const SearchBar = () => {
 	const [input, setinput] = useState();

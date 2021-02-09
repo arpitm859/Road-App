@@ -1,18 +1,18 @@
 .layout {
-      display: flex;
-      flex-direction: row;
-      width: 100vw;
-      height:100vh;
-      overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	height: 100vh;
+	overflow: hidden;
 }
 
-.chartContainer{
-      background-color: white;
-      /* width:50vw;
-      height:40vh; */
-      margin:3rem;
-      border-color: black;
-      border-width: medium;
+.chartContainer {
+	background-color: white;
+	margin: 3rem;
+	margin-top: 5rem;
+	border-color: black;
+	border-width: medium;
 }
 
-
+.chartjs-render-monitor {
+	width: 40vw;
+}

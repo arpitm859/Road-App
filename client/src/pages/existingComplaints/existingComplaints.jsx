@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react';
 import './existingComplaints.css';
 import axios from 'axios';
 import ComplainCard from '../../components/complainCard/complainCard';
-import { Pagination } from 'antd';
 import SearchBar from '../../components/searchBar/searchBar';
 
 const ExistingComplaints = () => {
@@ -10,21 +9,18 @@ const ExistingComplaints = () => {
 	const [data, setData] = useState([]);
 	const filtered = [];
 
-	useEffect( async () => {
+	useEffect(() => {
 		const config = {
 			headers: {
 				Authorization: 'Bearer ' + localStorage.getItem('token'),
 			},
 		};
-		await axios.get('/complaints/all', config).then((json) => {
-			console.log(json);
-			console.log(json.data);
+		axios.get('/complaints/all', config).then((json) => {
 			json.data.map((complaint) => {
 				if(complaint.status!==11){
 					filtered.push(complaint)
 				}
 			})
-			console.log(filtered);
 			setData(filtered);
 		});
 	}, []);
