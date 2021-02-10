@@ -16,6 +16,7 @@
     "jquery-react-autocomplete": "^0.1.4",
     "jwt-decode": "^3.1.2",
     "material-ui": "^0.20.2",
+    "mdbreact": "^5.0.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-chartjs-2": "^2.11.1",

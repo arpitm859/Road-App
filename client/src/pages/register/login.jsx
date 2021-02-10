@@ -4,8 +4,11 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setCurrentUser, setAuth } from "../../redux/user/user.actions";
+import image from './loginImage.jpg';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 
 const Login = ({ setCurrentUser, setAuth }) => {
+
 	const history = useHistory();
 	const [loginData, setLogin] = useState({
 		phoneNumber: '',
@@ -31,53 +34,52 @@ const Login = ({ setCurrentUser, setAuth }) => {
 			console.error(err);
 		}
 	};
+
+	const imageStyle = {
+		width: '50vw',
+		height: '100vh'
+	}
+
 	return (
-		<div style={{ width: '100vw', height: '100vh', backgroundColor: 'black' }}>
-			<h1
-				className='heading'
-				style={{ color: 'white', paddingTop: '4rem', paddingBottom: '0px' }}
-			>
-				Bombay Municipal Corporation (Road Department)
-			</h1>
-			<div className='main-card'>
-				<div className='column'>
-					<div className='login-card'>
-						<h1 className='heading' style={{ color: 'white' }}>
-							Login
-						</h1>
-						<div className='column'>
-							<input
-								type='text'
-								placeholder='Enter Phone Number'
-								name='phoneNumber'
-								value={phoneNumber}
-								onChange={(e) => onChange(e)}
-								required
-							/>
-						</div>
-						<div className='column'>
-							<input
-								type='password'
-								placeholder='Enter Password'
-								name='password'
-								value={password}
-								onChange={(e) => onChange(e)}
-								required
-							/>
-						</div>
-						<div className='column'>
-							<button
-								type='button'
-								className='btn btn-primary'
-								onClick={(e) => onSubmit(e)}
-							>
-								Login
-							</button>
-						</div>
-						<Link to='/register' style={{ color: 'white' }}>
-							Don't have an account? Sign Up
-						</Link>
-					</div>
+		<div className="divider">
+			<div>
+				<img src={image} alt="traffic-image" style={imageStyle}/>
+			</div>
+			<div className="loginDivider">
+				<div className="loginCard">
+					<MDBContainer>
+						<MDBRow>
+							<MDBCol>	
+								<form>
+									<p className="h4 text-center mb-4" style={{fontSize:'35px'}}>Sign in</p>
+									<label htmlFor="defaultFormRegisterNameEx" className="grey-text" style={{textAlign:'left'}}>
+										Enter Phone Number </label>
+											<input
+												className="form-control"
+												id="textInput"
+												type='text'
+												placeholder='Enter Phone Number'
+												name='phoneNumber'
+												value={phoneNumber}
+												onChange={(e) => onChange(e)}
+												required />
+									<label htmlFor="defaultFormLoginPasswordEx" className="grey-text" >
+											Enter Password </label>
+											<input
+												className="form-control"
+												id="passwordInput"
+												type='password'
+												placeholder='Enter Password'
+												name='password'
+												value={password}
+												onChange={(e) => onChange(e)}
+												required />
+
+											<MDBBtn color="primary" type="submit" onClick={(e) => onSubmit(e)}>Login</MDBBtn>
+								</form>
+							</MDBCol>
+						</MDBRow>
+					</MDBContainer>
 				</div>
 			</div>
 		</div>
