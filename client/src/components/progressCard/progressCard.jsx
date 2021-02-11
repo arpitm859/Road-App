@@ -15,7 +15,7 @@ const ProgressCard = ({ status, onSubmit }) => {
 	};
 	return (
 		<div>
-			<Card id='progress-card' title='Complain Status' bordered={true}>
+			<Card id='progress-card' title='Complaint Status' bordered={true}>
 				<Steps
 					direction='vertical'
 					current={status}

@@ -24,23 +24,21 @@
 	display: flex;
 	padding: 2rem 0.5rem 1rem 0.5rem;
 }
-/* #E6E6E6 */
-#textInput {
-	width: 15rem;
-	padding: 12px 20px;
-	margin-bottom: 30px;
-	/* display: inline-block; */
-	box-sizing: border-box;
-	border-radius: 5px;
+
+#textInput{
+    width: 15rem;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
-#passwordInput {
-	width: 15rem;
-	padding: 12px 20px;
-	margin-bottom: 30px;
-	/* display: inline-block; */
-	box-sizing: border-box;
-	border-radius: 5px;
+#passwordInput{
+    width: 15rem;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .labels {
