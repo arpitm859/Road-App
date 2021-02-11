@@ -16,31 +16,31 @@ var issueRouter = express.Router();
 issueRouter.route('/')
     .get(authenticate.verifyUser, (req, res, next)=>{
         User.findById(req.user._id).then(user=>{
-            if(user.gov){
-                Complaint.find({}).then(complaints=>{
-                    let gov_arr = [];
-                    for (x in complaints){
-                        if(complaints[x].status == 0 || complaints[x].status == 1 || complaints[x].status == 2 || complaints[x].status == 6 || complaints[x].status == 9 || complaints[x].status == 10 ){
-                            gov_arr.push(complaints[x])
+            if(user.gov || user.agency){
+                if(user.gov){
+                    Complaint.find({}).then(complaints=>{
+                        let gov_arr = [];
+                        for (x in complaints){
+                            if(complaints[x].status == 0 || complaints[x].status == 1 || complaints[x].status == 2 || complaints[x].status == 6 || complaints[x].status == 9 || complaints[x].status == 10 ){
+                                gov_arr.push(complaints[x])
+                            }
                         }
-                    }
-                    res.statusCode=200;
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(gov_arr)
-                })
-            }if(user.agency){
-                Complaint.find({}).then(complaints=>{
-                    let agn_arr = [];
-                    for (x in complaints){
-                        if(complaints[x].status == 0 || complaints[x].status == 3 || complaints[x].status == 4 || complaints[x].status == 5 || complaints[x].status == 7 || complaints[x].status == 8 ){
-                            agn_arr.push(complaints[x])
+                    })
+                }if(user.agency){
+                    Complaint.find({}).then(complaints=>{
+                        let agn_arr = [];
+                        for (x in complaints){
+                            if(complaints[x].status == 0 || complaints[x].status == 3 || complaints[x].status == 4 || complaints[x].status == 5 || complaints[x].status == 7 || complaints[x].status == 8 ){
+                                agn_arr.push(complaints[x])
+                            }
                         }
-                    }
-                    res.statusCode=200;
-                    res.setHeader('Content-Type', 'application/json');
-                    res.json(agn_arr)
-                })
-            }else{
+                    })
+                }
+                res.statusCode=200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(agn_arr)
+            }
+            else{
                 res.statusCode=401;
                 res.send('Unauthorized')
             }
@@ -54,6 +54,9 @@ issueRouter.route('/resolve')
         issue_id = req.body.issue_id;
         Complaint.findById(issue_id).then(issue=>{
             issue.status = issue.status + 1;
+            if(issue.status >= 11) {
+                issue.resolved = true;
+            }
             issue.save().then(issue=>{
                 res.json(issue)
             })
