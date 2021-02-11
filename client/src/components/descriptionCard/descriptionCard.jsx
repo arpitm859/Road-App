@@ -22,23 +22,23 @@ const DescriptionCard = ({ by, date, title, decription, address, url }) => {
 					{isImage(url)}
 					<div className='desc'>
 						<div className='info'>
-							<span className='props'>BY: </span>
+							<span className='props'>Complainant Name: </span>
 							<span className='prop'>{by}</span>
 						</div>
 						<div className='info'>
-							<span className='props'>TITLE: </span>
+							<span className='props'>Title: </span>
 							<span className='prop'>{title}</span>
 						</div>
 						<div className='info'>
-							<span className='props'>DESCRIPTION: </span>
+							<span className='props'>Description: </span>
 							<span className='prop'>{decription}</span>
 						</div>
 						<div className='info'>
-							<span className='props'>ADDRESS: </span>
+							<span className='props'>Address: </span>
 							<span className='prop'>{address}</span>
 						</div>
 						<div className='info'>
-							<span className='props'>DATED: </span>
+							<span className='props'>Dated: </span>
 							<span className='prop'>{date}</span>
 						</div>
 					</div>
