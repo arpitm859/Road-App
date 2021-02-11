@@ -8,7 +8,7 @@ var searchRouter = express.Router();
 searchRouter.route('/:query')
     .get(async (req, res, next) => {
         try {
-            let result = await Complaint.aggregate([
+            let results = await Complaint.aggregate([
                 {
                     '$search': {
                         'autocomplete': {
@@ -19,8 +19,14 @@ searchRouter.route('/:query')
                     }
                 }
             ]);
-            console.log(result);
-            res.send(result);
+            let searchResults = [];
+            for(x in results){
+                if(!results[x].resolved){
+                    searchResults.push(results[x]);
+                }
+            }
+            console.log(searchResults);
+            res.send(searchResults);
         } catch (err) {
             console.log(err.message);
             res.status(500).send({ message: err.message })
