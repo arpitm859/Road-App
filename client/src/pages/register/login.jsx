@@ -17,7 +17,9 @@ const Login = ({ setCurrentUser, setAuth }) => {
 	const { phoneNumber, password } = loginData;
 	const onChange = (e) =>
 		setLogin({ ...loginData, [e.target.name]: e.target.value });
+		
 	const onSubmit = async () => {
+		console.log("Submit clicked")
 		const newUser = {
 			username: phoneNumber,
 			password: password,
