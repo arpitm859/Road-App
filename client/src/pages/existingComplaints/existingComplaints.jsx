@@ -8,7 +8,16 @@ const ExistingComplaints = () => {
 	let id = '';
 	const [data, setData] = useState([]);
 	const filtered = [];
-
+	const [input, setinput] = useState();
+	const [complain, setComplain] = useState();
+	const handleSource = async (value) => {
+		let data = await fetch(`http://localhost:5000/search/${value.target.value}`);
+		console.log(value.target.value);
+		data.json().then((result) => {
+			setComplain(result);
+			console.log(complain);
+		});
+	};
 	useEffect(() => {
 		const config = {
 			headers: {
@@ -17,13 +26,21 @@ const ExistingComplaints = () => {
 		};
 		axios.get('/complaints/all', config).then((json) => {
 			json.data.map((complaint) => {
-				if(complaint.status!==11){
-					filtered.push(complaint)
+				if (complaint.status < 11) {
+					filtered.push(complaint);
 				}
-			})
+			});
 			setData(filtered);
 		});
 	}, []);
+	const getDate = (at) => {
+		try {
+			const date = at.substring(0, 10);
+			return date;
+		} catch (err) {
+			return '';
+		}
+	};
 	const renderCards = () => {
 		const onSubmit = async (_id) => {
 			try {
@@ -44,28 +61,51 @@ const ExistingComplaints = () => {
 				console.error(err.response.data);
 			}
 		};
-		return data.map((complaint) => {
-			id = complaint._id;
-
-			return (
-				<>
-					<ComplainCard
-						date={complaint.createdAt.substring(0, 10)}
-						title={complaint.title}
-						id={id}
-						description={complaint.description}
-						address={complaint.complaint_address}
-						city={complaint.complaint_city}
-						onSubmit={onSubmit}
-						upvotes={complaint.backer}
-					/>
-				</>
-			);
-		});
+		try {
+			if (complain) {
+				return complain.map((complaint) => {
+					id = complaint._id;
+					return (
+						<>
+							<ComplainCard
+								date={getDate(complaint.createdAt)}
+								title={complaint.title}
+								id={id}
+								description={complaint.description}
+								address={complaint.complaint_address}
+								city={complaint.complaint_city}
+								onSubmit={onSubmit}
+								upvotes={complaint.backer}
+							/>
+						</>
+					);
+				});
+			} else {
+				return data.map((complaint) => {
+					id = complaint._id;
+					return (
+						<>
+							<ComplainCard
+								date={getDate(complaint.createdAt)}
+								title={complaint.title}
+								id={id}
+								description={complaint.description}
+								address={complaint.complaint_address}
+								city={complaint.complaint_city}
+								onSubmit={onSubmit}
+								upvotes={complaint.backer}
+							/>
+						</>
+					);
+				});
+			}
+		} catch (err) {
+			return '';
+		}
 	};
 	return (
 		<div className='complainDiv'>
-			<SearchBar />
+			<SearchBar handleChange={(value) => handleSource(value)} input={input} />
 			{renderCards()}
 		</div>
 	);

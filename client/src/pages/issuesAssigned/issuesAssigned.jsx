@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
-import ComplainCard from '../../components/complainCard/complainCard';
+import MyComplainCard from '../../components/myComplaincards/myComplainCard';
 
 const IssuesAssigned = () => {
 	const [data, setData] = useState([]);
@@ -17,70 +17,36 @@ const IssuesAssigned = () => {
 	}, []);
 
 	const renderCards = () => {
-		const onSubmit = async (_id) => {
-			try {
-				const config = {
-					headers: {
-						Authorization: 'Bearer ' + localStorage.getItem('token'),
-					},
-				};
-				const res = await axios.post(
-					'/issues/resolve',
-					{
-						issue_id: _id,
-					},
-					config
-				);
-				window.location.reload();
-			} catch (err) {
-				console.error(err.response.data);
-			}
-		};
 
 		return data.map((complaint) => {
 			id = complaint._id;
+			const getDate = () => {
+				try {
+					const date = complaint.createdAt.substring(0, 10);
+					return date;
+				} catch (err) {
+					return '';
+				}
+			};
 			return (
 				<div>
 					<>
-						<ComplainCard
-							date={complaint.createdAt.substring(0, 10)}
+						<MyComplainCard
+							date={getDate()}
 							title={complaint.title}
 							id={id}
 							description={complaint.description}
 							address={complaint.complaint_address}
 							city={complaint.complaint_city}
-							onSubmit={onSubmit}
-							upvotes={complaint.backer}
-						>Status</ComplainCard>
+						>
+							Status
+						</MyComplainCard>
 					</>
-					{/*<tr>
-					<td>{complaint.createdAt.substring(0, 10)}</td>
-					<td>
-						<Link to={`/status/${id}`} style={{ color: 'white' }}>
-							{complaint.title}
-						</Link>
-					</td>
-					<td>{complaint.description}</td>
-					<td>{complaint.complaint_address}</td>
-					<td>
-						{complaint.status}{' '}
-						<i
-							className='arrow up'
-							onClick={() => {
-								onSubmit(complaint._id);
-							}}
-						></i>
-					</td>
-						</tr>*/}
 				</div>
 			);
 		});
 	};
-	return (
-		<div style={{ height: '100vh'}}>
-			{renderCards()}
-		</div>
-	);
+	return <div className='complainDiv'>{renderCards()}</div>;
 };
 
 export default IssuesAssigned;

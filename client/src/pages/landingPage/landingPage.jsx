@@ -1,5 +1,4 @@
 import { React } from 'react';
-// import { Carousel } from 'antd';
 import image1 from './Road1.jpg';
 import image2 from './Road2.jpg';
 import image3 from './Road3.jpg';
@@ -9,10 +8,8 @@ import { Pie } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './landingPage.css';
-import {Card} from 'antd';
 
 const LandingPage = () => {
-
 	let solved = 0;
 	let ongoing = 0;
 	let registered = 0;
@@ -40,7 +37,7 @@ const LandingPage = () => {
 			setDataPoints([solved, ongoing, registered]);
 			setEComplaints(comp);
 		});
-	},[]);
+	}, []);
 
 	const data = {
 		labels: ['Solved', 'In Progress', 'Registered'],
@@ -50,7 +47,7 @@ const LandingPage = () => {
 				data: datapoints,
 				backgroundColor: ['#82BC6A', '#1DCBCD', '#D96489'],
 			},
-		]
+		],
 	};
 
 	const pieOptions = {
@@ -62,24 +59,22 @@ const LandingPage = () => {
 		},
 		title: {
 			display: true,
-			fontSize:20,
-			text: 'Analysis of Complaints'
-		}
+			fontSize: 20,
+			text: 'Analysis of Complaints',
+		},
 	};
 
 	const showComplaints = () => {
-		try{
-			return(
-					eComplaints.map(complaint => (
-						<div className="scroll">
-							Resolved {complaint.title} at {complaint.complaint_street}
-						</div>
-					))
-			)
-		}catch(err){
+		try {
+			return eComplaints.map((complaint) => (
+				<div className='scroll'>
+					Resolved {complaint.title} at {complaint.complaint_street}
+				</div>
+			));
+		} catch (err) {
 			console.log(err);
 		}
-	}
+	};
 
 	return (
 		<div className='layout'>
@@ -101,10 +96,8 @@ const LandingPage = () => {
 			</div>
 			<div className='rollingSections'>
 				<div className='rollingComplaint'>
-					<div className="heading">
-						Successfully solved Complaints!
-					</div>
-						{showComplaints()}
+					<div className='heading'>Successfully solved Complaints!</div>
+					{showComplaints()}
 				</div>
 				<div className='chartContainer'>
 					<Pie data={data} options={pieOptions} width={500} height={300} />

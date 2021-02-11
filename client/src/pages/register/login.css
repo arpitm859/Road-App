@@ -1,28 +1,28 @@
-.divider{
-    display: flex  !important;
-    flex-direction: row;
-    overflow: hidden;
+.divider {
+	display: flex !important;
+	flex-direction: row;
+	overflow: hidden;
 }
 
-.loginDivider{
-    background-color: #9fc7fd;
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loginDivider {
+	background-color: #9fc7fd;
+	width: 50vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.loginCard{
-    background-color: 	#FFFFFF;
-    width: 30vw;
-    margin: 0 auto;
-    top: 50%;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 2rem 0.5rem 1rem 0.5rem;
+.loginCard {
+	background-color: #ffffff;
+	width: 30vw;
+	margin: 0 auto;
+	top: 50%;
+	border-radius: 10px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	padding: 2rem 0.5rem 1rem 0.5rem;
 }
 
 #textInput{
@@ -41,11 +41,10 @@
     border-radius: 5px;
 }
 
-.labels{
-    align-self: left !important;
+.labels {
+	align-self: left !important;
 }
 
-.grey-text{
-    padding-top: 1rem;
+.grey-text {
+	padding-top: 1rem;
 }
-

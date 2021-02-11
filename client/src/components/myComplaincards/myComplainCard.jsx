@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Progress, Card } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './myComplainCards.css';
 
 const MyComplainCard = ({ date, title, id, address, city }) => {
 
@@ -15,10 +16,11 @@ const MyComplainCard = ({ date, title, id, address, city }) => {
 		axios.get(`/status/${id}`, config).then((json) => {
 			setProgress(json.data * 10);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
-		<div className='complain-card' style={{minHeight:'100vh'}}>
+		<div className='complain-card'>
 			<Card id='card' title={title} bordered={true}>
 				<Link to={`/status/${id}`}>
 					<div>
