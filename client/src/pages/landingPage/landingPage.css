@@ -5,31 +5,37 @@
 	overflow: hidden;
 }
 
-.carousel{
+.carousel {
 	display: flex;
 	align-items: center;
 }
+#landing-carousel {
+	margin-left: 2rem;
+	width: 50vw;
+	height: 60vh;
+	overflow: hidden;
+}
 
 .chartContainer {
-	background-color: #BEE2FF;
+	background-color: #bee2ff;
 	margin: 3rem;
 	margin-top: 4rem;
 	/* border-color: black;
 	border-width: medium;
 	border-style: solid; */
-	width:40vw;
+	width: 40vw;
 	height: 50vh;
 	text-align: center;
 }
 
-.rollingSections{
+.rollingSections {
 	display: flex !important;
 	flex-direction: column;
 }
 
-.rollingComplaint{
-	width:40vw;
+.rollingComplaint {
+	width: 40vw;
 	height: 60vh;
-	background-color:#BEE2FF;
+	background-color: #bee2ff;
 	margin: 3rem;
 }

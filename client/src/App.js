@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './pages/register/login.jsx';
@@ -12,8 +12,13 @@ import Status from './pages/status/status.jsx';
 import Navbars from './components/navbar/navbar';
 import GuardedRoute from './components/guardedRoute/guardedRoute';
 import { connect } from 'react-redux';
+import { setAuth } from './redux/user/user.actions';
+import { setCurrentUser } from './redux/user/user.actions';
 
-function App({ userAuth }) {
+function App({ userAuth, setAuth, setCurrentUser }) {
+	useEffect(() => {
+		setAuth();
+	}, []);
 	return (
 		<div className='App'>
 			<Route exact path='/'>
@@ -54,4 +59,9 @@ const mapStateToProps = ({ user }) => ({
 	userAuth: user.userAuth,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+	setAuth: () => dispatch(setAuth()),
+	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
