@@ -41,3 +41,23 @@
     box-sizing: border-box;
     border-radius: 5px;
 }
+
+.labels{
+    align-self: left !important;
+}
+
+.grey-text{
+    padding-top: 1rem;
+}
+
+.registerCard{
+    background-color: 	#FFFFFF;
+    width: 30vw;
+    height: 85vh;
+    margin: 0 auto;
+    top: 50%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
