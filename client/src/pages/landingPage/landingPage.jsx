@@ -14,6 +14,7 @@ const LandingPage = () => {
 	let solved = 0;
 	let ongoing = 0;
 	let registered = 0;
+	let comp = [];
 	const [datapoints, setDataPoints] = useState([]);
 	const [eComplaints, setEComplaints] = useState([]);
 
@@ -29,13 +30,13 @@ const LandingPage = () => {
 					registered += 1;
 				} else if (complaint.resolved === true || complaint.status === 11) {
 					solved += 1;
-					setEComplaints([...eComplaints, complaint]);
+					comp.push(complaint);
 				} else if (complaint.status > 0 && complaint.status < 11) {
 					ongoing += 1;
 				}
 			});
 			setDataPoints([solved, ongoing, registered]);
-			// eslint-disable-next-line array-callback-return
+			setEComplaints(comp);
 		});
 	}, []);
 
@@ -60,16 +61,13 @@ const LandingPage = () => {
 	};
 
 	const showComplaints = () => {
-		return eComplaints.map((complaint) => {
-			console.log(complaint);
-			return (
-				<>
-				<h4>
-					Resolved {complaint.title} at {complaint.complaint_street}
-				</h4>
-				</>
-			);
-		});
+		try {
+			return eComplaints.map((complaint) => (
+				<h5 key={complaint.title}>{complaint.title}</h5>
+			));
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	return (

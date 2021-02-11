@@ -1,5 +1,6 @@
 import { React } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'antd';
 import './progressCard.css';
 import { Steps, Card } from 'antd';
 const { Step } = Steps;
@@ -14,7 +15,7 @@ const ProgressCard = ({ status, onSubmit, currentUser }) => {
 			return 'In Progress';
 		}
 	};
-	
+
 	return (
 		<div>
 			<Card id='progress-card' title='Complaint Status' bordered={true}>
@@ -74,21 +75,11 @@ const ProgressCard = ({ status, onSubmit, currentUser }) => {
 						style={{ color: 'white' }}
 					/>
 				</Steps>
-				{currentUser.agency ? (
-					[0, 3, 4, 5, 7, 8].indexOf(status) > 0 ? (
-						<button onClick={onSubmit} />
-					) : (
-						''
-					)
-				) : (
-					''
-				)}
-				{currentUser.gov ? (
-					[0, 1, 2, 6, 9, 10].indexOf(status) > 0 ? (
-						<button onClick={onSubmit} />
-					) : (
-						''
-					)
+				{(currentUser.agency && [0, 3, 4, 5, 7, 8].indexOf(status) > 0) ||
+				(currentUser.gov && [0, 1, 2, 6, 9, 10].indexOf(status) > 0) ? (
+					<Button type='primary' shape='round' onClick={onSubmit}>
+						Resolve Status
+					</Button>
 				) : (
 					''
 				)}

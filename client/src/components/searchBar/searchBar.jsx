@@ -1,23 +1,18 @@
-import { React, useState } from 'react';
+import { React } from 'react';
+import { Input } from 'antd';
+import './searchBar.css';
 
-const SearchBar = () => {
-	const [input, setinput] = useState();
-	const [complain, setComplain] = useState({});
-	const handleSourceCitySelect = async (value) => {
-		let data = await fetch(`http://localhost:5000/search/${value.target.value}`);
-		console.log(value.target.value)
-		data.json().then((result) => {
-			setComplain(result[0]);
-			console.log(result[0]);
-		});
-	};
+const SearchBar = ({handleChange, input}) => {
 
 	return (
 		<div className='ui-widget'>
-			<input
+			<Input
+				id="search-bar"
 				placeholder='search'
 				value={input}
-				onChange={(value) => handleSourceCitySelect(value)}
+				enterButton="Search"
+				size="large"
+				onChange={handleChange}
 			/>
 		</div>
 	);
