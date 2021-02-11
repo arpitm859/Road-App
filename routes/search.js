@@ -2,6 +2,7 @@ const { response } = require('express');
 var express = require('express');
 const Complaint = require('../models/complaint');
 const User = require('../models/user');
+const authenticate = require('../authenticate');
 
 var searchRouter = express.Router();
 
@@ -33,6 +34,24 @@ searchRouter.route('/:query')
         }
     })
 
+searchRouter.route('/')
+.get(authenticate.verifyUser, (req, res, next) => {
+	Complaint.find({})
+		.then((complaints) => {
+            let searchResults=[];
+            for(x in complaints){
+                if(!complaints[x].resolved){
+                    searchResults.push(complaints[x]);
+                }
+            }
+			res.statusCode = 200;
+			res.setHeader('Content-Type', 'application/json');
+			res.json(searchResults);
+		})
+		.catch((err) => {
+			next(err);
+		});
+});
 
 module.exports = searchRouter;
 // http://locahost:5000/search/nerul
