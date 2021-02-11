@@ -89,7 +89,8 @@ complaintRouter
 			});
 	});
 
-complaintRouter.route('/all').get(authenticate.verifyUser, (req, res, next) => {
+complaintRouter.route('/all')
+	.get(authenticate.verifyUser, (req, res, next) => {
 	Complaint.find({})
 		.then((complaints) => {
 			res.statusCode = 200;
