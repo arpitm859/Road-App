@@ -17,17 +17,37 @@ issueRouter.route('/')
     .get(authenticate.verifyUser, (req, res, next)=>{
         User.findById(req.user._id).then(user=>{
             if(user.gov || user.agency){
-                let arr=[];
-                if(user.gov){
+                if(user.gov&&user.agency){
+                    let arr = [];
                     Complaint.find({}).then(complaints=>{
+                        for (x in complaints){
+                            if(complaints[x].status < 11){
+                                arr.push(complaints[x])
+                            }
+                        }
+                        res.statusCode=200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(arr)
+                    })
+                }
+                else if(user.gov){
+                    console.log('Inside government');
+                    Complaint.find({}).then(complaints=>{
+                        let arr = [];
                         for (x in complaints){
                             if(complaints[x].status == 0 || complaints[x].status == 1 || complaints[x].status == 2 || complaints[x].status == 6 || complaints[x].status == 9 || complaints[x].status == 10 ){
                                 arr.push(complaints[x]);
                             }
                         }
+                        res.statusCode=200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(arr)
                     })
-                }if(user.agency){
+                }
+                else if(user.agency){
+                    console.log('Inside agency');
                     Complaint.find({}).then(complaints=>{
+                        let arr = [];
                         for (x in complaints){
                             if(complaints[x].status == 0 || complaints[x].status == 3 || complaints[x].status == 4 || complaints[x].status == 5 || complaints[x].status == 7 || complaints[x].status == 8 ){
                                 arr.push(complaints[x]);
