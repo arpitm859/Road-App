@@ -22,7 +22,7 @@ issueRouter.route('/')
                     Complaint.find({}).then(complaints=>{
                         for (x in complaints){
                             if(complaints[x].status == 0 || complaints[x].status == 1 || complaints[x].status == 2 || complaints[x].status == 6 || complaints[x].status == 9 || complaints[x].status == 10 ){
-                                arr.push(complaints[x])
+                                arr.push(complaints[x]);
                             }
                         }
                     })
@@ -30,14 +30,14 @@ issueRouter.route('/')
                     Complaint.find({}).then(complaints=>{
                         for (x in complaints){
                             if(complaints[x].status == 0 || complaints[x].status == 3 || complaints[x].status == 4 || complaints[x].status == 5 || complaints[x].status == 7 || complaints[x].status == 8 ){
-                                arr.push(complaints[x])
+                                arr.push(complaints[x]);
                             }
                         }
+                        res.statusCode=200;
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json(arr)
                     })
                 }
-                res.statusCode=200;
-                res.setHeader('Content-Type', 'application/json');
-                res.json(arr)
             }
             else{
                 res.statusCode=401;
