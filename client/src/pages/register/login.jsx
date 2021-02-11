@@ -14,6 +14,7 @@ const Login = ({ setCurrentUser, setAuth }) => {
 		phoneNumber: '',
 		password: '',
 	});
+	
 	const { phoneNumber, password } = loginData;
 	const onChange = (e) =>
 		setLogin({ ...loginData, [e.target.name]: e.target.value });
@@ -52,31 +53,31 @@ const Login = ({ setCurrentUser, setAuth }) => {
 							<MDBCol>	
 								<form>
 									<p className="h4 text-center mb-4" style={{fontSize:'35px'}}>Sign in</p>
-									<label htmlFor="defaultFormRegisterNameEx" className="grey-text" style={{textAlign:'left'}}>
+									<label htmlFor="defaultFormRegisterNameEx" className="grey-text" className="labels">
 										Enter Phone Number </label>
 											<input
 												className="form-control"
-												id="textInput"
 												type='text'
 												placeholder='Enter Phone Number'
 												name='phoneNumber'
 												value={phoneNumber}
 												onChange={(e) => onChange(e)}
 												required />
-									<label htmlFor="defaultFormLoginPasswordEx" className="grey-text" >
-											Enter Password </label>
-											<input
-												className="form-control"
-												id="passwordInput"
-												type='password'
-												placeholder='Enter Password'
-												name='password'
-												value={password}
-												onChange={(e) => onChange(e)}
-												required />
 
-											<MDBBtn color="primary" type="submit" onClick={(e) => onSubmit(e)}>Login</MDBBtn>
-											<Link to="/register" style={{ color:"white" }}>Don't have an account? Sign Up</Link>
+												<label htmlFor="defaultFormLoginPasswordEx" className="grey-text" >
+														Enter Password </label>
+														<input
+															className="form-control"
+															type='password'
+															placeholder='Enter Password'
+															name='password'
+															value={password}
+															onChange={(e) => onChange(e)}
+															required />
+
+											<MDBBtn color="primary" type="submit" onClick={(e) => onSubmit(e)} style={{margin:'1.5rem'}} >Login</MDBBtn>
+											<br/>
+											<Link to="/register" style={{ color:"grey", marginTop:'1rem'}}>Don't have an account? Sign Up</Link>
 								</form>
 							</MDBCol>
 						</MDBRow>

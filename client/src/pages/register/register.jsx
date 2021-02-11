@@ -65,14 +65,40 @@ const Register = () => {
 				<img src={image} alt="traffic-image" style={imageStyle}/>
 			</div>
 			<div className="loginDivider">
-				<div className="loginCard">
+				<div className="registerCard">
 					<MDBContainer>
 						<MDBRow>
 							<MDBCol>
+								<form>
 								<p className="h4 text-center mb-4" style={{fontSize:'35px'}}>Register</p>
 
-								<label htmlFor="defaultFormRegisterNameEx" className="grey-text">	Enter your First Name</label>
+								<label  className="grey-text">Enter your First Name</label>
 								<input type="text" placeholder="Enter First Name" name="firstname" className="form-control" value={firstname} onChange={e => onChange(e)} required />  
+
+								<label  className="grey-text">Enter your Last Name</label>
+								<input type="text" placeholder="Enter Last Name" name="lastname" className="form-control"  value={lastname} onChange={e => onChange(e)} required />
+
+								<label className="grey-text">Enter your Email</label>
+								<input type="email" placeholder="Enter Email ID" className="form-control" name="email" value={email} onChange={e => onChange(e)}/> 
+
+								<label  className="grey-text">Enter Phone Number</label>
+								<input type="text" placeholder="Enter Phone Number" className="form-control" name="phoneNumber" value={phoneNumber} onChange={e => onChange(e)} required />
+
+								<label className="grey-text"> Choose Status type </label>
+								<select id="stakeholder-field" className="stakeholder form-control" name="stakeholder" onChange={e => onChange(e)} value={stakeholder}>
+									<option value="" disabled selected>Enter Membership Type</option>
+									<option value="public">General Citizen</option>
+									<option value="agency">Member of agency</option>
+									<option value="gov">Government Official</option>
+								</select>
+
+								<label className="grey-text"> Enter password </label>
+								<input type="password" placeholder="Enter Password" name="password" className="form-control" onChange={e => onChange(e)} value={password}required />
+
+								<MDBBtn color="primary" type="submit" onClick={(e) => onSubmit(e)} style={{margin:'1.5rem'}}>Register</MDBBtn>
+								<br />
+								<Link to="/" style={{ color:"grey"}}>Already have an account? Login</Link>
+								</form>
 							</MDBCol>
 						</MDBRow>
 					</MDBContainer>
