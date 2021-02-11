@@ -1,6 +1,7 @@
 .divider{
     display: flex  !important;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .loginDivider{
@@ -15,13 +16,13 @@
 .loginCard{
     background-color: 	#FFFFFF;
     width: 30vw;
-    height: 50vh;
     margin: 0 auto;
     top: 50%;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
     display: flex;
+    padding: 2rem 0.5rem 1rem 0.5rem;
 }
 
 #textInput{
@@ -50,14 +51,3 @@
     padding-top: 1rem;
 }
 
-.registerCard{
-    background-color: 	#FFFFFF;
-    width: 30vw;
-    height: 85vh;
-    margin: 0 auto;
-    top: 50%;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-}

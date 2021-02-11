@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { setCurrentUser, setAuth } from '../../redux/user/user.actions';
 import image from './loginImage.jpg';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import FormInput from '../../components/formInput/formInput.component'
 
 const Login = ({ setCurrentUser, setAuth }) => {
 	const history = useHistory();
@@ -54,14 +55,30 @@ const Login = ({ setCurrentUser, setAuth }) => {
 								<p className='h4 text-center mb-4' style={{ fontSize: '35px' }}>
 									Sign in
 								</p>
-								<label
+								{/* <label
 									htmlFor='defaultFormRegisterNameEx'
 									className='grey-text'
 									className='labels'
 								>
 									Enter Phone Number{' '}
-								</label>
-								<input
+								</label> */}
+								<FormInput
+									type='text'
+									name='phoneNumber'
+									value={phoneNumber}
+									onChange={onChange}
+									label='Enter Phone Number'
+									required
+								/>
+								<FormInput
+									type='password'
+									name='password'
+									value={password}
+									onChange={onChange}
+									label='Enter Password'
+									required
+								/>
+								{/* <input
 									className='form-control'
 									type='text'
 									placeholder='Enter Phone Number'
@@ -69,9 +86,9 @@ const Login = ({ setCurrentUser, setAuth }) => {
 									value={phoneNumber}
 									onChange={(e) => onChange(e)}
 									required
-								/>
+								/> */}
 
-								<label htmlFor='defaultFormLoginPasswordEx' className='grey-text'>
+								{/* <label htmlFor='defaultFormLoginPasswordEx' className='grey-text'>
 									Enter Password{' '}
 								</label>
 								<input
@@ -82,7 +99,7 @@ const Login = ({ setCurrentUser, setAuth }) => {
 									value={password}
 									onChange={(e) => onChange(e)}
 									required
-								/>
+								/> */}
 
 								<MDBBtn
 									color='primary'

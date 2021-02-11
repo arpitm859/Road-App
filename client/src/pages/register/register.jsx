@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import image from './loginImage.jpg';
+import FormInput from '../../components/formInput/formInput.component';
 
 const Register = () => {
 	const history = useHistory();
@@ -65,15 +66,54 @@ const Register = () => {
 				<img src={image} alt='traffic-image' style={imageStyle} />
 			</div>
 			<div className='loginDivider'>
-				<div className='registerCard'>
+				<div className='loginCard'>
 					<MDBContainer>
 						<MDBRow>
 							<MDBCol>
 								<p className='h4 text-center mb-4' style={{ fontSize: '35px' }}>
 									Register
 								</p>
-
-								<label className='grey-text'>Enter your First Name</label>
+								<FormInput
+									type='email'
+									name='firstname'
+									value={firstname}
+									onChange={onChange}
+									label='Enter Email ID'
+									required
+								/>
+								<FormInput
+									type='email'
+									name='lastname'
+									value={lastname}
+									onChange={onChange}
+									label='Enter Email ID'
+									required
+								/>
+								<FormInput
+									type='email'
+									name='email'
+									value={email}
+									onChange={onChange}
+									label='Enter Email ID'
+									required
+								/>
+								<FormInput
+									type='text'
+									name='phoneNumber'
+									value={phoneNumber}
+									onChange={onChange}
+									label='Enter Phone Number'
+									required
+								/>
+								<FormInput
+									type='password'
+									name='password'
+									value={password}
+									onChange={onChange}
+									label='Enter password'
+									required
+								/>
+								{/* <label className='grey-text'>Enter your First Name</label>
 								<input
 									type='text'
 									placeholder='Enter First Name'
@@ -141,7 +181,7 @@ const Register = () => {
 									onChange={(e) => onChange(e)}
 									value={password}
 									required
-								/>
+								/> */}
 
 								<MDBBtn
 									color='primary'
