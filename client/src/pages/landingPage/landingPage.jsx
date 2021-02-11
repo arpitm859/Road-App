@@ -11,7 +11,6 @@ import axios from 'axios';
 import './landingPage.css';
 
 const LandingPage = () => {
-
 	let solved = 0;
 	let ongoing = 0;
 	let registered = 0;
@@ -61,25 +60,22 @@ const LandingPage = () => {
 	};
 
 	const showComplaints = () => {
-		try{
-			return eComplaints.map((complaint) => {
-				return(
-					<div>
-						<h4>Resolved {complaint.title} at {complaint.complaint_street}</h4>
-					</div>
-				)
-			})
-		}catch(err){
-			console.log(err);
-		}
-	}
+		return eComplaints.map((complaint) => {
+			console.log(complaint);
+			return (
+				<>
+				<h4>
+					Resolved {complaint.title} at {complaint.complaint_street}
+				</h4>
+				</>
+			);
+		});
+	};
 
 	return (
 		<div className='layout'>
 			<div className='carousel'>
-				<Carousel
-					id='landing-carousel'
-				>
+				<Carousel id='landing-carousel'>
 					<Carousel.Item interval={1000}>
 						<img className='d-block w-100' src={image1} alt='First slide' />
 					</Carousel.Item>

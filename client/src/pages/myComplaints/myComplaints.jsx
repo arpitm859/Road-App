@@ -19,7 +19,6 @@ const MyComplaints = () => {
 	}, []);
 	const renderCards = () => {
 		return data.map((complaint) => {
-			console.log(complaint)
 			return (
 				<>
 					<MyComplainCard

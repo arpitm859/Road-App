@@ -1,9 +1,10 @@
 import { React } from 'react';
+import { connect } from 'react-redux';
 import './progressCard.css';
 import { Steps, Card } from 'antd';
 const { Step } = Steps;
 
-const ProgressCard = ({ status, onSubmit }) => {
+const ProgressCard = ({ status, onSubmit, currentUser }) => {
 	const check = (currentStatus, progress) => {
 		if (currentStatus > progress + 1) {
 			return 'Waiting';
@@ -13,6 +14,7 @@ const ProgressCard = ({ status, onSubmit }) => {
 			return 'In Progress';
 		}
 	};
+	
 	return (
 		<div>
 			<Card id='progress-card' title='Complaint Status' bordered={true}>
@@ -72,10 +74,30 @@ const ProgressCard = ({ status, onSubmit }) => {
 						style={{ color: 'white' }}
 					/>
 				</Steps>
-				<button onClick={onSubmit} />
+				{currentUser.agency ? (
+					[0, 3, 4, 5, 7, 8].indexOf(status) > 0 ? (
+						<button onClick={onSubmit} />
+					) : (
+						''
+					)
+				) : (
+					''
+				)}
+				{currentUser.gov ? (
+					[0, 1, 2, 6, 9, 10].indexOf(status) > 0 ? (
+						<button onClick={onSubmit} />
+					) : (
+						''
+					)
+				) : (
+					''
+				)}
 			</Card>
 		</div>
 	);
 };
 
-export default ProgressCard;
+const mapStateToProps = ({ user }) => ({
+	currentUser: user.currentUser,
+});
+export default connect(mapStateToProps)(ProgressCard);
