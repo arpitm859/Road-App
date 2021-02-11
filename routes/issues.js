@@ -28,7 +28,7 @@ issueRouter.route('/')
                     res.setHeader('Content-Type', 'application/json');
                     res.json(gov_arr)
                 })
-            }else if(user.agency){
+            }if(user.agency){
                 Complaint.find({}).then(complaints=>{
                     let agn_arr = [];
                     for (x in complaints){
