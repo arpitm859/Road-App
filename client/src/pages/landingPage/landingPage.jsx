@@ -15,6 +15,7 @@ const LandingPage = () => {
 	let solved = 0;
 	let ongoing = 0;
 	let registered = 0;
+	let comp = [];
 	const [datapoints, setDataPoints] = useState([]);
 	const [eComplaints, setEComplaints] = useState([]);
 
@@ -30,15 +31,15 @@ const LandingPage = () => {
 					registered += 1;
 				} else if (complaint.resolved === true || complaint.status === 11) {
 					solved += 1;
-					setEComplaints([...eComplaints,complaint])
+					comp.push(complaint);
 				} else if (complaint.status > 0 && complaint.status < 11) {
 					ongoing += 1;
 				}
 			});
 			setDataPoints([solved, ongoing, registered]);
-			
+			setEComplaints(comp);
 		});
-	}, []);
+	},[]);
 
 	const data = {
 		labels: ['Solved', 'In Progress', 'Registered'],
@@ -62,13 +63,11 @@ const LandingPage = () => {
 
 	const showComplaints = () => {
 		try{
-			return eComplaints.map((complaint) => {
-				return(
-					<div>
-						<h4>Resolved {complaint.title} at {complaint.complaint_street}</h4>
-					</div>
-				)
-			})
+			return(
+					eComplaints.map(complaint => (
+						<h5 key = {complaint.title}>{complaint.title}</h5>
+					))
+			)
 		}catch(err){
 			console.log(err);
 		}

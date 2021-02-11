@@ -1,6 +1,9 @@
 import { React, useState } from 'react';
+import { Input, Space } from 'antd';
+import './searchBar.css';
 
 const SearchBar = () => {
+
 	const [input, setinput] = useState();
 	const [complain, setComplain] = useState({});
 	const handleSourceCitySelect = async (value) => {
@@ -14,9 +17,12 @@ const SearchBar = () => {
 
 	return (
 		<div className='ui-widget'>
-			<input
+			<Input
+				id="search-bar"
 				placeholder='search'
 				value={input}
+				enterButton="Search"
+				size="large"
 				onChange={(value) => handleSourceCitySelect(value)}
 			/>
 		</div>
