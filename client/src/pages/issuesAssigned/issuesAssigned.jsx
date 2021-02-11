@@ -17,25 +17,6 @@ const IssuesAssigned = () => {
 	}, []);
 
 	const renderCards = () => {
-		const onSubmit = async (_id) => {
-			try {
-				const config = {
-					headers: {
-						Authorization: 'Bearer ' + localStorage.getItem('token'),
-					},
-				};
-				await axios.post(
-					'/issues/resolve',
-					{
-						issue_id: _id,
-					},
-					config
-				);
-				window.location.reload();
-			} catch (err) {
-				console.error(err.response.data);
-			}
-		};
 
 		return data.map((complaint) => {
 			id = complaint._id;
@@ -65,7 +46,7 @@ const IssuesAssigned = () => {
 			);
 		});
 	};
-	return <div style={{ height: '100vh' }}>{renderCards()}</div>;
+	return <div className='complainDiv'>{renderCards()}</div>;
 };
 
 export default IssuesAssigned;

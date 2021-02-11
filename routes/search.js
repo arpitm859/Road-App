@@ -35,7 +35,7 @@ searchRouter.route('/:query')
     })
 
 searchRouter.route('/')
-.get(authenticate.verifyUser, (req, res, next) => {
+.get((req, res, next) => {
 	Complaint.find({})
 		.then((complaints) => {
             let searchResults=[];
