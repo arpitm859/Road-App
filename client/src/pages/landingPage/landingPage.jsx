@@ -1,9 +1,10 @@
 import { React } from 'react';
-import { Carousel } from 'antd';
+// import { Carousel } from 'antd';
 import image1 from './Road1.jpg';
 import image2 from './Road2.jpg';
 import image3 from './Road3.jpg';
 import image4 from './Road4.jpg';
+import Carousel from 'react-bootstrap/Carousel';
 import { Pie } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -38,11 +39,6 @@ const LandingPage = () => {
 			
 		});
 	}, []);
-
-	const carouselStyle = {
-		height: '100%',
-		width: '100% ',
-	};
 
 	const data = {
 		labels: ['Solved', 'In Progress', 'Registered'],
@@ -80,34 +76,26 @@ const LandingPage = () => {
 
 	return (
 		<div className='layout'>
-			<div className="carousel">
+			<div className='carousel'>
 				<Carousel
-					autoplay
-					style={{
-						width: '50vw',
-						height: '50vh',
-						// marginTop: '5rem',
-						marginLeft: '2.5rem',
-					}}
+					id='landing-carousel'
 				>
-					<div>
-						<img style={carouselStyle} src={image1} alt='image 1' />
-					</div>
-					<div>
-						<img style={carouselStyle} src={image2} alt='image2' />
-					</div>
-					<div>
-						<img style={carouselStyle} src={image3} alt='image3' />
-					</div>
-					<div>
-						<img style={carouselStyle} src={image4} alt='image4' />
-					</div>
+					<Carousel.Item interval={1000}>
+						<img className='d-block w-100' src={image1} alt='First slide' />
+					</Carousel.Item>
+					<Carousel.Item interval={500}>
+						<img className='d-block w-100' src={image2} alt='Third slide' />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img className='d-block w-100' src={image3} alt='Third slide' />
+					</Carousel.Item>
+					<Carousel.Item>
+						<img className='d-block w-100' src={image4} alt='Third slide' />
+					</Carousel.Item>
 				</Carousel>
 			</div>
-			<div className="rollingSections">
-				<div className="rollingComplaint">
-					{showComplaints()}
-				</div>
+			<div className='rollingSections'>
+				<div className='rollingComplaint'>{showComplaints()}</div>
 				<div className='chartContainer'>
 					<Pie data={data} options={pieOptions} width={500} height={300} />
 				</div>

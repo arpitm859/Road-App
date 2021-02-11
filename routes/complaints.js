@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 const Complaint = require('../models/complaint');
 const User = require('../models/user');
 const authenticate = require('../authenticate');
-const passport = require('passport');
 const getCoord = require('../maps')
 
 var complaintRouter = express.Router();

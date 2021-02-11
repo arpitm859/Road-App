@@ -50,8 +50,8 @@ const IssuesAssigned = () => {
 							address={complaint.complaint_address}
 							city={complaint.complaint_city}
 							onSubmit={onSubmit}
-							upvotes={complaint.backer.length}
-						/>
+							upvotes={complaint.backer}
+						>Status</ComplainCard>
 					</>
 					{/*<tr>
 					<td>{complaint.createdAt.substring(0, 10)}</td>

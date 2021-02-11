@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import axios from 'axios';
 import { CaretUpOutlined } from '@ant-design/icons';
 import './complainCard.css';
+import { connect } from 'react-redux';
 
 const ComplainCard = ({
 	date,
@@ -14,6 +15,7 @@ const ComplainCard = ({
 	city,
 	onSubmit,
 	upvotes,
+	currentUser,
 }) => {
 	const [progress, setProgress] = useState(0);
 	useEffect(() => {
@@ -38,7 +40,7 @@ const ComplainCard = ({
 				</Link>
 				<Progress percent={progress} status={progress < 100 ? 'active' : ''} />
 				<Button
-					type={upvotes.includes(localStorage.getItem('userID')) ? 'primary' : ''}
+					type={upvotes.includes(currentUser._id) ? 'primary' : ''}
 					shape='round'
 					icon={<CaretUpOutlined />}
 					onClick={() => onSubmit(id)}
@@ -51,4 +53,8 @@ const ComplainCard = ({
 	);
 };
 
-export default ComplainCard;
+const mapStateToProps = ({ user }) => ({
+	currentUser: user.currentUser,
+});
+
+export default connect(mapStateToProps)(ComplainCard);
