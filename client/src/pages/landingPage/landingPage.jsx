@@ -9,6 +9,7 @@ import { Pie } from 'react-chartjs-2';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './landingPage.css';
+import {Card} from 'antd';
 
 const LandingPage = () => {
 
@@ -49,7 +50,7 @@ const LandingPage = () => {
 				data: datapoints,
 				backgroundColor: ['#82BC6A', '#1DCBCD', '#D96489'],
 			},
-		],
+		]
 	};
 
 	const pieOptions = {
@@ -59,13 +60,20 @@ const LandingPage = () => {
 				fontSize: 16,
 			},
 		},
+		title: {
+			display: true,
+			fontSize:20,
+			text: 'Analysis of Complaints'
+		}
 	};
 
 	const showComplaints = () => {
 		try{
 			return(
 					eComplaints.map(complaint => (
-						<h5 key = {complaint.title}>{complaint.title}</h5>
+						<div className="scroll">
+							Resolved {complaint.title} at {complaint.complaint_street}
+						</div>
 					))
 			)
 		}catch(err){
@@ -76,9 +84,7 @@ const LandingPage = () => {
 	return (
 		<div className='layout'>
 			<div className='carousel'>
-				<Carousel
-					id='landing-carousel'
-				>
+				<Carousel id='landing-carousel'>
 					<Carousel.Item interval={1000}>
 						<img className='d-block w-100' src={image1} alt='First slide' />
 					</Carousel.Item>
@@ -94,7 +100,12 @@ const LandingPage = () => {
 				</Carousel>
 			</div>
 			<div className='rollingSections'>
-				<div className='rollingComplaint'>{showComplaints()}</div>
+				<div className='rollingComplaint'>
+					<div className="heading">
+						Successfully solved Complaints!
+					</div>
+						{showComplaints()}
+				</div>
 				<div className='chartContainer'>
 					<Pie data={data} options={pieOptions} width={500} height={300} />
 				</div>

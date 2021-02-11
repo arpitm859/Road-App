@@ -17,12 +17,9 @@
 }
 
 .chartContainer {
-	background-color: #bee2ff;
+	background-color: #FFFFFF;
 	margin: 3rem;
 	margin-top: 4rem;
-	/* border-color: black;
-	border-width: medium;
-	border-style: solid; */
 	width: 40vw;
 	height: 50vh;
 	text-align: center;
@@ -36,6 +33,50 @@
 .rollingComplaint {
 	width: 40vw;
 	height: 60vh;
-	background-color: #bee2ff;
+	background-color: #EFEFEF;
 	margin: 3rem;
+	top:1em;
+	overflow-y: scroll;
 }
+
+.scroll{
+	background-color: white;
+	position: relative;
+	overflow: hidden;
+	padding:1rem;
+	margin:1rem;
+	border-radius: 6px;
+	text-align: left !important;
+	border-left-style: solid;
+	border-color: #5BD856;
+	border-width: 15px;
+	font-size: 15px;
+}
+
+.scroll:hover{
+	animation: shake 5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+	0% { transform: translate(1px, 1px) rotate(0deg); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(3px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg); }
+	70% { transform: translate(3px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(1px, 2px) rotate(0deg); }
+	100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.heading{
+	background-color: #5BD856;
+	padding:1rem;
+	color:white;
+	font-size: 22px;
+}
+
+
