@@ -1,5 +1,4 @@
 import { React } from 'react';
-// import { Carousel } from 'antd';
 import image1 from './Road1.jpg';
 import image2 from './Road2.jpg';
 import image3 from './Road3.jpg';
@@ -58,12 +57,19 @@ const LandingPage = () => {
 				fontSize: 16,
 			},
 		},
+		title: {
+			display: true,
+			fontSize: 20,
+			text: 'Analysis of Complaints',
+		},
 	};
 
 	const showComplaints = () => {
 		try {
 			return eComplaints.map((complaint) => (
-				<h5 key={complaint.title}>{complaint.title}</h5>
+				<div className='scroll'>
+					Resolved {complaint.title} at {complaint.complaint_street}
+				</div>
 			));
 		} catch (err) {
 			console.log(err);
@@ -89,7 +95,10 @@ const LandingPage = () => {
 				</Carousel>
 			</div>
 			<div className='rollingSections'>
-				<div className='rollingComplaint'>{showComplaints()}</div>
+				<div className='rollingComplaint'>
+					<div className='heading'>Successfully solved Complaints!</div>
+					{showComplaints()}
+				</div>
 				<div className='chartContainer'>
 					<Pie data={data} options={pieOptions} width={500} height={300} />
 				</div>

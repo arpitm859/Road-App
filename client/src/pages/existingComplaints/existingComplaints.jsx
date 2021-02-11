@@ -26,7 +26,7 @@ const ExistingComplaints = () => {
 		};
 		axios.get('/complaints/all', config).then((json) => {
 			json.data.map((complaint) => {
-				if (complaint.status !== 11) {
+				if (complaint.status < 11) {
 					filtered.push(complaint);
 				}
 			});
@@ -41,7 +41,6 @@ const ExistingComplaints = () => {
 			return '';
 		}
 	};
-
 	const renderCards = () => {
 		const onSubmit = async (_id) => {
 			try {
@@ -84,7 +83,6 @@ const ExistingComplaints = () => {
 			} else {
 				return data.map((complaint) => {
 					id = complaint._id;
-
 					return (
 						<>
 							<ComplainCard

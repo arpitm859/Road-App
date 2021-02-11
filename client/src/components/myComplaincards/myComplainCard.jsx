@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const MyComplainCard = ({ date, title, id, address, city }) => {
+
 	const [progress, setProgress] = useState(0);
 	useEffect(() => {
 		const config = {
@@ -16,8 +17,9 @@ const MyComplainCard = ({ date, title, id, address, city }) => {
 		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
 	return (
-		<div className='complain-card'>
+		<div className='complain-card' style={{minHeight:'100vh'}}>
 			<Card id='card' title={title} bordered={true}>
 				<Link to={`/status/${id}`}>
 					<div>
