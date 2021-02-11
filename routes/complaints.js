@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 const Complaint = require('../models/complaint');
 const User = require('../models/user');
 const authenticate = require('../authenticate');
-const getCoord = require('../maps')
+const getCoord = require('../maps');
 
 var complaintRouter = express.Router();
 
@@ -34,7 +34,6 @@ complaintRouter
 		});
 	})
 	.post(authenticate.verifyUser, (req, res, next) => {
-		
 		new Complaint({
 			userID: req.user._id,
 			title: req.body.title,
@@ -72,18 +71,17 @@ complaintRouter
 			complainant_pin: req.body.complainant_pin,
 			complainant_landmark: req.body.complainant_landmark,
 			complainant_city: req.body.complainant_city,
-			complainant: req.user.firstName+ ' ' +req.user.lastName,
-			image: req.body.image
-			
+			complainant: req.user.firstName + ' ' + req.user.lastName,
+			image: req.body.image,
 		})
 			.save()
 			.then((complaint) => {
 				getCoord(complaint.complaint_address).then((coords) => {
 					complaint.lat = Number(coords[0]);
 					complaint.long = Number(coords[1]);
-					complaint.save().then((complaint)=>{
+					complaint.save().then((complaint) => {
 						console.log('Complaint Registered with Coordinates');
-					})
+					});
 				});
 				res.statusCode = 200;
 				res.setHeader('Content-Type', 'application/json');
@@ -115,7 +113,7 @@ complaintRouter
 						complaint.backer.push(req.user._id);
 						complaint.save();
 						res.json(complaint);
-					}else{
+					} else {
 						const index = complaint.backer.indexOf(req.user._id);
 						complaint.backer.splice(index, 1);
 						complaint.save();
@@ -139,6 +137,6 @@ complaintRouter.route('/:id').get(authenticate.verifyUser, (req, res, next) => {
 			},
 			(err) => next(err)
 		)
-		.catch((err) => next(err));;
+		.catch((err) => next(err));
 });
 module.exports = complaintRouter;
