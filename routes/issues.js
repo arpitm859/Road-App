@@ -54,6 +54,9 @@ issueRouter.route('/resolve')
         issue_id = req.body.issue_id;
         Complaint.findById(issue_id).then(issue=>{
             issue.status = issue.status + 1;
+            if(issue.status >= 11) {
+                issue.resolved = true;
+            }
             issue.save().then(issue=>{
                 res.json(issue)
             })
