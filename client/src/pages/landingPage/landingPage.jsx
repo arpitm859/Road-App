@@ -30,13 +30,13 @@ const LandingPage = () => {
 					registered += 1;
 				} else if (complaint.resolved === true || complaint.status === 11) {
 					solved += 1;
-					setEComplaints([...eComplaints,complaint])
+					setEComplaints([...eComplaints, complaint]);
 				} else if (complaint.status > 0 && complaint.status < 11) {
 					ongoing += 1;
 				}
 			});
 			setDataPoints([solved, ongoing, registered]);
-			
+			// eslint-disable-next-line array-callback-return
 		});
 	}, []);
 

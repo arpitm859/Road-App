@@ -27,6 +27,7 @@ const ComplainCard = ({
 		axios.get(`/status/${id}`, config).then((json) => {
 			setProgress(json.data * 10);
 		});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<div className='complain-card'>

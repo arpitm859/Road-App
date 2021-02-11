@@ -18,6 +18,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 function App({ userAuth, setAuth, setCurrentUser }) {
 	useEffect(() => {
 		setAuth();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<div className='App'>

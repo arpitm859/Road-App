@@ -7,7 +7,6 @@ import DescriptionCard from '../../components/descriptionCard/descriptionCard';
 const Status = (props) => {
 	const [data, setData] = useState([]);
 	const [status, setStatus] = useState(0);
-
 	useEffect(() => {
 		const config = {
 			headers: {
@@ -21,18 +20,37 @@ const Status = (props) => {
 			setStatus(json.data);
 		});
 	}, []);
-	const getDate = () => {
-		try{
-			const date = data.createdAt.substring(0, 10)
-			return date
-		}catch(err){
-			return ''
+	const onSubmit = async (_id) => {
+		try {
+			const config = {
+				headers: {
+					Authorization: 'Bearer ' + localStorage.getItem('token'),
+				},
+			};
+			await axios.post(
+				'/issues/resolve',
+				{
+					issue_id: _id,
+				},
+				config
+			);
+			window.location.reload();
+		} catch (err) {
+			console.error(err.response.data);
 		}
-	}
+	};
+	const getDate = () => {
+		try {
+			const date = data.createdAt.substring(0, 10);
+			return date;
+		} catch (err) {
+			return '';
+		}
+	};
 	return (
 		<div className='status'>
 			<div className='progress-div'>
-				<ProgressCard status={status} />
+				<ProgressCard status={status} onSubmit={() => onSubmit(data._id)} />
 			</div>
 			<div className='description-div'>
 				<div className='ress-div'>
