@@ -10,3 +10,7 @@
 .lable{
     color: black;
 }
+
+#card:hover{
+    box-shadow: 0 0 18px rgba(33,33,33,.2); 
+}
