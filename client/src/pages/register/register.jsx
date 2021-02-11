@@ -68,45 +68,11 @@ const Register = () => {
 				<div className="loginCard">
 					<MDBContainer>
 						<MDBRow>
-							<MDBCol>	
-								<form>
-									<p className="h4 text-center mb-4" style={{fontSize:'35px'}}>Sign in</p>
-									<label htmlFor="defaultFormRegisterNameEx" className="grey-text" style={{textAlign:'left'}}>
-										Enter Phone Number </label>
-											<input
-												className="form-control"
-												id="textInput"
-												type='text'
-												placeholder='Enter Phone Number'
-												name='phoneNumber'
-												value={phoneNumber}
-												onChange={(e) => onChange(e)}
-												required />
-									<label htmlFor="defaultFormRegisterNameEx" className="grey-text" style={{textAlign:'left'}}>
-										Enter Phone Number </label>
-											<input
-												className="form-control"
-												id="textInput"
-												type='text'
-												placeholder='Enter Phone Number'
-												name='phoneNumber'
-												value={phoneNumber}
-												onChange={(e) => onChange(e)}
-												required />
-									<label htmlFor="defaultFormLoginPasswordEx" className="grey-text" >
-											Enter Password </label>
-											<input
-												className="form-control"
-												id="passwordInput"
-												type='password'
-												placeholder='Enter Password'
-												name='password'
-												value={password}
-												onChange={(e) => onChange(e)}
-												required />
+							<MDBCol>
+								<p className="h4 text-center mb-4" style={{fontSize:'35px'}}>Register</p>
 
-											<MDBBtn color="primary" type="submit" onClick={(e) => onSubmit(e)}>Login</MDBBtn>
-								</form>
+								<label htmlFor="defaultFormRegisterNameEx" className="grey-text">	Enter your First Name</label>
+								<input type="text" placeholder="Enter First Name" name="firstname" className="form-control" value={firstname} onChange={e => onChange(e)} required />  
 							</MDBCol>
 						</MDBRow>
 					</MDBContainer>

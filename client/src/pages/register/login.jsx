@@ -76,6 +76,7 @@ const Login = ({ setCurrentUser, setAuth }) => {
 												required />
 
 											<MDBBtn color="primary" type="submit" onClick={(e) => onSubmit(e)}>Login</MDBBtn>
+											<Link to="/register" style={{ color:"white" }}>Don't have an account? Sign Up</Link>
 								</form>
 							</MDBCol>
 						</MDBRow>
