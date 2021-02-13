@@ -40,9 +40,9 @@ complaintRouter
 
 			complaint_address:
 				req.body.complaint_house +
-				' ' +
+				', ' +
 				req.body.complaint_street +
-				' ' +
+				', ' +
 				req.body.complaint_area +
 				', ' +
 				req.body.complaint_city +
