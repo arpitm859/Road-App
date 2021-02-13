@@ -57,7 +57,7 @@ complaintRouter
 
 			complainant_address:
 				req.body.complainant_house_no +
-				' ' +
+				', ' +
 				req.body.complainant_street +
 				', ' +
 				req.body.complainant_area +
