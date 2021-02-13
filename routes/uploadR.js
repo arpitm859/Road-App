@@ -38,8 +38,7 @@ uploadRouter
 					message: 'File successfully uploaded',
 					url: req.file.path,
 				})
-				.catch((err) => next(err));
 		}
-	);
+	).catch((error) => {return error;});
 
 module.exports = uploadRouter;
