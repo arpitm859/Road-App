@@ -14,7 +14,6 @@ complaintRouter
 	.route('/')
 	.get(authenticate.verifyUser, (req, res, next) => {
 		var id = req.user._id;
-		console.log(id);
 		User.findById(id).then((user) => {
 			if (user.public) {
 				Complaint.find({ userID: user._id }).then((result) => {
@@ -40,6 +39,8 @@ complaintRouter
 			description: req.body.description,
 
 			complaint_address:
+				req.body.complaint_house +
+				' ' +
 				req.body.complaint_street +
 				' ' +
 				req.body.complaint_area +
