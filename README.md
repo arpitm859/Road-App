@@ -1,6 +1,6 @@
 # BMC Complaints Management App
 
-A MERN Stack application which aims to improve the communication between citizens, agenices and government officials and also increasing the public involvement. This project was created as a submission for Hackoverflow event in [Cepheus 2021 IIT Goa](https://www.iitgoa.ac.in/Cepheus/). The team went on to secure a place in the top 6 over all of India </br></br>
+A MERN Stack application which aims to improve the communication between citizens, agenices and government officials and also increasing the public involvement. This project was created as a submission for Hackoverflow event in [Cepheus 2021 IIT Goa](https://www.iitgoa.ac.in/Cepheus/). The team went on to secure a place in the top 5 over all of India </br></br>
 
 **Team Name:** F Society</br>
 **Team Members:** [Arpit Maurya](https://github.com/arpitm859), [Namami Shanker](https://github.com/NamamiShanker), [Khushboo Gupta](https://github.com/khushboogupta13),  [Kartikey Sharma](https://github.com/KartikeySharma).</br>
