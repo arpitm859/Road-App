@@ -25,7 +25,7 @@ Your Home page will give you an overview of the successfully sovled complaints a
 |<img src="https://i.imgur.com/PJXR1K3.png"> |<img src="https://i.imgur.com/PSc6Qr0.png">|
 | ------------------------------------------ | ----------------------------------------- |
 
-The general citizen can view all the complaints under **Existing Complaints** section registered by other citizens, and he has the choice to upvote their issues if he finds them relevant. He can also view the status of his own complaints under **My Complaints** section.
+The general citizen can view all the complaints under **Existing Complaints** section registered by other citizens, and he has the choice to upvote their issues if he finds them relevant. He can also view the status of his own complaints under **My Complaints** section. You also have the option to search for any existing complaint.
 
 |<img src="https://i.imgur.com/r84f2xQ.png"> |<img src="https://i.imgur.com/BR6ltwK.png">|
 | ------------------------------------------ | ----------------------------------------- |
@@ -48,6 +48,8 @@ Clicking on resolve with change the status of complaint. Moving it on the next s
 
 |<img src="https://i.imgur.com/eIVOxeW.png"> |<img src="https://i.imgur.com/TurnzE1.png">|
 | ------------------------------------------ | ----------------------------------------- |
+
+Once an issue has been finally resolved. Its will be displayed in the successfully solved panel on the Home Page.
 
 ## Project Setup
 
