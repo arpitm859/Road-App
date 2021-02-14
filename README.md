@@ -4,6 +4,11 @@ A MERN Stack application which aims to improve the communication between citizen
 
 **Team Name:** F Society</br>
 **Team Members:** [Arpit Maurya](https://github.com/arpitm859), [Namami Shanker](https://github.com/NamamiShanker), [Khushboo Gupta](https://github.com/khushboogupta13).</br>
+**Deployed Project** [BMC Complaints Management App](3.17.9.12:3000)
+|Credentials|Username|Password|
+| --------- | ------ | ------ |
+|Government | 9819439458 | 12345678 |
+|Agency     | 8175940187 | 123456 |
 
 ## Project Information
 
