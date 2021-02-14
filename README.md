@@ -39,8 +39,15 @@ By clicking on any complaint you can view its details such as its location on Go
 
 As a Government Official or Agency Member, the style of your homepage, complaints registration page, existing complaints remain the same.
 
-However, you are presented with a new Tab in Navigation Panel - **Issues Assigned** which shows what Issues are pending to be resolved from your side. 
+However, you are presented with a new Tab in Navigation Panel - **Issues Assigned** which shows what Issues are pending to be resolved from your side. The complaints in the tab depend on whether you are a Government Official or Agency Member. The issues which require clearance from Government are shown to Government Officials under their tab. Same goes for Agency Members too. If you want more information on which steps reuire clearance from which side, you are free to play with the Deployed Project : ) Link will be at the end.
 
+|<img src="https://i.imgur.com/QKu67Wh.png"> |
+| ------------------------------------------ | 
+
+Clicking on resolve with change the status of complaint. Moving it on the next stage to being fully solved.
+
+|<img src="https://i.imgur.com/eIVOxeW.png"> |<img src="https://i.imgur.com/TurnzE1.png">|
+| ------------------------------------------ | ----------------------------------------- |
 
 ## Project Setup
 
