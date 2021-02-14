@@ -8,7 +8,16 @@ A MERN Stack application which aims to improve the communication between citizen
 **Team Name:** F Society</br>
 **Team Members:** [Arpit Maurya](https://github.com/arpitm859), [Namami Shanker](https://github.com/NamamiShanker), [Khushboo Gupta](https://github.com/khushboogupta13),  [Kartikey Sharma](https://github.com/KartikeySharma).</br>
 
-# How to run the project?
+## Project Information
+
+A user can register as a Public Member if he is a general citizen, or Agency Member if he works in an agency recognized by GOI, or he can Register as a Government Official incharge of administration. 
+
+|<img src="https://i.imgur.com/ShBduq0.png"> |<img src="https://i.imgur.com/zmaWo3F.png">|
+
+### Walkthough of the application as a general citizen
+
+
+## Project Setup
 
 1. Clone the Github repository. </br> 
 2. On your local machine, start two terminals: </br>
@@ -24,8 +33,6 @@ A MERN Stack application which aims to improve the communication between citizen
        npm install
        npm start
     ```
-    
-
     
     
     
