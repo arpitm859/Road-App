@@ -1,12 +1,19 @@
 # BMC Complaints Management App
 
-A MERN Stack application which aims to improve the communication between citizens, agenices and government officials and also increasing the public involvement. This project was created as a submission for Hackoverflow event in Cepheus 2021. The team went on to secure a place in the top 6 over all of India </br></br>
+A MERN Stack application which aims to improve the communication between citizens, agenices and government officials and also increasing the public involvement. This project was created as a submission for Hackoverflow event in [Cepheus 2021 IIT Goa](https://www.iitgoa.ac.in/Cepheus/). The team went on to secure a place in the top 6 over all of India </br></br>
+
 **Team Name:** F Society</br>
 **Team Members:** [Arpit Maurya](https://github.com/arpitm859), [Namami Shanker](https://github.com/NamamiShanker), [Khushboo Gupta](https://github.com/khushboogupta13),  [Kartikey Sharma](https://github.com/KartikeySharma).</br>
 
 ## Project Information
 
 A user can register as a Public Member if he is a general citizen, or Agency Member if he works in an agency recognized by GOI, or he can Register as a Government Official incharge of administration. 
+
+Any member can register a complaint, view all the existing comaplaints and his/her own specific comaplaints.
+
+Government Officials are tasked with overall administration and provision of funds required to resolve an issue whereas Agency Members are Companies which with the help of their funds actually work on resolving the complaints. These agecies can be of different types such as Road Repair, Plumbing, Electrical, Water etc.
+
+Our application has divided the entire process of resolving a public issue into various steps, where each step is a sub problem which needs to be resolved by either the government or agency. Our methodology focusses on breaking a big public issue into simpler sub problems and distribute it to different members involved. 
 
 |<img src="https://i.imgur.com/ShBduq0.png"> |<img src="https://i.imgur.com/zmaWo3F.png">|
 | ------------------------------------------ | ----------------------------------------- |
@@ -27,6 +34,13 @@ By clicking on any complaint you can view its details such as its location on Go
 
 |<img src="https://i.imgur.com/3v6mXhP.png">|
 | ----------------------------------------- |
+
+* ### Walkthrough as a Government Official or Agency Member
+
+As a Government Official or Agency Member, the style of your homepage, complaints registration page, existing complaints remain the same.
+
+However, you are presented with a new Tab in Navigation Panel - **Issues Assigned** which shows what Issues are pending to be resolved from your side. 
+
 
 ## Project Setup
 
