@@ -13,6 +13,7 @@ A MERN Stack application which aims to improve the communication between citizen
 A user can register as a Public Member if he is a general citizen, or Agency Member if he works in an agency recognized by GOI, or he can Register as a Government Official incharge of administration. 
 
 |<img src="https://i.imgur.com/ShBduq0.png"> |<img src="https://i.imgur.com/zmaWo3F.png">|
+| ------------------------------------------ | ----------------------------------------- |
 
 ### Walkthough of the application as a general citizen
 
