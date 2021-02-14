@@ -17,6 +17,10 @@ A user can register as a Public Member if he is a general citizen, or Agency Mem
 
 ### Walkthough of the application as a general citizen
 
+Your Home page will give you an overview of the successfully sovled complaints and a pie chart displaying registered, under progress and solved complaints. You can register your own complaints in the provided form which will then be saved and displayed to Agency and Government Members who can work on your issues and resolve them.
+
+|<img src="https://i.imgur.com/PSc6Qr0.png"> |<img src="https://i.imgur.com/zmaWo3F.png">|
+| ------------------------------------------ | ----------------------------------------- |
 
 ## Project Setup
 
