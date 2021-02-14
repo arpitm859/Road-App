@@ -1,10 +1,6 @@
 # BMC Complaints Management App
 
-<p align="center">
-  <img src="http://cdn.lowgif.com/full/f461640eb016bd8c-yizhuang-will-host-beijing-s-first-test-road-for-self-driving.gif" alt="animated" />
-</p>
-
-A MERN Stack application which aims to improve the communication between citizens, agenices and government officials and also increasing the public involvement. This project was created as a submission for Hackoverflow event in Cepheus 2021. </br></br>
+A MERN Stack application which aims to improve the communication between citizens, agenices and government officials and also increasing the public involvement. This project was created as a submission for Hackoverflow event in Cepheus 2021. The team went on to secure a place in the top 6 over all of India </br></br>
 **Team Name:** F Society</br>
 **Team Members:** [Arpit Maurya](https://github.com/arpitm859), [Namami Shanker](https://github.com/NamamiShanker), [Khushboo Gupta](https://github.com/khushboogupta13),  [Kartikey Sharma](https://github.com/KartikeySharma).</br>
 
@@ -15,12 +11,22 @@ A user can register as a Public Member if he is a general citizen, or Agency Mem
 |<img src="https://i.imgur.com/ShBduq0.png"> |<img src="https://i.imgur.com/zmaWo3F.png">|
 | ------------------------------------------ | ----------------------------------------- |
 
-### Walkthough of the application as a general citizen
+* ### Walkthough of the application as a general citizen
 
 Your Home page will give you an overview of the successfully sovled complaints and a pie chart displaying registered, under progress and solved complaints. You can register your own complaints in the provided form which will then be saved and displayed to Agency and Government Members who can work on your issues and resolve them.
 
-|<img src="https://i.imgur.com/PSc6Qr0.png"> |<img src="https://i.imgur.com/zmaWo3F.png">|
+|<img src="https://i.imgur.com/PJXR1K3.png"> |<img src="https://i.imgur.com/PSc6Qr0.png">|
 | ------------------------------------------ | ----------------------------------------- |
+
+The general citizen can view all the complaints under **Existing Complaints** section registered by other citizens, and he has the choice to upvote their issues if he finds them relevant. He can also view the status of his own complaints under **My Complaints** section.
+
+|<img src="https://i.imgur.com/r84f2xQ.png"> |<img src="https://i.imgur.com/BR6ltwK.png">|
+| ------------------------------------------ | ----------------------------------------- |
+
+By clicking on any complaint you can view its details such as its location on Google Maps which is obtained using **Geocoding using Puppeteer** and its status on its way to being resolved.
+
+|<img src="https://i.imgur.com/3v6mXhP.png">|
+| ----------------------------------------- |
 
 ## Project Setup
 
